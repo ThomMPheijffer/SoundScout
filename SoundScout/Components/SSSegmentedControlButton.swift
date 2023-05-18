@@ -10,12 +10,13 @@ import SwiftUI
 struct SSSegmentedControlButton: View {
     @Binding var selectedIndex: Int
     var index: Int
+    var text: String
     
     var body: some View {
         Button(action: {
             selectedIndex = index
         }) {
-            Text("Learning an instrument")
+            Text(text)
                 .foregroundColor(.primary)
                 .font(.subheadline)
                 .frame(maxWidth: .infinity)
@@ -35,8 +36,8 @@ struct SSSegmentedControlButton: View {
 struct SSSegmentedControlButton_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            SSSegmentedControlButton(selectedIndex: .constant(0), index: 0)
-            SSSegmentedControlButton(selectedIndex: .constant(0), index: 1)
+            SSSegmentedControlButton(selectedIndex: .constant(0), index: 0, text: "a")
+            SSSegmentedControlButton(selectedIndex: .constant(0), index: 1, text: "b")
         }
     }
 }
