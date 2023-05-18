@@ -11,6 +11,14 @@
 		DCCD07592A1625C4002CB449 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCD07582A1625C4002CB449 /* ContentView.swift */; };
 		DCCD075B2A1625C5002CB449 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCCD075A2A1625C5002CB449 /* Assets.xcassets */; };
 		DCCD075E2A1625C5002CB449 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCCD075D2A1625C5002CB449 /* Preview Assets.xcassets */; };
+		DCCD07652A162980002CB449 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCD07642A162980002CB449 /* Constants.swift */; };
+		DCCD07682A162B11002CB449 /* OnboardingSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCD07672A162B11002CB449 /* OnboardingSidebar.swift */; };
+		DCCD076A2A163245002CB449 /* SSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCD07692A163245002CB449 /* SSTextField.swift */; };
+		DCCD07702A163508002CB449 /* SignUpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCD076F2A163508002CB449 /* SignUpScreen.swift */; };
+		DCCD07722A16357E002CB449 /* SSSegmentedControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCD07712A16357E002CB449 /* SSSegmentedControlButton.swift */; };
+		DCCD07742A16368C002CB449 /* SSPrimaryNavigationButtonText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCD07732A16368C002CB449 /* SSPrimaryNavigationButtonText.swift */; };
+		DCCD07762A1636CD002CB449 /* SSSecondaryNavigationButtonText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCD07752A1636CD002CB449 /* SSSecondaryNavigationButtonText.swift */; };
+		DCCD07782A16391E002CB449 /* SSContentBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCD07772A16391E002CB449 /* SSContentBackground.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +27,14 @@
 		DCCD07582A1625C4002CB449 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DCCD075A2A1625C5002CB449 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DCCD075D2A1625C5002CB449 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DCCD07642A162980002CB449 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		DCCD07672A162B11002CB449 /* OnboardingSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSidebar.swift; sourceTree = "<group>"; };
+		DCCD07692A163245002CB449 /* SSTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSTextField.swift; sourceTree = "<group>"; };
+		DCCD076F2A163508002CB449 /* SignUpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpScreen.swift; sourceTree = "<group>"; };
+		DCCD07712A16357E002CB449 /* SSSegmentedControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSSegmentedControlButton.swift; sourceTree = "<group>"; };
+		DCCD07732A16368C002CB449 /* SSPrimaryNavigationButtonText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSPrimaryNavigationButtonText.swift; sourceTree = "<group>"; };
+		DCCD07752A1636CD002CB449 /* SSSecondaryNavigationButtonText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSSecondaryNavigationButtonText.swift; sourceTree = "<group>"; };
+		DCCD07772A16391E002CB449 /* SSContentBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSContentBackground.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +68,10 @@
 			isa = PBXGroup;
 			children = (
 				DCCD07562A1625C4002CB449 /* SoundScoutApp.swift */,
+				DCCD07662A162AEE002CB449 /* Components */,
 				DCCD07582A1625C4002CB449 /* ContentView.swift */,
+				DCCD076B2A1634EB002CB449 /* Screens */,
+				DCCD07642A162980002CB449 /* Constants.swift */,
 				DCCD075A2A1625C5002CB449 /* Assets.xcassets */,
 				DCCD075C2A1625C5002CB449 /* Preview Content */,
 			);
@@ -65,6 +84,51 @@
 				DCCD075D2A1625C5002CB449 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DCCD07662A162AEE002CB449 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				DCCD07672A162B11002CB449 /* OnboardingSidebar.swift */,
+				DCCD07692A163245002CB449 /* SSTextField.swift */,
+				DCCD07712A16357E002CB449 /* SSSegmentedControlButton.swift */,
+				DCCD07732A16368C002CB449 /* SSPrimaryNavigationButtonText.swift */,
+				DCCD07752A1636CD002CB449 /* SSSecondaryNavigationButtonText.swift */,
+				DCCD07772A16391E002CB449 /* SSContentBackground.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		DCCD076B2A1634EB002CB449 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				DCCD076C2A1634F3002CB449 /* Onboarding */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		DCCD076C2A1634F3002CB449 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				DCCD076E2A1634FC002CB449 /* Students */,
+				DCCD076D2A1634F7002CB449 /* Teacher */,
+				DCCD076F2A163508002CB449 /* SignUpScreen.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		DCCD076D2A1634F7002CB449 /* Teacher */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Teacher;
+			sourceTree = "<group>";
+		};
+		DCCD076E2A1634FC002CB449 /* Students */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Students;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +203,14 @@
 			files = (
 				DCCD07592A1625C4002CB449 /* ContentView.swift in Sources */,
 				DCCD07572A1625C4002CB449 /* SoundScoutApp.swift in Sources */,
+				DCCD07762A1636CD002CB449 /* SSSecondaryNavigationButtonText.swift in Sources */,
+				DCCD076A2A163245002CB449 /* SSTextField.swift in Sources */,
+				DCCD07742A16368C002CB449 /* SSPrimaryNavigationButtonText.swift in Sources */,
+				DCCD07782A16391E002CB449 /* SSContentBackground.swift in Sources */,
+				DCCD07652A162980002CB449 /* Constants.swift in Sources */,
+				DCCD07682A162B11002CB449 /* OnboardingSidebar.swift in Sources */,
+				DCCD07702A163508002CB449 /* SignUpScreen.swift in Sources */,
+				DCCD07722A16357E002CB449 /* SSSegmentedControlButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,8 +345,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,8 +374,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
