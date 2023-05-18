@@ -37,10 +37,10 @@ struct SignUpScreen: View {
                   Text("Looking for?")
                       .font(.title3)
                   HStack {
-                      SSSegmentedControlButton(selectedIndex: $selectedIndex, index: 0)
+                      SSSegmentedControlButton(selectedIndex: $selectedIndex, index: 0, text: "Learning an instrument")
                       Spacer()
                           .frame(width: 32)
-                      SSSegmentedControlButton(selectedIndex: $selectedIndex, index: 1)
+                      SSSegmentedControlButton(selectedIndex: $selectedIndex, index: 1, text: "Teaching an instrument")
                   }
                   .padding(.top, 8)
                   .padding(.bottom, 32)
@@ -56,7 +56,7 @@ struct SignUpScreen: View {
                   
                   Spacer()
                   
-                  NavigationLink(destination: Text("Continue")) {
+                  NavigationLink(destination: ProfileScreen()) {
                       SSPrimaryNavigationButtonText(text: "Continue")
                   }
               }
