@@ -1,13 +1,13 @@
 //
-//  ProfileScreen.swift
+//  StudentProfileScreen.swift
 //  SoundScout
 //
-//  Created by Mina Janicijevic on 18.5.23..
+//  Created by Mina Janicijevic on 20.5.23..
 //
 
 import SwiftUI
 
-struct ProfileScreen: View {
+struct StudentProfileScreen: View {
     @State private var about = ""
     @State private var eduExp = ""
     
@@ -35,10 +35,10 @@ struct ProfileScreen: View {
                 SSTextField(title: "About", text: $about, axis: .vertical)
                     .padding(.bottom, 16)
                 
-                SSTextField(title: "Relevant education/prior experience", text: $eduExp, axis: .vertical)
+                SSTextField(title: "Prior experience", text: $eduExp, axis: .vertical)
                     .padding(.bottom, 16)
                 
-                Text("I prefer teaching")
+                Text("I prefer taking lessons")
                     .font(.title3)
                     .padding(.bottom, 16)
                 HStack {
@@ -53,7 +53,7 @@ struct ProfileScreen: View {
                 .padding(.top, 8)
                 .padding(.bottom, 32)
                 
-                Text("I can teach")
+                Text("I want to learn")
                     .font(.title3)
                     .padding(.bottom, 16)
                 HStack {
@@ -66,7 +66,7 @@ struct ProfileScreen: View {
                 
                 Spacer()
                 
-                NavigationLink(destination: MusicTasteScreen(userType: .teacher)) {
+                NavigationLink(destination: MusicTasteScreen(userType: .student)) {
                     SSPrimaryNavigationButtonText(text: "Continue")
                 }
             }
@@ -78,10 +78,11 @@ struct ProfileScreen: View {
     }
 }
 
-struct ProfileScreen_Previews: PreviewProvider {
+struct StudentProfileScreen_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileScreen()
+        StudentProfileScreen()
     }
 }
+
 
 

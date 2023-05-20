@@ -9,10 +9,11 @@ import SwiftUI
 
 struct SSSecondaryNavigationButtonText: View {
     let text: String
+    let paddingValue: CGFloat
     
     var body: some View {
         Text(text)
-            .padding(.horizontal, 32)
+            .padding(.horizontal, paddingValue)
             .foregroundColor(.primary)
             .frame(height: 32)
             .overlay(
@@ -23,7 +24,8 @@ struct SSSecondaryNavigationButtonText: View {
 }
 
 struct SSSecondaryNavigationButtonText_Previews: PreviewProvider {
+    
     static var previews: some View {
-        SSSecondaryNavigationButtonText(text: "Login")
+        SSSecondaryNavigationButtonText(text: "Login", paddingValue: 32)
     }
 }
