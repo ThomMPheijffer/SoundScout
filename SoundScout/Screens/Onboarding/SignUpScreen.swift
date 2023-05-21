@@ -56,7 +56,7 @@ struct SignUpScreen: View {
                     
                     Spacer()
                     
-                    NavigationLink(destination: destinationForSelection()) {
+                    NavigationLink(destination: destinationForSelectionView) {
                         SSPrimaryNavigationButtonText(text: "Continue")
                     }
                 }
@@ -68,12 +68,13 @@ struct SignUpScreen: View {
         }
     }
     
-    // Function to determine destination based on selection
-    private func destinationForSelection() -> some View {
+    // Variable to determine destination based on selection
+    @ViewBuilder
+    var destinationForSelectionView: some View {
         if selectedIndex == 0 {
-            return AnyView(StudentProfileScreen())
+            StudentProfileScreen()
         } else {
-            return AnyView(TeacherProfileScreen())
+            TeacherProfileScreen()
         }
     }
 }
