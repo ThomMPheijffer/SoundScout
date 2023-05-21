@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct SoundScoutApp: App {
+    @StateObject var navigationManager = NavigationManager.shared
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
+            TeacherHomeScreen()
+                .environmentObject(navigationManager)
         }
     }
 }
