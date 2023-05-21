@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ProfileScreen: View {
+struct TeacherProfileScreen: View {
     @State private var about = ""
     @State private var eduExp = ""
     
@@ -28,7 +28,7 @@ struct ProfileScreen: View {
                     Spacer()
                     
                     NavigationLink(destination: Text("Profile picture")) {
-                        SSSecondaryNavigationButtonText(text: "Select profile picture", paddingValue: 32)
+                        SSSecondaryNavigationButtonText(text: "Select profile picture")
                     }
                 }.padding(.bottom, 64)
                 
@@ -80,7 +80,7 @@ struct ProfileScreen: View {
 
 struct ProfileScreen_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileScreen()
+        TeacherProfileScreen()
     }
 }
 

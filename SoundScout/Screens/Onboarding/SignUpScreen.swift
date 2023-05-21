@@ -28,7 +28,7 @@ struct SignUpScreen: View {
                         Spacer()
                         
                         NavigationLink(destination: LogInScreen()) {
-                            SSSecondaryNavigationButtonText(text: "Login", paddingValue: 32)
+                            SSSecondaryNavigationButtonText(text: "Login")
                         }
                     }
                     .padding(.top, 10)
@@ -73,7 +73,7 @@ struct SignUpScreen: View {
         if selectedIndex == 0 {
             return AnyView(StudentProfileScreen())
         } else {
-            return AnyView(ProfileScreen())
+            return AnyView(TeacherProfileScreen())
         }
     }
 }

@@ -28,7 +28,7 @@ struct StudentProfileScreen: View {
                     Spacer()
                     
                     NavigationLink(destination: Text("Profile picture")) {
-                        SSSecondaryNavigationButtonText(text: "Select profile picture", paddingValue: 32)
+                        SSSecondaryNavigationButtonText(text: "Select profile picture")
                     }
                 }.padding(.bottom, 64)
                 
