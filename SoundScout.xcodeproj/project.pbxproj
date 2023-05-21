@@ -28,6 +28,7 @@
 		DCD409632A1A1871008220F1 /* TeacherSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD409622A1A1871008220F1 /* TeacherSidebar.swift */; };
 		DCD409652A1A1CAC008220F1 /* MyStudentsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD409642A1A1CAC008220F1 /* MyStudentsScreen.swift */; };
 		DCD409672A1A2016008220F1 /* MySongsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD409662A1A2016008220F1 /* MySongsScreen.swift */; };
+		DCD409692A1A30CE008220F1 /* SSCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD409682A1A30CE008220F1 /* SSCheckbox.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		DCD409622A1A1871008220F1 /* TeacherSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherSidebar.swift; sourceTree = "<group>"; };
 		DCD409642A1A1CAC008220F1 /* MyStudentsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStudentsScreen.swift; sourceTree = "<group>"; };
 		DCD409662A1A2016008220F1 /* MySongsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySongsScreen.swift; sourceTree = "<group>"; };
+		DCD409682A1A30CE008220F1 /* SSCheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSCheckbox.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				DCCD07732A16368C002CB449 /* SSPrimaryNavigationButtonText.swift */,
 				DCCD07752A1636CD002CB449 /* SSSecondaryNavigationButtonText.swift */,
 				DCCD07772A16391E002CB449 /* SSContentBackground.swift */,
+				DCD409682A1A30CE008220F1 /* SSCheckbox.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCD409692A1A30CE008220F1 /* SSCheckbox.swift in Sources */,
 				DCCD07592A1625C4002CB449 /* ContentView.swift in Sources */,
 				DCCD07572A1625C4002CB449 /* SoundScoutApp.swift in Sources */,
 				DCCD07762A1636CD002CB449 /* SSSecondaryNavigationButtonText.swift in Sources */,
