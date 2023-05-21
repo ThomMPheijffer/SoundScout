@@ -23,6 +23,8 @@
 		DCCD07742A16368C002CB449 /* SSPrimaryNavigationButtonText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCD07732A16368C002CB449 /* SSPrimaryNavigationButtonText.swift */; };
 		DCCD07762A1636CD002CB449 /* SSSecondaryNavigationButtonText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCD07752A1636CD002CB449 /* SSSecondaryNavigationButtonText.swift */; };
 		DCCD07782A16391E002CB449 /* SSContentBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCD07772A16391E002CB449 /* SSContentBackground.swift */; };
+		DCD409612A1A16B0008220F1 /* TeacherHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD409602A1A16B0008220F1 /* TeacherHomeScreen.swift */; };
+		DCD409632A1A1871008220F1 /* TeacherSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD409622A1A1871008220F1 /* TeacherSidebar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,8 @@
 		DCCD07732A16368C002CB449 /* SSPrimaryNavigationButtonText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSPrimaryNavigationButtonText.swift; sourceTree = "<group>"; };
 		DCCD07752A1636CD002CB449 /* SSSecondaryNavigationButtonText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSSecondaryNavigationButtonText.swift; sourceTree = "<group>"; };
 		DCCD07772A16391E002CB449 /* SSContentBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSContentBackground.swift; sourceTree = "<group>"; };
+		DCD409602A1A16B0008220F1 /* TeacherHomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherHomeScreen.swift; sourceTree = "<group>"; };
+		DCD409622A1A1871008220F1 /* TeacherSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherSidebar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +114,9 @@
 		DCCD076B2A1634EB002CB449 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				DCD4095F2A1A169C008220F1 /* Common */,
+				DCD4095E2A1A1694008220F1 /* Student */,
+				DCD4095D2A1A168C008220F1 /* Teacher */,
 				DCCD076C2A1634F3002CB449 /* Onboarding */,
 			);
 			path = Screens;
@@ -141,6 +148,29 @@
 				4E78014C2A1942E500E3B385 /* StudentProfileScreen.swift */,
 			);
 			path = Students;
+			sourceTree = "<group>";
+		};
+		DCD4095D2A1A168C008220F1 /* Teacher */ = {
+			isa = PBXGroup;
+			children = (
+				DCD409602A1A16B0008220F1 /* TeacherHomeScreen.swift */,
+				DCD409622A1A1871008220F1 /* TeacherSidebar.swift */,
+			);
+			path = Teacher;
+			sourceTree = "<group>";
+		};
+		DCD4095E2A1A1694008220F1 /* Student */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Student;
+			sourceTree = "<group>";
+		};
+		DCD4095F2A1A169C008220F1 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,6 +248,8 @@
 				DCCD07762A1636CD002CB449 /* SSSecondaryNavigationButtonText.swift in Sources */,
 				DCCD076A2A163245002CB449 /* SSTextField.swift in Sources */,
 				4E78014B2A16E41B00E3B385 /* MusicTasteScreen.swift in Sources */,
+				DCD409632A1A1871008220F1 /* TeacherSidebar.swift in Sources */,
+				DCD409612A1A16B0008220F1 /* TeacherHomeScreen.swift in Sources */,
 				DCCD07742A16368C002CB449 /* SSPrimaryNavigationButtonText.swift in Sources */,
 				DCCD07782A16391E002CB449 /* SSContentBackground.swift in Sources */,
 				DCCD07652A162980002CB449 /* Constants.swift in Sources */,
