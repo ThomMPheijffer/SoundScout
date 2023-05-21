@@ -25,6 +25,8 @@
 		DCCD07782A16391E002CB449 /* SSContentBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCD07772A16391E002CB449 /* SSContentBackground.swift */; };
 		DCD409612A1A16B0008220F1 /* TeacherHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD409602A1A16B0008220F1 /* TeacherHomeScreen.swift */; };
 		DCD409632A1A1871008220F1 /* TeacherSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD409622A1A1871008220F1 /* TeacherSidebar.swift */; };
+		DCD409652A1A1CAC008220F1 /* MyStudentsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD409642A1A1CAC008220F1 /* MyStudentsScreen.swift */; };
+		DCD409672A1A2016008220F1 /* MySongsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD409662A1A2016008220F1 /* MySongsScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +49,8 @@
 		DCCD07772A16391E002CB449 /* SSContentBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSContentBackground.swift; sourceTree = "<group>"; };
 		DCD409602A1A16B0008220F1 /* TeacherHomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherHomeScreen.swift; sourceTree = "<group>"; };
 		DCD409622A1A1871008220F1 /* TeacherSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherSidebar.swift; sourceTree = "<group>"; };
+		DCD409642A1A1CAC008220F1 /* MyStudentsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStudentsScreen.swift; sourceTree = "<group>"; };
+		DCD409662A1A2016008220F1 /* MySongsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySongsScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +159,8 @@
 			children = (
 				DCD409602A1A16B0008220F1 /* TeacherHomeScreen.swift */,
 				DCD409622A1A1871008220F1 /* TeacherSidebar.swift */,
+				DCD409642A1A1CAC008220F1 /* MyStudentsScreen.swift */,
+				DCD409662A1A2016008220F1 /* MySongsScreen.swift */,
 			);
 			path = Teacher;
 			sourceTree = "<group>";
@@ -247,7 +253,9 @@
 				DCCD07572A1625C4002CB449 /* SoundScoutApp.swift in Sources */,
 				DCCD07762A1636CD002CB449 /* SSSecondaryNavigationButtonText.swift in Sources */,
 				DCCD076A2A163245002CB449 /* SSTextField.swift in Sources */,
+				DCD409652A1A1CAC008220F1 /* MyStudentsScreen.swift in Sources */,
 				4E78014B2A16E41B00E3B385 /* MusicTasteScreen.swift in Sources */,
+				DCD409672A1A2016008220F1 /* MySongsScreen.swift in Sources */,
 				DCD409632A1A1871008220F1 /* TeacherSidebar.swift in Sources */,
 				DCD409612A1A16B0008220F1 /* TeacherHomeScreen.swift in Sources */,
 				DCCD07742A16368C002CB449 /* SSPrimaryNavigationButtonText.swift in Sources */,
