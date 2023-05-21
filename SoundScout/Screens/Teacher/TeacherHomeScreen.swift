@@ -35,7 +35,7 @@ struct TeacherHomeScreen: View {
             case .schedule:
                 Text("Schedule")
             case .students:
-                Text("My Students")
+                MyStudentsScreen()
             case .songs:
                 Text("My Songs")
             case .profile:
