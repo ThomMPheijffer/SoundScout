@@ -56,10 +56,9 @@ struct TeacherProfileScreen: View {
                 Text("I can teach")
                     .font(.title3)
                     .padding(.bottom, 16)
-                HStack {
-                    SSSegmentedControlButton(selectedIndex: $selectedIndex, index: 3, text: "Select instruments")
+                NavigationLink(destination: SelectInstrumentsScreen()) {
+                    SSSecondaryNavigationButtonText(text: "Select instruments", fullWidth: true)
                 }
-                .padding(.top, 8)
                 .padding(.bottom, 32)
                 
                 

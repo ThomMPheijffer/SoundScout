@@ -13,6 +13,7 @@ struct SSPrimaryNavigationButtonText: View {
     var body: some View {
         Text(text)
             .foregroundColor(.white)
+            .padding(.horizontal)
             .frame(maxWidth: .infinity)
             .frame(height: 40)
             .background(
