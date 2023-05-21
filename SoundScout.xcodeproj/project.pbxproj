@@ -12,6 +12,7 @@
 		4E78014B2A16E41B00E3B385 /* MusicTasteScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78014A2A16E41B00E3B385 /* MusicTasteScreen.swift */; };
 		4E78014D2A1942E500E3B385 /* StudentProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78014C2A1942E500E3B385 /* StudentProfileScreen.swift */; };
 		4E78014F2A1A1B5100E3B385 /* SelectInstrumentsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78014E2A1A1B5100E3B385 /* SelectInstrumentsScreen.swift */; };
+		4EC8DCF82A1A8E9D0065F575 /* FindTeachersScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8DCF72A1A8E9D0065F575 /* FindTeachersScreen.swift */; };
 		DCCD07572A1625C4002CB449 /* SoundScoutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCD07562A1625C4002CB449 /* SoundScoutApp.swift */; };
 		DCCD07592A1625C4002CB449 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCD07582A1625C4002CB449 /* ContentView.swift */; };
 		DCCD075B2A1625C5002CB449 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCCD075A2A1625C5002CB449 /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 		4E78014A2A16E41B00E3B385 /* MusicTasteScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MusicTasteScreen.swift; path = SoundScout/Screens/Onboarding/MusicTasteScreen.swift; sourceTree = SOURCE_ROOT; };
 		4E78014C2A1942E500E3B385 /* StudentProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StudentProfileScreen.swift; path = SoundScout/Screens/Onboarding/StudentProfileScreen.swift; sourceTree = SOURCE_ROOT; };
 		4E78014E2A1A1B5100E3B385 /* SelectInstrumentsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInstrumentsScreen.swift; sourceTree = "<group>"; };
+		4EC8DCF72A1A8E9D0065F575 /* FindTeachersScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FindTeachersScreen.swift; path = SoundScout/Screens/FindTeachersScreen.swift; sourceTree = SOURCE_ROOT; };
 		DCCD07532A1625C4002CB449 /* SoundScout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoundScout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCCD07562A1625C4002CB449 /* SoundScoutApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundScoutApp.swift; sourceTree = "<group>"; };
 		DCCD07582A1625C4002CB449 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 		DCD4095E2A1A1694008220F1 /* Student */ = {
 			isa = PBXGroup;
 			children = (
+				4EC8DCF72A1A8E9D0065F575 /* FindTeachersScreen.swift */,
 			);
 			path = Student;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				DCCD07682A162B11002CB449 /* OnboardingSidebar.swift in Sources */,
 				4E7801472A16401400E3B385 /* LogInScreen.swift in Sources */,
 				DCCD07702A163508002CB449 /* SignUpScreen.swift in Sources */,
+				4EC8DCF82A1A8E9D0065F575 /* FindTeachersScreen.swift in Sources */,
 				DCCD07722A16357E002CB449 /* SSSegmentedControlButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

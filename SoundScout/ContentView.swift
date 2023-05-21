@@ -9,7 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        SignUpScreen()
+        //MyStudentsScreen()
+        //FindTeachersScreen()
+        StudentHomeScreen()
     }
 }
 
