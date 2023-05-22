@@ -34,7 +34,7 @@ struct MySongsScreen: View {
             .navigationTitle("My Songs")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink(destination: Text("Add Songs")) {
+                    NavigationLink(destination: AddSongScreen()) {
                         SSPrimaryNavigationButtonText(text: "Add song")
                     }
                 }
