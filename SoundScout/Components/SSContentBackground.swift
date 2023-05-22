@@ -9,9 +9,11 @@ import SwiftUI
 
 struct SSContentBackground<Content: View>: View {
     
+    let padding: CGFloat
     let content: Content
     
-    init(@ViewBuilder _ content: () -> Content) {
+    init(padding: CGFloat = 64, @ViewBuilder _ content: () -> Content) {
+        self.padding = padding
         self.content = content()
     }
     
@@ -19,7 +21,7 @@ struct SSContentBackground<Content: View>: View {
         VStack(alignment: .leading, spacing: 0) {
             content
         }
-        .padding(64)
+        .padding(padding)
         .frame(maxWidth: .infinity)
         .background(Color.black.opacity(0.03))
         .cornerRadius(16)

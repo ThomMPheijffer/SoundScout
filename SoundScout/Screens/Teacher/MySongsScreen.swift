@@ -14,7 +14,7 @@ struct MySongsScreen: View {
         NavigationStack {
             List {
                 ForEach(0..<10, id: \.self) { i in
-                    NavigationLink(destination: Text("Thinking out loud")) {
+                    NavigationLink(destination: SongDetailScreen()) {
                         HStack(spacing: 0) {
                             Color.green
                                 .frame(width: 40, height: 40)
