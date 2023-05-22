@@ -49,29 +49,29 @@ struct FindTeachersScreen: View {
             }
             .padding()
             .navigationBarTitleDisplayMode(.inline)
-                        .toolbar {
-                            ToolbarItem(placement: .principal) {
-                                HStack {
-                                    Text("Find teachers")
-                                        .font(.title2).bold()
-                                    Spacer()
-                                    Button(action: {
-
-                                    }) {
-                                        Text("Search")
-                                            .foregroundColor(.blue)
-                                    }
-                                    Button(action: {
-                                    }) {
-                                        Text("Filter")
-                                            .foregroundColor(.blue)
-                                    }
-                                }
-                            }
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    HStack {
+                        Text("Find teachers")
+                            .font(.title2).bold()
+                        Spacer()
+                        Button(action: {
+                            
+                        }) {
+                            Text("Search")
+                                .foregroundColor(.blue)
+                        }
+                        Button(action: {
+                        }) {
+                            Text("Filter")
+                                .foregroundColor(.blue)
                         }
                     }
                 }
             }
+        }
+    }
+}
 
 struct FindTeachersScreenView_Previews: PreviewProvider {
     static var previews: some View {
@@ -81,7 +81,7 @@ struct FindTeachersScreenView_Previews: PreviewProvider {
 
 struct StudentSizePreferenceKey: PreferenceKey {
     static var defaultValue: CGSize = .zero
-
+    
     static func reduce(value: inout CGSize, nextValue: () -> CGSize) {
         value = nextValue()
     }
@@ -93,7 +93,7 @@ struct StudentSizeModifier: ViewModifier {
             Color.clear.preference(key: SizePreferenceKey.self, value: geometry.size)
         }
     }
-
+    
     func body(content: Content) -> some View {
         content.background(sizeView)
     }
