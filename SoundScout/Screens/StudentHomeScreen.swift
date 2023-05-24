@@ -1,4 +1,11 @@
 //
+//  StudentHomeScreen.swift
+//  SoundScout
+//
+//  Created by Mina Janicijevic on 24.5.23..
+//
+
+//
 //  TeacherHomeScreen.swift
 //  SoundScout
 //
@@ -7,36 +14,33 @@
 
 import SwiftUI
 
-class NavigationManager: ObservableObject {
-    static let shared = NavigationManager()
-    
-    @Published var teacherSelection: TeacherPanel? = .home
-    @Published var studentSelection: StudentPanel? = .home
-}
 
-enum TeacherPanel: Hashable {
+enum StudentPanel: Hashable {
     case home
     case schedule
-    case students
+    case myTeachers
+    case findTeachers
     case songs
     case profile
 }
 
-struct TeacherHomeScreen: View {
+struct StudentHomeScreen: View {
     
     @EnvironmentObject private var navigationManager: NavigationManager
     
     var body: some View {
         NavigationSplitView {
-            TeacherSidebar(selection: $navigationManager.teacherSelection)
+            StudentSidebar(selection: $navigationManager.studentSelection)
         } detail: {
-            switch navigationManager.teacherSelection {
+            switch navigationManager.studentSelection {
             case .home:
                 Text("Home")
             case .schedule:
                 Text("Schedule")
-            case .students:
-                MyStudentsScreen()
+            case .myTeachers:
+                Text("My teachers")
+            case .findTeachers:
+                FindTeachersScreen()
             case .songs:
                 MySongsScreen()
             case .profile:
@@ -49,8 +53,9 @@ struct TeacherHomeScreen: View {
     }
 }
 
-struct TeacherHomeScreen_Previews: PreviewProvider {
+struct StudentHomeScreen_Previews: PreviewProvider {
     static var previews: some View {
-        TeacherHomeScreen()
+        StudentHomeScreen()
     }
 }
+

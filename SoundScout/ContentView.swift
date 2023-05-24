@@ -11,8 +11,9 @@ struct ContentView: View {
     @StateObject var navigationManager = NavigationManager()
     
     var body: some View {
-        TeacherHomeScreen()
-            .environmentObject(navigationManager)
+      //  StudentHomeScreen()
+       //     .environmentObject(navigationManager)
+        FilterScreen()
     }
 }
 

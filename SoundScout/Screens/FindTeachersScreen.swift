@@ -13,6 +13,7 @@ struct FindTeachersScreen: View {
     @State private var searchText = ""
     
     var body: some View {
+        
         NavigationStack {
             ScrollView {
                 LazyVGrid(columns: columns, alignment: .leading, spacing: 16) {

@@ -13,6 +13,9 @@
 		4E78014D2A1942E500E3B385 /* StudentProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78014C2A1942E500E3B385 /* StudentProfileScreen.swift */; };
 		4E78014F2A1A1B5100E3B385 /* SelectInstrumentsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78014E2A1A1B5100E3B385 /* SelectInstrumentsScreen.swift */; };
 		4EC8DCF82A1A8E9D0065F575 /* FindTeachersScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8DCF72A1A8E9D0065F575 /* FindTeachersScreen.swift */; };
+		4EC8DCFE2A1E41250065F575 /* StudentSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8DCFD2A1E41250065F575 /* StudentSidebar.swift */; };
+		4EC8DD002A1E41940065F575 /* StudentHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8DCFF2A1E41940065F575 /* StudentHomeScreen.swift */; };
+		4EC8DD062A1E45E70065F575 /* FilterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8DD052A1E45E70065F575 /* FilterScreen.swift */; };
 		DC43EA0F2A1BCBCA00C08056 /* AddSongScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC43EA0E2A1BCBCA00C08056 /* AddSongScreen.swift */; };
 		DC43EA112A1BCD7000C08056 /* SongDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC43EA102A1BCD7000C08056 /* SongDetailScreen.swift */; };
 		DCCD07572A1625C4002CB449 /* SoundScoutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCD07562A1625C4002CB449 /* SoundScoutApp.swift */; };
@@ -41,6 +44,9 @@
 		4E78014C2A1942E500E3B385 /* StudentProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StudentProfileScreen.swift; path = SoundScout/Screens/Onboarding/StudentProfileScreen.swift; sourceTree = SOURCE_ROOT; };
 		4E78014E2A1A1B5100E3B385 /* SelectInstrumentsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInstrumentsScreen.swift; sourceTree = "<group>"; };
 		4EC8DCF72A1A8E9D0065F575 /* FindTeachersScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FindTeachersScreen.swift; path = SoundScout/Screens/FindTeachersScreen.swift; sourceTree = SOURCE_ROOT; };
+		4EC8DCFD2A1E41250065F575 /* StudentSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StudentSidebar.swift; path = SoundScout/Screens/StudentSidebar.swift; sourceTree = SOURCE_ROOT; };
+		4EC8DCFF2A1E41940065F575 /* StudentHomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StudentHomeScreen.swift; path = SoundScout/Screens/StudentHomeScreen.swift; sourceTree = SOURCE_ROOT; };
+		4EC8DD052A1E45E70065F575 /* FilterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FilterScreen.swift; path = SoundScout/Screens/FilterScreen.swift; sourceTree = SOURCE_ROOT; };
 		DC43EA0E2A1BCBCA00C08056 /* AddSongScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSongScreen.swift; sourceTree = "<group>"; };
 		DC43EA102A1BCD7000C08056 /* SongDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailScreen.swift; sourceTree = "<group>"; };
 		DCCD07532A1625C4002CB449 /* SoundScout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoundScout.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,6 +189,9 @@
 			isa = PBXGroup;
 			children = (
 				4EC8DCF72A1A8E9D0065F575 /* FindTeachersScreen.swift */,
+				4EC8DCFD2A1E41250065F575 /* StudentSidebar.swift */,
+				4EC8DCFF2A1E41940065F575 /* StudentHomeScreen.swift */,
+				4EC8DD052A1E45E70065F575 /* FilterScreen.swift */,
 			);
 			path = Student;
 			sourceTree = "<group>";
@@ -269,9 +278,11 @@
 				DCCD07572A1625C4002CB449 /* SoundScoutApp.swift in Sources */,
 				DCCD07762A1636CD002CB449 /* SSSecondaryNavigationButtonText.swift in Sources */,
 				4E78014F2A1A1B5100E3B385 /* SelectInstrumentsScreen.swift in Sources */,
+				4EC8DD062A1E45E70065F575 /* FilterScreen.swift in Sources */,
 				DCCD076A2A163245002CB449 /* SSTextField.swift in Sources */,
 				DCD409652A1A1CAC008220F1 /* MyStudentsScreen.swift in Sources */,
 				4E78014B2A16E41B00E3B385 /* MusicTasteScreen.swift in Sources */,
+				4EC8DCFE2A1E41250065F575 /* StudentSidebar.swift in Sources */,
 				DCD409672A1A2016008220F1 /* MySongsScreen.swift in Sources */,
 				DC43EA112A1BCD7000C08056 /* SongDetailScreen.swift in Sources */,
 				DCD409632A1A1871008220F1 /* TeacherSidebar.swift in Sources */,
@@ -282,6 +293,7 @@
 				4E7801492A165A9400E3B385 /* TeacherProfileScreen.swift in Sources */,
 				4E78014D2A1942E500E3B385 /* StudentProfileScreen.swift in Sources */,
 				DCCD07682A162B11002CB449 /* OnboardingSidebar.swift in Sources */,
+				4EC8DD002A1E41940065F575 /* StudentHomeScreen.swift in Sources */,
 				4E7801472A16401400E3B385 /* LogInScreen.swift in Sources */,
 				DCCD07702A163508002CB449 /* SignUpScreen.swift in Sources */,
 				4EC8DCF82A1A8E9D0065F575 /* FindTeachersScreen.swift in Sources */,
