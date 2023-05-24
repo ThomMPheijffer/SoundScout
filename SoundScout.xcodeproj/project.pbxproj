@@ -94,8 +94,8 @@
 			isa = PBXGroup;
 			children = (
 				DCCD07562A1625C4002CB449 /* SoundScoutApp.swift */,
-				DCCD07662A162AEE002CB449 /* Components */,
 				DCCD07582A1625C4002CB449 /* ContentView.swift */,
+				DCCD07662A162AEE002CB449 /* Components */,
 				DCCD076B2A1634EB002CB449 /* Screens */,
 				DCCD07642A162980002CB449 /* Constants.swift */,
 				DCCD075A2A1625C5002CB449 /* Assets.xcassets */,
