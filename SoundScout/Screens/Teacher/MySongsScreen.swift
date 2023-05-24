@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MySongsScreen: View {
     @State private var searchText = ""
+    @EnvironmentObject var spotify: Spotify
     
     var body: some View {
         NavigationStack {
@@ -33,7 +34,15 @@ struct MySongsScreen: View {
             }
             .navigationTitle("My Songs")
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    if !spotify.isAuthorized {
+                        Button(action: {
+                            spotify.authorize()
+                        }) {
+                            SSPrimaryNavigationButtonText(text: "Authorize Spotify")
+                        }
+                    }
+                    
                     NavigationLink(destination: AddSongScreen()) {
                         SSPrimaryNavigationButtonText(text: "Add song")
                     }

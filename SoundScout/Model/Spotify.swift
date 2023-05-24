@@ -42,7 +42,7 @@ final class Spotify: ObservableObject {
     init() {
         
         self.api.apiRequestLogger.logLevel = .trace
-        // self.api.logger.logLevel = .trace
+         self.api.logger.logLevel = .trace
         
         self.api.authorizationManagerDidChange
             .receive(on: RunLoop.main)
