@@ -50,48 +50,6 @@ struct FindTeachersScreen: View {
             }
             .padding()
             .navigationBarTitleDisplayMode(.inline)
-<<<<<<< Updated upstream
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    HStack {
-                        Text("Find teachers")
-                            .font(.title2).bold()
-                        Spacer()
-                        Button(action: {
-                            
-                        }) {
-                            Text("Search")
-                                .foregroundColor(.blue)
-                        }
-                        Button(action: {
-                        }) {
-                            Text("Filter")
-                                .foregroundColor(.blue)
-                        }
-                    }
-                }
-            }
-=======
-            //            .toolbar {
-            //                ToolbarItem(placement: .principal) {
-            //                    HStack {
-            //                        Text("Find teachers")
-            //                            .font(.title2).bold()
-            //                        Spacer()
-            //                        Button(action: {
-            //
-            //                        }) {
-            //                            Text("Search")
-            //                                .foregroundColor(.blue)
-            //                        }
-            //                        Button(action: {
-            //                        }) {
-            //                            Text("Filter")
-            //                                .foregroundColor(.blue)
-            //                        }
-            //                    }
-            //                }
-            //            }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink(destination: Text("")) {
@@ -100,7 +58,6 @@ struct FindTeachersScreen: View {
                 }
             }
             .searchable(text: $searchText, prompt: "Search songs")
->>>>>>> Stashed changes
         }
     }
 }
