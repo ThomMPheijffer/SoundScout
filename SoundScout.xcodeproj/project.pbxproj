@@ -16,6 +16,8 @@
 		DC43EA0F2A1BCBCA00C08056 /* AddSongScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC43EA0E2A1BCBCA00C08056 /* AddSongScreen.swift */; };
 		DC43EA112A1BCD7000C08056 /* SongDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC43EA102A1BCD7000C08056 /* SongDetailScreen.swift */; };
 		DC4C54A12A1E436900E8141C /* SpotifyAPI in Frameworks */ = {isa = PBXBuildFile; productRef = DC4C54A02A1E436900E8141C /* SpotifyAPI */; };
+		DC4C54A42A1E442100E8141C /* Spotify.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4C54A32A1E442100E8141C /* Spotify.swift */; };
+		DC4C54A72A1E461B00E8141C /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = DC4C54A62A1E461B00E8141C /* KeychainAccess */; };
 		DCCD07572A1625C4002CB449 /* SoundScoutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCD07562A1625C4002CB449 /* SoundScoutApp.swift */; };
 		DCCD07592A1625C4002CB449 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCD07582A1625C4002CB449 /* ContentView.swift */; };
 		DCCD075B2A1625C5002CB449 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCCD075A2A1625C5002CB449 /* Assets.xcassets */; };
@@ -44,6 +46,7 @@
 		4EC8DCF72A1A8E9D0065F575 /* FindTeachersScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FindTeachersScreen.swift; path = SoundScout/Screens/FindTeachersScreen.swift; sourceTree = SOURCE_ROOT; };
 		DC43EA0E2A1BCBCA00C08056 /* AddSongScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSongScreen.swift; sourceTree = "<group>"; };
 		DC43EA102A1BCD7000C08056 /* SongDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailScreen.swift; sourceTree = "<group>"; };
+		DC4C54A32A1E442100E8141C /* Spotify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spotify.swift; sourceTree = "<group>"; };
 		DCCD07532A1625C4002CB449 /* SoundScout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoundScout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCCD07562A1625C4002CB449 /* SoundScoutApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundScoutApp.swift; sourceTree = "<group>"; };
 		DCCD07582A1625C4002CB449 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -69,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC4C54A72A1E461B00E8141C /* KeychainAccess in Frameworks */,
 				DC4C54A12A1E436900E8141C /* SpotifyAPI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,6 +80,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DC4C54A22A1E441400E8141C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DC4C54A32A1E442100E8141C /* Spotify.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		DCCD074A2A1625C4002CB449 = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +111,7 @@
 				DCCD07582A1625C4002CB449 /* ContentView.swift */,
 				DCCD07662A162AEE002CB449 /* Components */,
 				DCCD076B2A1634EB002CB449 /* Screens */,
+				DC4C54A22A1E441400E8141C /* Model */,
 				DCCD07642A162980002CB449 /* Constants.swift */,
 				DCCD075A2A1625C5002CB449 /* Assets.xcassets */,
 				DCCD075C2A1625C5002CB449 /* Preview Content */,
@@ -214,6 +227,7 @@
 			name = SoundScout;
 			packageProductDependencies = (
 				DC4C54A02A1E436900E8141C /* SpotifyAPI */,
+				DC4C54A62A1E461B00E8141C /* KeychainAccess */,
 			);
 			productName = SoundScout;
 			productReference = DCCD07532A1625C4002CB449 /* SoundScout.app */;
@@ -245,6 +259,7 @@
 			mainGroup = DCCD074A2A1625C4002CB449;
 			packageReferences = (
 				DC4C549F2A1E436900E8141C /* XCRemoteSwiftPackageReference "SpotifyAPI" */,
+				DC4C54A52A1E461B00E8141C /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			productRefGroup = DCCD07542A1625C4002CB449 /* Products */;
 			projectDirPath = "";
@@ -278,6 +293,7 @@
 				DCCD07762A1636CD002CB449 /* SSSecondaryNavigationButtonText.swift in Sources */,
 				4E78014F2A1A1B5100E3B385 /* SelectInstrumentsScreen.swift in Sources */,
 				DCCD076A2A163245002CB449 /* SSTextField.swift in Sources */,
+				DC4C54A42A1E442100E8141C /* Spotify.swift in Sources */,
 				DCD409652A1A1CAC008220F1 /* MyStudentsScreen.swift in Sources */,
 				4E78014B2A16E41B00E3B385 /* MusicTasteScreen.swift in Sources */,
 				DCD409672A1A2016008220F1 /* MySongsScreen.swift in Sources */,
@@ -505,6 +521,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		DC4C54A52A1E461B00E8141C /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -512,6 +536,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DC4C549F2A1E436900E8141C /* XCRemoteSwiftPackageReference "SpotifyAPI" */;
 			productName = SpotifyAPI;
+		};
+		DC4C54A62A1E461B00E8141C /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DC4C54A52A1E461B00E8141C /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
