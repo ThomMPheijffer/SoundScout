@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct AddSongScreen: View {
+    @State var showPopover = false
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             SSTextField(title: "Song name", text: .constant(""))
@@ -44,10 +46,13 @@ struct AddSongScreen: View {
         .navigationTitle("Add song")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: {}) {
+                Button(action: { showPopover = true }) {
                     SSPrimaryNavigationButtonText(text: "Add song via Spotify")
                 }
             }
+        }
+        .sheet(isPresented: $showPopover) {
+            SearchSongScreen()
         }
     }
 }

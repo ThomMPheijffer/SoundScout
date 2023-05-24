@@ -32,5 +32,6 @@ struct TeacherSidebar: View {
                 Label("Profile", systemImage: "person")
             }
         }
+        .navigationTitle("SoundScout")
     }
 }

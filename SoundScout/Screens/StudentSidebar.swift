@@ -36,5 +36,6 @@ struct StudentSidebar: View {
                 Label("Profile", systemImage: "person")
             }
         }
+        .navigationTitle("SoundScout")
     }
 }
