@@ -13,16 +13,8 @@ import KeychainAccess
 import SpotifyWebAPI
 
 final class Spotify: ObservableObject {
-    
-    private static let clientId: String = {
-        if let clientId = ProcessInfo.processInfo.environment["CLIENT_ID"] { return clientId }
-        fatalError("Could not find 'CLIENT_ID' in environment variables")
-    }()
-    
-    private static let clientSecret: String = {
-        if let clientSecret = ProcessInfo.processInfo.environment["CLIENT_SECRET"] { return clientSecret }
-        fatalError("Could not find 'CLIENT_SECRET' in environment variables")
-    }()
+    private static let clientId: String = "48008d47e6494a37a16aaf8d78e00c8a"
+    private static let clientSecret: String = "679e2477231b4f77a81d71871a22746f"
     
     let authorizationManagerKey = "authorizationManager"
     let loginCallbackURL = URL(string: "spotify-api-example-app://login-callback")!
