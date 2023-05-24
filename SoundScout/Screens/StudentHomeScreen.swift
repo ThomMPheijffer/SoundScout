@@ -1,11 +1,4 @@
 //
-//  StudentHomeScreen.swift
-//  SoundScout
-//
-//  Created by Mina Janicijevic on 24.5.23..
-//
-
-//
 //  TeacherHomeScreen.swift
 //  SoundScout
 //
