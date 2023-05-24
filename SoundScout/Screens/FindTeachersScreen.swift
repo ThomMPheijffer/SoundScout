@@ -10,6 +10,7 @@ import SwiftUI
 struct FindTeachersScreen: View {
     var columns: [GridItem] = Array(repeating: GridItem(.flexible(), spacing: 16), count: 3)
     @State private var contentSize: CGSize = .zero
+    @State private var searchText = ""
     
     var body: some View {
         NavigationStack {
@@ -49,6 +50,7 @@ struct FindTeachersScreen: View {
             }
             .padding()
             .navigationBarTitleDisplayMode(.inline)
+<<<<<<< Updated upstream
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     HStack {
@@ -69,6 +71,36 @@ struct FindTeachersScreen: View {
                     }
                 }
             }
+=======
+            //            .toolbar {
+            //                ToolbarItem(placement: .principal) {
+            //                    HStack {
+            //                        Text("Find teachers")
+            //                            .font(.title2).bold()
+            //                        Spacer()
+            //                        Button(action: {
+            //
+            //                        }) {
+            //                            Text("Search")
+            //                                .foregroundColor(.blue)
+            //                        }
+            //                        Button(action: {
+            //                        }) {
+            //                            Text("Filter")
+            //                                .foregroundColor(.blue)
+            //                        }
+            //                    }
+            //                }
+            //            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink(destination: Text("")) {
+                        SSPrimaryNavigationButtonText(text: "Filter")
+                    }
+                }
+            }
+            .searchable(text: $searchText, prompt: "Search songs")
+>>>>>>> Stashed changes
         }
     }
 }
