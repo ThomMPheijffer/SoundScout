@@ -34,7 +34,7 @@ final class Spotify: ObservableObject {
     init() {
         
         self.api.apiRequestLogger.logLevel = .trace
-         self.api.logger.logLevel = .trace
+        self.api.logger.logLevel = .trace
         
         self.api.authorizationManagerDidChange
             .receive(on: RunLoop.main)
@@ -62,16 +62,15 @@ final class Spotify: ObservableObject {
     }
     
     func authorize() {
-        let url = self.api.authorizationManager.makeAuthorizationURL(redirectURI: self.loginCallbackURL, showDialog: true, state: self.authorizationState,
-                                                                     scopes: [
-                                                                        .userReadPlaybackState,
-                                                                        .userModifyPlaybackState,
-                                                                        .playlistModifyPrivate,
-                                                                        .playlistModifyPublic,
-                                                                        .userLibraryRead,
-                                                                        .userLibraryModify,
-                                                                        .userReadRecentlyPlayed
-                                                                     ]
+        let url = self.api.authorizationManager.makeAuthorizationURL(
+            redirectURI: self.loginCallbackURL,
+            showDialog: true,
+            state: self.authorizationState,
+            scopes: [
+                .userReadPlaybackState,
+                .userModifyPlaybackState,
+                .userLibraryRead,
+            ]
         )!
         
         UIApplication.shared.open(url)
