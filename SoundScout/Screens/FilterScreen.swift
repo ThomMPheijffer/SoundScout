@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FilterScreen: View {
     @State private var selectedIndex = 0
+    @State private var sliderValue: Double = 50.0
     
     var body: some View {
             SSContentBackground {
@@ -24,6 +25,9 @@ struct FilterScreen: View {
                     }
                 }.padding(.bottom, 64)
                 
+                Text("Which lessons are you looking for?")
+                    .font(.title3)
+                    .padding(.bottom, 16)
                 HStack {
                     SSSegmentedControlButton(selectedIndex: $selectedIndex, index: 0, text: "Instrument")
                     Spacer()
@@ -36,6 +40,9 @@ struct FilterScreen: View {
                 .padding(.top, 8)
                 .padding(.bottom, 32)
                 
+                Text("Where do you want to have your class?")
+                    .font(.title3)
+                    .padding(.bottom, 16)
                 HStack {
                     SSSegmentedControlButton(selectedIndex: $selectedIndex, index: 3, text: "Online")
                     Spacer()
@@ -48,6 +55,15 @@ struct FilterScreen: View {
                 .padding(.top, 8)
                 .padding(.bottom, 32)
                 
+                Text("Price range(per lesson, in euros)")
+                    .font(.title3)
+                    .padding(.bottom, 16)
+                  HStack {
+                    Text("10").bold()
+                    Slider(value: $sliderValue, in: 10.0...200.0)
+                    Text("200").bold()
+                  }
+
                 Spacer()
                 
                 NavigationLink(destination: Text("Continue")) {
