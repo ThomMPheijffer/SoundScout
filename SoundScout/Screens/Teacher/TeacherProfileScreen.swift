@@ -13,6 +13,15 @@ struct TeacherProfileScreen: View {
             VStack {
                 SSColors.blueInactive
                     .frame(height: 220)
+                    .overlay {
+                        Circle()
+                            .fill(SSColors.blue)
+                            .shadow(radius: 6)
+                            .frame(width: 185, height: 185)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding()
+                            .offset(y: 110)
+                    }
                 
                 HStack(spacing: 16) {
                     VStack(alignment: .leading) {
@@ -44,6 +53,7 @@ struct TeacherProfileScreen: View {
                     }
                 }
                 .padding()
+                .padding(.top, 92)
                 
                 SSContentBackground(padding: 16) {
                     Text("About")
