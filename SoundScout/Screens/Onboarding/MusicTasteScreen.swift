@@ -18,8 +18,6 @@ struct MusicTasteScreen: View {
     @State private var about = ""
     @State private var eduExp = ""
     
-    @State private var selectedIndex = 0
-    
     var body: some View {
         HStack {
             OnboardingSidebar()
@@ -63,7 +61,7 @@ struct MusicTasteScreen: View {
                 
                 Spacer()
                 
-                NavigationLink(destination: Text("Continue")) {
+                NavigationLink(destination: destinationForSelectionView) {
                     SSPrimaryNavigationButtonText(text: "Continue")
                 }
             }
@@ -82,7 +80,19 @@ struct MusicTasteScreen: View {
             return "By linking to Spotify you can upload your favourite music, so we can determine your music taste and link you with the best student possible."
         }
     }
+    
+    @ViewBuilder
+    var destinationForSelectionView: some View {
+        switch userType {
+        case .student:
+            StudentContentView()
+        case .teacher:
+            TeacherContentView()
+        }
+    }
+
 }
+
 
 struct MusicTasteScreen_Previews: PreviewProvider {
     static var previews: some View {

@@ -55,7 +55,7 @@ struct FindTeachersScreen: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink(destination: Text("")) {
+                    NavigationLink(destination: FilterScreen()) {
                         SSPrimaryNavigationButtonText(text: "Filter")
                     }
                 }

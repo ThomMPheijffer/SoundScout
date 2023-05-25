@@ -11,7 +11,7 @@ struct ContentView: View {
     @StateObject var navigationManager = NavigationManager()
     
     var body: some View {
-      StudentContentView()
+      SignUpScreen()
     }
 }
 
