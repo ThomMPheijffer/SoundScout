@@ -1,15 +1,15 @@
 //
-//  TeacherHomeScreen.swift
+//  TeacherContentView.swift
 //  SoundScout
 //
-//  Created by Thom Pheijffer on 21/05/2023.
+//  Created by Mina Janicijevic on 25.5.23..
 //
 
 import SwiftUI
 
 class NavigationManager: ObservableObject {
     static let shared = NavigationManager()
-    
+
     @Published var teacherSelection: TeacherPanel? = .home
     @Published var studentSelection: StudentPanel? = .home
 }
@@ -24,9 +24,9 @@ enum TeacherPanel: Hashable {
 }
 
 struct TeacherContentView: View {
-    
+
     @EnvironmentObject private var navigationManager: NavigationManager
-    
+
     var body: some View {
         NavigationSplitView {
             TeacherSidebar(selection: $navigationManager.teacherSelection)

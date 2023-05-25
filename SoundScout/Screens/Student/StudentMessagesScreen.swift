@@ -3,7 +3,6 @@
 //  SoundScout
 //
 //  Created by Mina Janicijevic on 25.5.23..
-//
 
 import SwiftUI
 

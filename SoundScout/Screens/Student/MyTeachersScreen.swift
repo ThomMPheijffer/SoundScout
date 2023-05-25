@@ -87,3 +87,4 @@ struct MyTeacherSizeModifier: ViewModifier {
         content.background(sizeView)
     }
 }
+

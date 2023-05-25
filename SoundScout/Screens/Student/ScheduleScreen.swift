@@ -56,3 +56,4 @@ struct ScheduleScreen_Previews: PreviewProvider {
         ScheduleScreen()
     }
 }
+

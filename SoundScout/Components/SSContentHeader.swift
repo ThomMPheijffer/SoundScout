@@ -11,15 +11,15 @@ struct SSContentHeader: View {
     let text: String
     let buttonText : String
     let onButtonTapped: (() -> Void)? = nil
-    
+
     var body: some View {
         HStack {
             Text(text)
                 .font(.title2)
                 .bold()
-            
+
             Spacer()
-            
+
             Button(action: { onButtonTapped?() }) {
                 HStack {
                     Text(buttonText)
@@ -28,7 +28,7 @@ struct SSContentHeader: View {
                 .font(.callout)
                 .bold()
             }
-            
+
         }
     }
 }

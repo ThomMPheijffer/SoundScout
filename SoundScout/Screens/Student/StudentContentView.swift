@@ -15,9 +15,10 @@ enum StudentPanel: Hashable {
     case findTeachers
     case songs
     case profile
+    case myMessages
 }
 
-struct StudentHomeScreen: View {
+struct StudentContentView: View {
     
     @EnvironmentObject private var navigationManager: NavigationManager
     
@@ -31,12 +32,14 @@ struct StudentHomeScreen: View {
             case .schedule:
                 Text("Schedule")
             case .myTeachers:
-                Text("My teachers")
+                MyTeachersScreen()
             case .findTeachers:
                 FindTeachersScreen()
             case .songs:
                 MySongsScreen()
             case .profile:
+                StudentProfileScreen()
+            case .myMessages:
                 StudentProfileScreen()
             default:
                 Text("Default")
@@ -46,9 +49,10 @@ struct StudentHomeScreen: View {
     }
 }
 
-struct StudentHomeScreen_Previews: PreviewProvider {
+struct StudentContentView_Previews: PreviewProvider {
     static var previews: some View {
-        StudentHomeScreen()
+        StudentContentView()
     }
 }
+
 

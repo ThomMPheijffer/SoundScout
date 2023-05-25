@@ -2,55 +2,106 @@
 //  TeacherHomeScreen.swift
 //  SoundScout
 //
-//  Created by Thom Pheijffer on 21/05/2023.
+//  Created by Mina Janicijevic on 25.5.23..
 //
 
 import SwiftUI
 
-class NavigationManager: ObservableObject {
-    static let shared = NavigationManager()
-    
-    @Published var teacherSelection: TeacherPanel? = .home
-    @Published var studentSelection: StudentPanel? = .home
-}
-
-enum TeacherPanel: Hashable {
-    case home
-    case schedule
-    case students
-    case songs
-    case profile
-}
-
 struct TeacherHomeScreen: View {
-    
-    @EnvironmentObject private var navigationManager: NavigationManager
+    let dates = [
+        "3rd January",
+        "21st January",
+        "23rd January",
+        "28th January",
+    ]
     
     var body: some View {
-        NavigationSplitView {
-            TeacherSidebar(selection: $navigationManager.teacherSelection)
-        } detail: {
-            switch navigationManager.teacherSelection {
-            case .home:
-                Text("Home")
-            case .schedule:
-                Text("Schedule")
-            case .students:
-                MyStudentsScreen()
-            case .songs:
-                MySongsScreen()
-            case .profile:
-                TeacherProfileScreen()
-            default:
-                Text("Default")
+        VStack(spacing: 32) {
+            SSContentBackground(padding: 32) {
+                SSContentHeader(text: "Schedule", buttonText: "Show complete schedule")
+            }
+            
+            HStack(spacing: 32) {
+                SSContentBackground(padding: 32) {
+                    SSContentHeader(text: "My songs", buttonText: "All songs")
+                        .padding(.bottom, 16)
+                    
+                    Divider()
+                        .padding(.horizontal, -32)
+                    
+                    ForEach(0..<4, id: \.self) { i in
+                        
+                        VStack {
+                            HStack {
+                                Color.green
+                                    .frame(width: 40, height: 40)
+                                Text("Thinking out loud")
+                                Spacer()
+                                Text("Ed Sheeran")
+                                    .foregroundColor(.secondary)
+                            }
+                            .font(.callout)
+                            
+                        }
+                        .padding(i == 3 ? .top : .vertical, 8)
+                        
+                        if i != 3 {
+                            Divider()
+                                .padding(.horizontal, -32)
+                        }
+                    }
+                }
+                
+                SSContentBackground(padding: 32) {
+                    SSContentHeader(text: "My lessons", buttonText: "All lessons")
+                        .padding(.bottom, 16)
+                    
+                    Divider()
+                        .padding(.horizontal, -32)
+                    
+                    
+                    ForEach(0..<dates.count, id: \.self) { i in
+                        
+                        
+                        VStack {
+                            HStack {
+                                Text(dates[i])
+                                Spacer()
+                                HStack {
+                                    Text("Show details")
+                                    Image(systemName: "chevron.right")
+                                }
+                                .foregroundColor(SSColors.blue)
+                                .bold()
+                            }
+                            .font(.callout)
+                            
+                        }
+                        .padding(i == 3 ? .top : .vertical)
+                        
+                        if i != 3 {
+                            Divider()
+                                .padding(.horizontal, -32)
+                        }
+                    }
+                    
+                    
+                }
+            }
+            
+            Spacer()
+            
+        }
+        .padding()
+        .navigationTitle("Home")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink(destination: TeacherMessagesScreen()) {
+                    Image(systemName: "bell.badge").font(.title2).foregroundColor(Color.black)
+                }
             }
         }
-
     }
 }
 
-struct TeacherHomeScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        TeacherHomeScreen()
-    }
-}
+
