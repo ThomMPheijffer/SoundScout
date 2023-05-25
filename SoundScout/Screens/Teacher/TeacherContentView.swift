@@ -41,7 +41,7 @@ struct TeacherContentView: View {
             case .songs:
                 MySongsScreen()
             case .profile:
-                Text("Profile")
+                TeacherProfileScreen()
             case .myMessages:
                 TeacherMessagesScreen()
             default:
