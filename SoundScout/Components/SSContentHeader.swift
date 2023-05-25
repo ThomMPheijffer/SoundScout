@@ -10,7 +10,13 @@ import SwiftUI
 struct SSContentHeader: View {
     let text: String
     let buttonText : String
-    let onButtonTapped: (() -> Void)? = nil
+    let onButtonTapped: (() -> Void)?
+    
+    init(text: String, buttonText: String, onButtonTapped: (() -> Void)? = nil) {
+        self.text = text
+        self.buttonText = buttonText
+        self.onButtonTapped = onButtonTapped
+    }
 
     var body: some View {
         HStack {
