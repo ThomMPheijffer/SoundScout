@@ -72,9 +72,9 @@ struct SignUpScreen: View {
     @ViewBuilder
     var destinationForSelectionView: some View {
         if selectedIndex == 0 {
-            StudentProfileScreen()
+            CreateStudentProfileScreen()
         } else {
-            TeacherProfileScreen()
+            CreateTeacherProfileScreen()
         }
     }
 }

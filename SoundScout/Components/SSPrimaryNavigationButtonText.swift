@@ -9,13 +9,19 @@ import SwiftUI
 
 struct SSPrimaryNavigationButtonText: View {
     let text: String
+    let fullWidth: Bool
+    
+    init(text: String, fullWidth: Bool = true) {
+        self.text = text
+        self.fullWidth = fullWidth
+    }
     
     var body: some View {
         Text(text)
             .foregroundColor(.white)
             .padding(.horizontal)
-            .frame(maxWidth: .infinity)
             .frame(height: 40)
+            .frame(maxWidth: fullWidth ? .infinity : nil)
             .background(
                 RoundedRectangle(cornerRadius: 20)
                     .fill(SSColors.blue)

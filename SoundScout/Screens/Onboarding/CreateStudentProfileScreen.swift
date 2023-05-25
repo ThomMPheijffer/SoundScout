@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct StudentProfileScreen: View {
+struct CreateStudentProfileScreen: View {
     @State private var about = ""
     @State private var eduExp = ""
     
@@ -79,7 +79,7 @@ struct StudentProfileScreen: View {
 
 struct StudentProfileScreen_Previews: PreviewProvider {
     static var previews: some View {
-        StudentProfileScreen()
+        CreateStudentProfileScreen()
     }
 }
 

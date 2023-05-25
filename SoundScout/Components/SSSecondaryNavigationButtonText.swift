@@ -20,7 +20,7 @@ struct SSSecondaryNavigationButtonText: View {
         Text(text)
             .padding(.horizontal, 32)
             .foregroundColor(.primary)
-            .frame(height: 32)
+            .frame(height: 40)
             .frame(maxWidth: fullWidth ? .infinity : nil)
             .overlay(
                 RoundedRectangle(cornerRadius: 25)

@@ -40,7 +40,7 @@ struct TeacherHomeScreen: View {
             case .songs:
                 MySongsScreen()
             case .profile:
-                Text("Profile")
+                TeacherProfileScreen()
             default:
                 Text("Default")
             }
