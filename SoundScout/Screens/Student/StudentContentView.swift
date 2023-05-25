@@ -14,6 +14,7 @@ enum StudentPanel: Hashable {
     case myTeachers
     case findTeachers
     case songs
+    case myLessons
     case profile
     case myMessages
 }
@@ -37,6 +38,8 @@ struct StudentContentView: View {
                 FindTeachersScreen()
             case .songs:
                 MySongsScreen()
+            case .myLessons:
+                StudentLessonsScreen()
             case .profile:
                 StudentProfileScreen()
             case .myMessages:

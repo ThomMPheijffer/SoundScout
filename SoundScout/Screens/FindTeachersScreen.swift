@@ -28,7 +28,7 @@ struct FindTeachersScreen: View {
                                         Text("Walter Nikolic")
                                         Spacer()
                                         Image(systemName: "chevron.right")
-                                            .foregroundColor(.blue)
+                                            .foregroundColor(.primary)
                                     }
                                     
                                     Text("Online")
