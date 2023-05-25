@@ -28,7 +28,7 @@ struct StudentContentView: View {
         } detail: {
             switch navigationManager.studentSelection {
             case .home:
-                Text("Home")
+                StudentHomeScreen()
             case .schedule:
                 Text("Schedule")
             case .myTeachers:

@@ -22,8 +22,8 @@ struct SoundScoutApp: App {
     
     var body: some Scene {
         WindowGroup {
-            //            ContentView()
-            TeacherHomeScreen()
+                   ContentView()
+//            TeacherHomeScreen()
                 .environmentObject(navigationManager)
                 .environmentObject(spotify)
                 .onOpenURL(perform: handleURL(_:))

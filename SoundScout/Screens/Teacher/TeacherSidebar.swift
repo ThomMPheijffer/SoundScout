@@ -31,6 +31,10 @@ struct TeacherSidebar: View {
             NavigationLink(value: TeacherPanel.profile) {
                 Label("Profile", systemImage: "person")
             }
+            
+            NavigationLink(value: TeacherPanel.myMessages) {
+                Label("Messages", systemImage: "message")
+            }
         }
         .navigationTitle("SoundScout")
     }

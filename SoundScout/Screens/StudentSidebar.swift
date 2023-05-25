@@ -37,7 +37,7 @@ struct StudentSidebar: View {
             }
             
             NavigationLink(value: StudentPanel.myMessages) {
-                Label("Profile", systemImage: "messages")
+                Label("Messages", systemImage: "message")
             }
         }
         .navigationTitle("SoundScout")
