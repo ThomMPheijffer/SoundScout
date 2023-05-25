@@ -77,7 +77,7 @@ struct CreateStudentProfileScreen: View {
     }
 }
 
-struct StudentProfileScreen_Previews: PreviewProvider {
+struct CreateStudentProfileScreen_Previews: PreviewProvider {
     static var previews: some View {
         CreateStudentProfileScreen()
     }

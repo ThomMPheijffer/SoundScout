@@ -16,34 +16,36 @@ struct MyStudentsScreen: View {
             ScrollView {
                 LazyVGrid(columns: columns, alignment: .leading, spacing: 16) {
                     ForEach(0..<10, id: \.self) { i in
-                        HStack {
-                            Color.blue
-                                .frame(width: 80, height: 80)
-                                .cornerRadius(40)
-                            VStack(alignment: .leading, spacing: 8) {
-                                HStack {
-                                    Text("Walter Nikolic")
+                        NavigationLink(destination: StudentProfileScreen()) {
+                            HStack {
+                                Color.blue
+                                    .frame(width: 80, height: 80)
+                                    .cornerRadius(40)
+                                VStack(alignment: .leading, spacing: 8) {
+                                    HStack {
+                                        Text("Walter Nikolic")
+                                        Spacer()
+                                        Image(systemName: "chevron.right")
+                                            .foregroundColor(.blue)
+                                    }
+                                    
+                                    Text("Online")
+                                        .font(.caption)
+                                        .foregroundColor(.secondary)
+                                    
                                     Spacer()
-                                    Image(systemName: "chevron.right")
-                                        .foregroundColor(.blue)
+                                    
+                                    Text("Next lesson: Wednesday")
+                                        .font(.caption)
+                                        .foregroundColor(.secondary)
                                 }
-                                
-                                Text("Online")
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
-                                
-                                Spacer()
-                                
-                                Text("Next lesson: Wednesday")
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
                             }
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.black.opacity(0.05).cornerRadius(16))
+                            .modifier(SizeModifier())
+                            .onPreferenceChange(SizePreferenceKey.self) { self.contentSize = $0 }
                         }
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.black.opacity(0.05).cornerRadius(16))
-                        .modifier(SizeModifier())
-                        .onPreferenceChange(SizePreferenceKey.self) { self.contentSize = $0 }
                     }
                 }
                 HStack {
