@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct StudentLessonsScreen: View {
+    @EnvironmentObject private var navigationManager: NavigationManager
+    
     let datesJanuary = [
         "3rd January",
         "21st January",
@@ -22,7 +24,7 @@ struct StudentLessonsScreen: View {
     
     var body: some View {
         VStack(spacing: 32) {
-        
+            
             VStack(alignment: .leading) {
                 Text("January 2023").font(.headline).bold()
                 
@@ -34,65 +36,64 @@ struct StudentLessonsScreen: View {
                             HStack {
                                 Text(datesJanuary[i])
                                 Spacer()
-                                HStack {
-                                    Text("Show details")
-                                    Image(systemName: "chevron.right")
+                                
+                                SSContentHeader(text: "", buttonText: "Show details") {
+                                    navigationManager.studentSelection =  .lessonDetails
+                                    
                                 }
-                                .foregroundColor(SSColors.blue)
-                                .bold()
+                                .font(.callout)
+                                
                             }
-                            .font(.callout)
+                            .padding(i == 3 ? .top : .vertical)
                             
+                            if i != 3 {
+                                Divider()
+                                    .padding(.horizontal, -32)
+                            }
                         }
-                        .padding(i == 3 ? .top : .vertical)
                         
-                        if i != 3 {
-                            Divider()
-                                .padding(.horizontal, -32)
-                        }
+                        
                     }
-                    
-                    
                 }
-            }
-            
-            VStack(alignment: .leading) {
                 
-                Text("February 2023").font(.headline).bold()
-                SSContentBackground(padding: 32) {
+                VStack(alignment: .leading) {
                     
-                    ForEach(0..<datesFebruary.count, id: \.self) { i in
+                    Text("February 2023").font(.headline).bold()
+                    SSContentBackground(padding: 32) {
                         
-                        VStack {
-                            HStack {
-                                Text(datesFebruary[i])
-                                Spacer()
-                                HStack {
-                                    Text("Show details")
-                                    Image(systemName: "chevron.right")
-                                }
-                                .foregroundColor(SSColors.blue)
-                                .bold()
-                            }
-                            .font(.callout)
+                        ForEach(0..<datesFebruary.count, id: \.self) { i in
                             
+                            VStack {
+                                HStack {
+                                    Text(datesFebruary[i])
+                                    Spacer()
+                                    HStack {
+                                        Text("Show details")
+                                        Image(systemName: "chevron.right")
+                                    }
+                                    .foregroundColor(SSColors.blue)
+                                    .bold()
+                                }
+                                .font(.callout)
+                                
+                            }
+                            .padding(i == 3 ? .top : .vertical)
+                            
+                            if i != 3 {
+                                Divider()
+                                    .padding(.horizontal, -32)
+                            }
                         }
-                        .padding(i == 3 ? .top : .vertical)
                         
-                        if i != 3 {
-                            Divider()
-                                .padding(.horizontal, -32)
-                        }
+                        
                     }
-                    
-                    
                 }
+                
+                Spacer()
             }
-            
-            Spacer()
+            .padding()
+            .navigationTitle("Lessons")
         }
-        .padding()
-        .navigationTitle("Lessons")
     }
 }
 

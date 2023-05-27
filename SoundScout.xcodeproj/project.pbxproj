@@ -25,6 +25,7 @@
 		4EC8DD282A1F90B00065F575 /* TeacherMessagesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8DD272A1F90B00065F575 /* TeacherMessagesScreen.swift */; };
 		4EC8DD2A2A1F90DB0065F575 /* TeacherHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8DD292A1F90DB0065F575 /* TeacherHomeScreen.swift */; };
 		4EC8DD2C2A1FAD3B0065F575 /* StudentLessonsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8DD2B2A1FAD3B0065F575 /* StudentLessonsScreen.swift */; };
+		4EC8DD2E2A1FB6540065F575 /* StudentLessonDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8DD2D2A1FB6540065F575 /* StudentLessonDetailScreen.swift */; };
 		DC43EA0F2A1BCBCA00C08056 /* AddSongScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC43EA0E2A1BCBCA00C08056 /* AddSongScreen.swift */; };
 		DC43EA112A1BCD7000C08056 /* SongDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC43EA102A1BCD7000C08056 /* SongDetailScreen.swift */; };
 		DC4C54A12A1E436900E8141C /* SpotifyAPI in Frameworks */ = {isa = PBXBuildFile; productRef = DC4C54A02A1E436900E8141C /* SpotifyAPI */; };
@@ -70,6 +71,7 @@
 		4EC8DD272A1F90B00065F575 /* TeacherMessagesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherMessagesScreen.swift; sourceTree = "<group>"; };
 		4EC8DD292A1F90DB0065F575 /* TeacherHomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherHomeScreen.swift; sourceTree = "<group>"; };
 		4EC8DD2B2A1FAD3B0065F575 /* StudentLessonsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLessonsScreen.swift; sourceTree = "<group>"; };
+		4EC8DD2D2A1FB6540065F575 /* StudentLessonDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLessonDetailScreen.swift; sourceTree = "<group>"; };
 		DC43EA0E2A1BCBCA00C08056 /* AddSongScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSongScreen.swift; sourceTree = "<group>"; };
 		DC43EA102A1BCD7000C08056 /* SongDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailScreen.swift; sourceTree = "<group>"; };
 		DC4C54A32A1E442100E8141C /* Spotify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spotify.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				4EC8DD1D2A1F8DD70065F575 /* StudentHomeScreen.swift */,
 				4EC8DD232A1F8FD40065F575 /* StudentMessagesScreen.swift */,
 				4EC8DD2B2A1FAD3B0065F575 /* StudentLessonsScreen.swift */,
+				4EC8DD2D2A1FB6540065F575 /* StudentLessonDetailScreen.swift */,
 			);
 			path = Student;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCD409692A1A30CE008220F1 /* SSCheckbox.swift in Sources */,
+				4EC8DD2E2A1FB6540065F575 /* StudentLessonDetailScreen.swift in Sources */,
 				DCCD07592A1625C4002CB449 /* ContentView.swift in Sources */,
 				4EC8DD222A1F8F850065F575 /* StudentContentView.swift in Sources */,
 				DCCD07572A1625C4002CB449 /* SoundScoutApp.swift in Sources */,

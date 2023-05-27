@@ -17,6 +17,7 @@ enum StudentPanel: Hashable {
     case myLessons
     case profile
     case myMessages
+    case lessonDetails
 }
 
 struct StudentContentView: View {
@@ -44,6 +45,8 @@ struct StudentContentView: View {
                 StudentProfileScreen()
             case .myMessages:
                 StudentProfileScreen()
+            case .lessonDetails:
+                StudentLessonDetailsScreen()
             default:
                 Text("Default")
             }
