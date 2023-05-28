@@ -41,10 +41,19 @@ struct TeacherHomeScreen: View {
                             HStack {
                                 Color.green
                                     .frame(width: 40, height: 40)
+                                
                                 Text("Thinking out loud")
+                                
                                 Spacer()
+                                
                                 Text("Ed Sheeran")
                                     .foregroundColor(.secondary)
+                                
+                                Spacer()
+                                
+                                SSContentHeader(text: "", buttonText: "Show material") {
+                                    navigationManager.studentSelection =  .songDetails
+                                }
                             }
                             .font(.callout)
                             

@@ -26,7 +26,6 @@ struct StudentLessonDetailsScreen: View {
             SSContentBackground(padding: 32) {
                 Text( "Lesson notes")
                     .font(.title2)
-                    .bold()
                     .padding(.bottom, 8)
                 Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ultricies felis eu enim consequat, nec luctus enim posuere. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque hendrerit nunc nunc, at cursus tortor interdum at. Ut eget vehicula lacus. Nam non fermentum nulla.")
             }
@@ -52,8 +51,6 @@ struct StudentLessonDetailsScreen: View {
                             
                             Text("Ed Sheeran")
                                 .foregroundColor(.secondary)
-                            
-                            Spacer()
                             
                             SSContentHeader(text: "", buttonText: "Show material") {
                                 navigationManager.studentSelection =  .songDetails
