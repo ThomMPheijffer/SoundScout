@@ -24,13 +24,18 @@ struct StudentLessonDetailsScreen: View {
     var body: some View {
         VStack(spacing: 32) {
             SSContentBackground(padding: 32) {
-                Text( "Lesson notes").padding(.bottom, 8)
+                Text( "Lesson notes")
+                    .font(.title2)
+                    .bold()
+                    .padding(.bottom, 8)
                 Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ultricies felis eu enim consequat, nec luctus enim posuere. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque hendrerit nunc nunc, at cursus tortor interdum at. Ut eget vehicula lacus. Nam non fermentum nulla.")
             }
             
             SSContentBackground(padding: 32) {
                 Text("Songs")
-                    .padding(.bottom, 16)
+                    .font(.title2)
+                    .bold()
+                    .padding(.bottom, 8)
                 
                 Divider()
                     .padding(.horizontal, -32)
@@ -50,8 +55,8 @@ struct StudentLessonDetailsScreen: View {
                             
                             Spacer()
                             
-                            SSContentHeader(text: "", buttonText: "Show details") {
-                                navigationManager.studentSelection =  .songs
+                            SSContentHeader(text: "", buttonText: "Show material") {
+                                navigationManager.studentSelection =  .songDetails
                             }
                         }
                         .font(.callout)
@@ -67,22 +72,23 @@ struct StudentLessonDetailsScreen: View {
             }
             
             SSContentBackground(padding: 32) {
-                // Should be aligned better
-                VStack(alignment: .leading){
-                    Text("Aditional resources")
-                    
-                    ForEach(0..<addResources.count, id: \.self) { i in
-                        VStack {
+                HStack(alignment: .top) {
+                    VStack(alignment: .leading) {
+                        Text("Additional resources")
+                            .font(.title2)
+                            .bold()
+                            .padding(.bottom, 8)
+                        ForEach(0..<addResources.count, id: \.self) { i in
                             HStack {
                                 Image(systemName: "doc")
                                 Text(addResources[i])
-                                
                             }
                             .font(.callout)
                         }
                     }
+                    Spacer()
                 }
-            }            
+            }
         }
         .padding()
         .navigationTitle("Lesson - January")
