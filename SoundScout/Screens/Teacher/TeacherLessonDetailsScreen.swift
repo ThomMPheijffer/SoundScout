@@ -52,7 +52,7 @@ struct TeacherLessonDetailsScreen: View {
                             Text("Ed Sheeran")
                                 .foregroundColor(.secondary)
                             
-                            NavigationLink(destination: Text("Teacher song details screen")) {
+                            NavigationLink(destination: TeacherSongDetailsScreen()) {
                                 HStack {
                                     Text("Show material")
                                     Image(systemName: "chevron.right")

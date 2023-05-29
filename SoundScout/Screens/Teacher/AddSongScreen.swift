@@ -35,7 +35,7 @@ struct AddSongScreen: View {
             }
             .padding(.bottom, 32)
             
-            Button(action: {}) {
+            NavigationLink(destination: TeacherSongDetailsScreen()) {
                 SSPrimaryNavigationButtonText(text: "Create song")
             }
             .padding(.bottom, 128)
