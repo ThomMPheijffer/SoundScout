@@ -52,7 +52,7 @@ class SearchSongViewModel: ObservableObject {
                 }
             },
             receiveValue: { searchResults in
-                searchResults.tracks?.items.forEach { print("\($0.name) - \($0.artists?.first?.name)") }
+//                searchResults.tracks?.items.forEach { print("\($0.name) - \($0.artists?.first?.name)") }
                 self.tracks = searchResults.tracks?.items ?? []
                 print("received \(self.tracks.count) tracks")
             }

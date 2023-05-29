@@ -6,9 +6,7 @@
 //
 import SwiftUI
 
-struct StudentSongDetailsScreen: View {
-    @State private var showExerciseScreen = false
-    
+struct StudentSongDetailsScreen: View {    
     let additionalResources = [
         "Thinking out loud - easy",
         "Thinking out loud - hard",
@@ -36,13 +34,9 @@ struct StudentSongDetailsScreen: View {
                         Button(action: {}) {
                             SSSecondaryNavigationButtonText(text: "Play")
                         }.padding(16)
-                        //Fix the warning below
-                        NavigationLink(destination: StudentExercisesScreen(), isActive: $showExerciseScreen) {
-                            Button(action: {
-                                showExerciseScreen = true
-                            }) {
-                                SSPrimaryNavigationButtonText(text: "Exercises", fullWidth: false)
-                            }
+                        
+                        NavigationLink(destination: StudentExercisesScreen()) {
+                            SSPrimaryNavigationButtonText(text: "Exercises", fullWidth: false)
                         }
                     }
                 }
