@@ -35,7 +35,7 @@ struct StudentProfileScreen: View {
                     
                     Spacer()
                     
-                    Button(action: {}) {
+                    NavigationLink(destination: LessonsScreen(userType: .teacher)) {
                         SSPrimaryNavigationButtonText(text: "Lessons", fullWidth: false)
                     }
                     

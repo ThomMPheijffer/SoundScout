@@ -35,7 +35,7 @@ struct StudentExercisesScreen: View {
                         
                         Spacer()
                         
-                        Text("Ed Sheeran")
+                        Text("80 bpm")
                             .foregroundColor(.secondary)
                         
                         NavigationLink(destination: StudentSongDetailsScreen()) {

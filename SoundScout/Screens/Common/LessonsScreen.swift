@@ -7,8 +7,15 @@
 
 import SwiftUI
 
-struct StudentLessonsScreen: View {
+struct LessonsScreen: View {
     @EnvironmentObject private var navigationManager: NavigationManager
+    
+    enum UserType {
+        case student
+        case teacher
+    }
+    
+    let userType: UserType
     
     let datesJanuary = [
         "3rd January",
@@ -37,7 +44,7 @@ struct StudentLessonsScreen: View {
                                 Text(datesJanuary[i])
                                 Spacer()
                                 
-                                NavigationLink(destination: StudentLessonDetailsScreen()) {
+                                NavigationLink(destination: destinationForSelectionView) {
                                     HStack {
                                         Text("Show details")
                                         Image(systemName: "chevron.right")
@@ -98,10 +105,22 @@ struct StudentLessonsScreen: View {
             .navigationTitle("Lessons")
         }
     }
+    
+    @ViewBuilder
+    var destinationForSelectionView: some View {
+        switch userType {
+        case .student:
+            StudentLessonDetailsScreen()
+        case .teacher:
+            TeacherLessonDetailsScreen()
+        }
+    }
 }
 
-struct StudentLessonsScreen_Previews: PreviewProvider {
+
+
+struct LessonsScreen_Previews: PreviewProvider {
     static var previews: some View {
-        StudentLessonsScreen()
+        LessonsScreen(userType: .student)
     }
 }

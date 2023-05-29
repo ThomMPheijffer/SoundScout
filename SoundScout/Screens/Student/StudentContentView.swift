@@ -39,7 +39,7 @@ struct StudentContentView: View {
             case .songs:
                 MySongsScreen()
             case .myLessons:
-                StudentLessonsScreen()
+                LessonsScreen(userType: .student)
             case .profile:
                 StudentProfileScreen()
             case .myMessages:
