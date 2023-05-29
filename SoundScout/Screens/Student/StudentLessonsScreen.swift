@@ -37,11 +37,14 @@ struct StudentLessonsScreen: View {
                                 Text(datesJanuary[i])
                                 Spacer()
                                 
-                                SSContentHeader(text: "", buttonText: "Show details") {
-                                    navigationManager.studentSelection =  .lessonDetails
-                                    
+                                NavigationLink(destination: StudentLessonDetailsScreen()) {
+                                    HStack {
+                                        Text("Show details")
+                                        Image(systemName: "chevron.right")
+                                    }
+                                    .font(.callout)
+                                    .bold()
                                 }
-                                .font(.callout)
                                 
                             }
                             .padding(i == 3 ? .top : .vertical)

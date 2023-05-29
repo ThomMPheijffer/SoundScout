@@ -52,8 +52,13 @@ struct StudentLessonDetailsScreen: View {
                             Text("Ed Sheeran")
                                 .foregroundColor(.secondary)
                             
-                            SSContentHeader(text: "", buttonText: "Show material") {
-                                navigationManager.studentSelection =  .songDetails
+                            NavigationLink(destination: StudentSongDetailsScreen()) {
+                                HStack {
+                                    Text("Show material")
+                                    Image(systemName: "chevron.right")
+                                }
+                                .font(.callout)
+                                .bold()
                             }
                         }
                         .font(.callout)

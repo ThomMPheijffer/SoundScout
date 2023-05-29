@@ -51,8 +51,13 @@ struct TeacherHomeScreen: View {
                                 
                                 Spacer()
                                 
-                                SSContentHeader(text: "", buttonText: "Show material") {
-                                    navigationManager.studentSelection =  .songDetails
+                                NavigationLink(destination: StudentSongDetailsScreen()) {
+                                    HStack {
+                                        Text("Show material")
+                                        Image(systemName: "chevron.right")
+                                    }
+                                    .font(.callout)
+                                    .bold()
                                 }
                             }
                             .font(.callout)
