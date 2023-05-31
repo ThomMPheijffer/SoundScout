@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CreateTeacherProfileScreen: View {
+    let basicUserInfo: BasicSignUpInformation
     @State private var about = ""
     @State private var eduExp = ""
     
@@ -38,20 +39,20 @@ struct CreateTeacherProfileScreen: View {
                 SSTextField(title: "Relevant education/prior experience", text: $eduExp, axis: .vertical)
                     .padding(.bottom, 16)
                 
-                Text("I prefer teaching")
-                    .font(.title3)
-                    .padding(.bottom, 16)
-                HStack {
-                    SSSegmentedControlButton(selectedIndex: $selectedIndex, index: 0, text: "Online")
-                    Spacer()
-                        .frame(width: 16)
-                    SSSegmentedControlButton(selectedIndex: $selectedIndex, index: 1, text: "In-person")
-                    Spacer()
-                        .frame(width: 16)
-                    SSSegmentedControlButton(selectedIndex: $selectedIndex, index: 2, text: "Both")
-                }
-                .padding(.top, 8)
-                .padding(.bottom, 32)
+//                Text("I prefer teaching")
+//                    .font(.title3)
+//                    .padding(.bottom, 16)
+//                HStack {
+//                    SSSegmentedControlButton(selectedIndex: $selectedIndex, index: 0, text: "Online")
+//                    Spacer()
+//                        .frame(width: 16)
+//                    SSSegmentedControlButton(selectedIndex: $selectedIndex, index: 1, text: "In-person")
+//                    Spacer()
+//                        .frame(width: 16)
+//                    SSSegmentedControlButton(selectedIndex: $selectedIndex, index: 2, text: "Both")
+//                }
+//                .padding(.top, 8)
+//                .padding(.bottom, 32)
                 
                 Text("I can teach")
                     .font(.title3)
@@ -79,7 +80,7 @@ struct CreateTeacherProfileScreen: View {
 
 struct CreateTeacherProfileScreen_Previews: PreviewProvider {
     static var previews: some View {
-        CreateTeacherProfileScreen()
+        CreateTeacherProfileScreen(basicUserInfo: .init(firstname: "", surname: "", email: "", password: ""))
     }
 }
 

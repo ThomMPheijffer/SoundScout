@@ -10,10 +10,12 @@ import SwiftUI
 struct SSPrimaryNavigationButtonText: View {
     let text: String
     let fullWidth: Bool
+    var isActive: Bool
     
-    init(text: String, fullWidth: Bool = true) {
+    init(text: String, fullWidth: Bool = true, isActive: Bool = true) {
         self.text = text
         self.fullWidth = fullWidth
+        self.isActive = isActive
     }
     
     var body: some View {
@@ -24,7 +26,7 @@ struct SSPrimaryNavigationButtonText: View {
             .frame(maxWidth: fullWidth ? .infinity : nil)
             .background(
                 RoundedRectangle(cornerRadius: 20)
-                    .fill(SSColors.blue)
+                    .fill(SSColors.blue.opacity(isActive ? 1 : 0.3))
             )
     }
 }

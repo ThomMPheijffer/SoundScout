@@ -10,6 +10,8 @@ import SwiftUI
 struct SignUpScreen: View {
     @State private var selectedIndex = 0
     
+    @ObservedObject var viewModel = ViewModel()
+    
     var body: some View {
         NavigationStack {
             HStack {
@@ -45,20 +47,21 @@ struct SignUpScreen: View {
                     .padding(.top, 8)
                     .padding(.bottom, 32)
                     
-                    SSTextField(title: "First name", text: .constant(""))
+                    SSTextField(title: "First name", text: $viewModel.firstName)
                         .padding(.bottom, 16)
-                    SSTextField(title: "Surname", text: .constant(""))
+                    SSTextField(title: "Surname", text: $viewModel.surname)
                         .padding(.bottom, 16)
-                    SSTextField(title: "Email", text: .constant(""))
+                    SSTextField(title: "Email", text: $viewModel.email)
                         .padding(.bottom, 16)
-                    SSTextField(title: "Password", text: .constant(""))
+                    SSTextField(title: "Password", text: $viewModel.password)
                         .padding(.bottom, 16)
                     
                     Spacer()
                     
                     NavigationLink(destination: destinationForSelectionView) {
-                        SSPrimaryNavigationButtonText(text: "Continue")
+                        SSPrimaryNavigationButtonText(text: "Continue", isActive: viewModel.canContinue())
                     }
+                    .disabled(!viewModel.canContinue())
                 }
                 .padding(.horizontal)
                 
@@ -72,9 +75,9 @@ struct SignUpScreen: View {
     @ViewBuilder
     var destinationForSelectionView: some View {
         if selectedIndex == 0 {
-            CreateStudentProfileScreen()
+            CreateStudentProfileScreen(basicUserInfo: viewModel.basicSignUpInformation())
         } else {
-            CreateTeacherProfileScreen()
+            CreateTeacherProfileScreen(basicUserInfo: viewModel.basicSignUpInformation())
         }
     }
 }
