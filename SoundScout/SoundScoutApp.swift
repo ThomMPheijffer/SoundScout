@@ -27,6 +27,25 @@ struct SoundScoutApp: App {
                 .environmentObject(navigationManager)
                 .environmentObject(spotify)
                 .onOpenURL(perform: handleURL(_:))
+                .task {
+                    
+                    
+                    let result = await InstrumentsService().getAllInstruments()
+                    switch result {
+                    case .success(let success):
+                        print(success)
+                    case .failure(let failure):
+                        print(failure)
+                    }
+                    
+                    let create = await InstrumentsService().postInstrument(instrument: .init(name: "Drums"))
+                    switch create {
+                    case .success(let success):
+                        print(success)
+                    case .failure(let failure):
+                        print(failure)
+                    }
+                }
         }
     }
     
