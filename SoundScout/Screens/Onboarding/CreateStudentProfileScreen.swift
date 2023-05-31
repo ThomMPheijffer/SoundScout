@@ -9,8 +9,7 @@ import SwiftUI
 
 struct CreateStudentProfileScreen: View {
     let basicUserInfo: BasicSignUpInformation
-    @State private var about = ""
-    @State private var eduExp = ""
+    @ObservedObject var viewModel = ViewModel()
     
     @State private var selectedIndex = 0
     
@@ -33,10 +32,10 @@ struct CreateStudentProfileScreen: View {
                     }
                 }.padding(.bottom, 64)
                 
-                SSTextField(title: "About", text: $about, axis: .vertical)
+                SSTextField(title: "About", text: $viewModel.about, axis: .vertical)
                     .padding(.bottom, 16)
                 
-                SSTextField(title: "Prior experience", text: $eduExp, axis: .vertical)
+                SSTextField(title: "Prior experience", text: $viewModel.priorExperience, axis: .vertical)
                     .padding(.bottom, 16)
                 
 //                Text("I prefer taking lessons")
@@ -62,13 +61,14 @@ struct CreateStudentProfileScreen: View {
                 }
                 .padding(.bottom, 32)
                 
-                
-                
                 Spacer()
                 
-                NavigationLink(destination: MusicTasteScreen(userType: .student)) {
-                    SSPrimaryNavigationButtonText(text: "Continue")
+                Button(action: { viewModel.login(basicInfo: basicUserInfo) }) {
+                    SSPrimaryNavigationButtonText(text: "Continue", isActive: viewModel.canContinue())
                 }
+                .disabled(!viewModel.canContinue())
+                
+                NavigationLink(destination: StudentContentView(), isActive: $viewModel.navigationIsActive) { EmptyView() }
             }
             .padding(.horizontal)
             

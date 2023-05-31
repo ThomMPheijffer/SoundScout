@@ -37,6 +37,7 @@ extension HTTPClient {
         
         do {
             let (data, response) = try await URLSession.shared.data(for: request, delegate: nil)
+            print(response)
             guard let response = response as? HTTPURLResponse else {
                 return .failure(.noResponse)
             }
@@ -44,10 +45,8 @@ extension HTTPClient {
             case 200...299:
                 print(responseModel)
                 print(data)
-//                let decodedResponse = try! JSONDecoder().decode(responseModel, from: data)
-                guard let decodedResponse = try? JSONDecoder().decode(responseModel, from: data) else {
-                    return .failure(.decode)
-                }
+                let decodedResponse = try! JSONDecoder().decode(responseModel, from: data)
+//                guard let decodedResponse = try? JSONDecoder().decode(responseModel, from: data) else { return .failure(.decode) }
                 return .success(decodedResponse)
             case 401:
                 return .failure(.unauthorized)

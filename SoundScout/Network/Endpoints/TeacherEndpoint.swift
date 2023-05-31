@@ -8,30 +8,30 @@
 import Foundation
 
 enum TeacherEndpoint {
-    case allTeachers
-    case teacherDetail(id: Int)
+    case getTeachers
+    case getTeacherDetails(id: Int)
 }
 
 extension TeacherEndpoint: Endpoint {
     var path: String {
         switch self {
-        case .allTeachers:
+        case .getTeachers:
             return "/teachers"
-        case .teacherDetail(let id):
+        case .getTeacherDetails(let id):
             return "/teachers/\(id)"
         }
     }
 
     var method: RequestMethod {
         switch self {
-        case .allTeachers, .teacherDetail:
+        case .getTeachers, .getTeacherDetails:
             return .get
         }
     }
 
     var header: [String: String]? {
         switch self {
-        case .allTeachers, .teacherDetail:
+        case .getTeachers, .getTeacherDetails:
             return [
                 "Content-Type": "application/json;charset=utf-8"
             ]
@@ -40,7 +40,7 @@ extension TeacherEndpoint: Endpoint {
     
     var body: [String: String]? {
         switch self {
-        case .allTeachers, .teacherDetail:
+        case .getTeachers, .getTeacherDetails:
             return nil
         }
     }

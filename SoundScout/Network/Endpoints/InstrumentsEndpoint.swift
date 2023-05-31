@@ -8,35 +8,35 @@
 import Foundation
 
 enum InstrumentsEndpoint {
-    case allInstruments
-    case instrumentDetail(id: Int)
-    case addInstrument(instrument: Instrument)
+    case getInstruments
+    case getInstrumentDetails(id: Int)
+    case postInstrument(instrument: Instrument)
 }
 
 extension InstrumentsEndpoint: Endpoint {
     var path: String {
         switch self {
-        case .allInstruments:
+        case .getInstruments:
             return "/instruments"
-        case .instrumentDetail(let id):
+        case .getInstrumentDetails(let id):
             return "/instruments/\(id)"
-        case .addInstrument:
+        case .postInstrument:
             return "/instruments"
         }
     }
 
     var method: RequestMethod {
         switch self {
-        case .allInstruments, .instrumentDetail:
+        case .getInstruments, .getInstrumentDetails:
             return .get
-        case .addInstrument:
+        case .postInstrument:
             return .post
         }
     }
 
     var header: [String: String]? {
         switch self {
-        case .allInstruments, .instrumentDetail, .addInstrument:
+        case .getInstruments, .getInstrumentDetails, .postInstrument:
             return [
                 "Content-Type": "application/json;charset=utf-8"
             ]
@@ -45,9 +45,9 @@ extension InstrumentsEndpoint: Endpoint {
     
     var body: Instrument? {
         switch self {
-        case .allInstruments, .instrumentDetail:
+        case .getInstruments, .getInstrumentDetails:
             return nil
-        case .addInstrument(let instrument):
+        case .postInstrument(let instrument):
             return instrument
         }
     }
