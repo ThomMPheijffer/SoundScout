@@ -9,7 +9,7 @@ import Foundation
 
 enum TeacherEndpoint {
     case getTeachers
-    case getTeacherDetails(id: Int)
+    case getTeacherDetails(id: String)
     case postTeacher(teacher: Teacher)
 }
 
@@ -19,7 +19,7 @@ extension TeacherEndpoint: Endpoint {
         case .getTeachers:
             return "/teachers"
         case .getTeacherDetails(let id):
-            return "/teachers/\(id)"
+            return "/teachers/user/\(id)"
         case .postTeacher:
             return "/teachers/sign-up-teacher"
         }

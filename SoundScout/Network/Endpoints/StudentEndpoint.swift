@@ -9,7 +9,7 @@ import Foundation
 
 enum StudentEndpoint {
     case getStudents
-    case getStudentDetails(id: Int)
+    case getStudentDetails(id: String)
     case postStudent(student: Student)
 }
 
@@ -19,7 +19,7 @@ extension StudentEndpoint: Endpoint {
         case .getStudents:
             return "/students"
         case .getStudentDetails(let id):
-            return "/students/\(id)"
+            return "/students/user/\(id)"
         case .postStudent:
             return "/students/sign-up-student"
         }
