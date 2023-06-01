@@ -57,8 +57,8 @@
 		DCC84C9F2A27BCE700A9F423 /* StudentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC84C9E2A27BCE700A9F423 /* StudentService.swift */; };
 		DCC84CA12A27BD3700A9F423 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC84CA02A27BD3700A9F423 /* Student.swift */; };
 		DCC84CA32A27BD6900A9F423 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC84CA22A27BD6900A9F423 /* Location.swift */; };
+		DCC84CA52A28AE1400A9F423 /* CreateTeacherProfileScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC84CA42A28AE1400A9F423 /* CreateTeacherProfileScreenViewModel.swift */; };
 		DCCD07572A1625C4002CB449 /* SoundScoutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCD07562A1625C4002CB449 /* SoundScoutApp.swift */; };
-		DCCD07592A1625C4002CB449 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCD07582A1625C4002CB449 /* ContentView.swift */; };
 		DCCD075B2A1625C5002CB449 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCCD075A2A1625C5002CB449 /* Assets.xcassets */; };
 		DCCD075E2A1625C5002CB449 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCCD075D2A1625C5002CB449 /* Preview Assets.xcassets */; };
 		DCCD07652A162980002CB449 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCD07642A162980002CB449 /* Constants.swift */; };
@@ -125,9 +125,9 @@
 		DCC84C9E2A27BCE700A9F423 /* StudentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentService.swift; sourceTree = "<group>"; };
 		DCC84CA02A27BD3700A9F423 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		DCC84CA22A27BD6900A9F423 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		DCC84CA42A28AE1400A9F423 /* CreateTeacherProfileScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTeacherProfileScreenViewModel.swift; sourceTree = "<group>"; };
 		DCCD07532A1625C4002CB449 /* SoundScout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoundScout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCCD07562A1625C4002CB449 /* SoundScoutApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundScoutApp.swift; sourceTree = "<group>"; };
-		DCCD07582A1625C4002CB449 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DCCD075A2A1625C5002CB449 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DCCD075D2A1625C5002CB449 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DCCD07642A162980002CB449 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -265,7 +265,6 @@
 			children = (
 				DC4C54A82A1E477200E8141C /* Info.plist */,
 				DCCD07562A1625C4002CB449 /* SoundScoutApp.swift */,
-				DCCD07582A1625C4002CB449 /* ContentView.swift */,
 				DCC84C782A2792CB00A9F423 /* Network */,
 				DCC84C882A2793A600A9F423 /* Models */,
 				DCCD07662A162AEE002CB449 /* Components */,
@@ -329,6 +328,7 @@
 			isa = PBXGroup;
 			children = (
 				4E7801482A165A9400E3B385 /* CreateTeacherProfileScreen.swift */,
+				DCC84CA42A28AE1400A9F423 /* CreateTeacherProfileScreenViewModel.swift */,
 			);
 			path = CreateTeacherProfileScreen;
 			sourceTree = "<group>";
@@ -471,7 +471,6 @@
 				DCC84C902A2797AF00A9F423 /* TeacherEndpoint.swift in Sources */,
 				DCC84C922A2797EE00A9F423 /* TeachersService.swift in Sources */,
 				4EC8DD2E2A1FB6540065F575 /* StudentLessonDetailScreen.swift in Sources */,
-				DCCD07592A1625C4002CB449 /* ContentView.swift in Sources */,
 				4EC8DD222A1F8F850065F575 /* StudentContentView.swift in Sources */,
 				DCC84C8C2A27973B00A9F423 /* Teacher.swift in Sources */,
 				DCCD07572A1625C4002CB449 /* SoundScoutApp.swift in Sources */,
@@ -496,6 +495,7 @@
 				DCC84C952A27B36700A9F423 /* SignUpScreenViewModel.swift in Sources */,
 				DCC84C7D2A27931A00A9F423 /* Endpoint.swift in Sources */,
 				DCC84CA32A27BD6900A9F423 /* Location.swift in Sources */,
+				DCC84CA52A28AE1400A9F423 /* CreateTeacherProfileScreenViewModel.swift in Sources */,
 				DCC84C7F2A27932200A9F423 /* HTTPClient.swift in Sources */,
 				DC43EA112A1BCD7000C08056 /* SongDetailScreen.swift in Sources */,
 				DCD409632A1A1871008220F1 /* TeacherSidebar.swift in Sources */,

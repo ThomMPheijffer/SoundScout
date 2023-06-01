@@ -18,6 +18,7 @@ struct Student: Codable {
     let lastName: String
     let about: String
     let priorExperience: String
+    let profileImage: String?
     let location: Location
 }
 

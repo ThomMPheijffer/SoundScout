@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct CreateStudentProfileScreen: View {
+    @EnvironmentObject private var navigationManager: NavigationManager
+    @EnvironmentObject private var spotify: Spotify
+    
     let basicUserInfo: BasicSignUpInformation
     @ObservedObject var viewModel = ViewModel()
     
@@ -63,12 +66,25 @@ struct CreateStudentProfileScreen: View {
                 
                 Spacer()
                 
-                Button(action: { viewModel.login(basicInfo: basicUserInfo) }) {
+                Button(action: {
+                    Task {
+                        let result = await viewModel.login(basicInfo: basicUserInfo)
+                        switch result {
+                        case .success(let success):
+                            print(success)
+                            UserDefaults.standard.set(success.student.userId, forKey: "studentUserID")
+                            UIApplication.shared.windows.filter { $0.isKeyWindow }.first?.rootViewController = UIHostingController(rootView: StudentContentView().environmentObject(navigationManager).environmentObject(spotify))
+                        case .failure(let failure):
+                            print(failure)
+                        }
+                    }
+                    
+                }) {
                     SSPrimaryNavigationButtonText(text: "Continue", isActive: viewModel.canContinue())
                 }
                 .disabled(!viewModel.canContinue())
                 
-                NavigationLink(destination: StudentContentView(), isActive: $viewModel.navigationIsActive) { EmptyView() }
+//                NavigationLink(destination: StudentContentView(), isActive: $viewModel.navigationIsActive) { EmptyView() }
             }
             .padding(.horizontal)
             

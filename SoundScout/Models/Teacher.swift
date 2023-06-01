@@ -12,5 +12,20 @@ struct Teachers: Codable {
 }
 
 struct Teacher: Codable {
-    let userId: User
+    let email: String
+    let password: String
+    let firstName: String
+    let lastName: String
+    let about: String
+    let priorExperience: String
+    let profileImage: String?
+    let location: Location
+}
+
+struct TeacherResponse: Codable {
+    let teacher: TeacherReponseNested
+}
+
+struct TeacherReponseNested: Codable {
+    let userId: String
 }

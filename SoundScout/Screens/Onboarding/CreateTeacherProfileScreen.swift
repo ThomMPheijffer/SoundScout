@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct CreateTeacherProfileScreen: View {
+    @EnvironmentObject private var navigationManager: NavigationManager
+    @EnvironmentObject private var spotify: Spotify
+    
     let basicUserInfo: BasicSignUpInformation
-    @State private var about = ""
-    @State private var eduExp = ""
+    @ObservedObject var viewModel = ViewModel()
     
     @State private var selectedIndex = 0
     
@@ -33,10 +35,10 @@ struct CreateTeacherProfileScreen: View {
                     }
                 }.padding(.bottom, 64)
                 
-                SSTextField(title: "About", text: $about, axis: .vertical)
+                SSTextField(title: "About", text: $viewModel.about, axis: .vertical)
                     .padding(.bottom, 16)
                 
-                SSTextField(title: "Relevant education/prior experience", text: $eduExp, axis: .vertical)
+                SSTextField(title: "Relevant education/prior experience", text: $viewModel.priorExperience, axis: .vertical)
                     .padding(.bottom, 16)
                 
 //                Text("I prefer teaching")
@@ -66,9 +68,25 @@ struct CreateTeacherProfileScreen: View {
                 
                 Spacer()
                 
-                NavigationLink(destination: MusicTasteScreen(userType: .teacher)) {
-                    SSPrimaryNavigationButtonText(text: "Continue")
+                Button(action: {
+                    Task {
+                        let result = await viewModel.login(basicInfo: basicUserInfo)
+                        switch result {
+                        case .success(let success):
+                            print(success)
+                            UserDefaults.standard.set(success.teacher.userId, forKey: "teacherUserID")
+                            UIApplication.shared.windows.filter { $0.isKeyWindow }.first?.rootViewController = UIHostingController(rootView: TeacherContentView().environmentObject(navigationManager).environmentObject(spotify))
+                        case .failure(let failure):
+                            print(failure)
+                        }
+                    }
+                    
+                }) {
+                    SSPrimaryNavigationButtonText(text: "Continue", isActive: viewModel.canContinue())
                 }
+                .disabled(!viewModel.canContinue())
+                
+//                NavigationLink(destination: TeacherContentView(), isActive: $viewModel.navigationIsActive) { EmptyView() }
             }
             .padding(.horizontal)
             

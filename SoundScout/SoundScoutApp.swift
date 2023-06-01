@@ -22,11 +22,22 @@ struct SoundScoutApp: App {
     
     var body: some Scene {
         WindowGroup {
-//            ContentView()
-              SignUpScreen()
-                .environmentObject(navigationManager)
-                .environmentObject(spotify)
-                .onOpenURL(perform: handleURL(_:))
+            if UserDefaults.standard.string(forKey: "teacherUserID") != nil {
+                TeacherContentView()
+                  .environmentObject(navigationManager)
+                  .environmentObject(spotify)
+                  .onOpenURL(perform: handleURL(_:))
+            } else if UserDefaults.standard.string(forKey: "studentUserID") != nil {
+                StudentContentView()
+                  .environmentObject(navigationManager)
+                  .environmentObject(spotify)
+                  .onOpenURL(perform: handleURL(_:))
+            } else {
+                SignUpScreen()
+                  .environmentObject(navigationManager)
+                  .environmentObject(spotify)
+                  .onOpenURL(perform: handleURL(_:))
+            }
         }
     }
     

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct StudentHomeScreen: View {
+    @EnvironmentObject private var navigationManager: NavigationManager
+    
     let dates = [
         "3rd January",
         "21st January",
@@ -18,12 +20,16 @@ struct StudentHomeScreen: View {
     var body: some View {
         VStack(spacing: 32) {
             SSContentBackground(padding: 32) {
-                SSContentHeader(text: "Schedule", buttonText: "Show complete schedule")
+                SSContentHeader(text: "Schedule", buttonText: "Show complete schedule") {
+                    navigationManager.studentSelection = .schedule
+                }
             }
             
             HStack(spacing: 32) {
                 SSContentBackground(padding: 32) {
-                    SSContentHeader(text: "My songs", buttonText: "All songs")
+                    SSContentHeader(text: "My songs", buttonText: "All songs") {
+                        navigationManager.studentSelection = .songs
+                    }
                         .padding(.bottom, 16)
                     
                     Divider()
@@ -53,7 +59,9 @@ struct StudentHomeScreen: View {
                 }
                 
                 SSContentBackground(padding: 32) {
-                    SSContentHeader(text: "My lessons", buttonText: "All lessons")
+                    SSContentHeader(text: "My lessons", buttonText: "All lessons") {
+                        navigationManager.studentSelection = .profile
+                    }
                         .padding(.bottom, 16)
                     
                     Divider()

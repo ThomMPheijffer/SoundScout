@@ -1,31 +1,30 @@
 //
-//  CreateStudentProfileScreenViewModel.swift
+//  CreateTeacherProfileScreenViewModel.swift
 //  SoundScout
 //
-//  Created by Thom Pheijffer on 31/05/2023.
+//  Created by Thom Pheijffer on 01/06/2023.
 //
 
 import Foundation
 import UIKit
-import SwiftUI
 
-extension CreateStudentProfileScreen {
+extension CreateTeacherProfileScreen {
     class ViewModel: ObservableObject {
         @Published var about: String = ""
         @Published var priorExperience: String = ""
+        @Published var navigationIsActive = false
         
         func canContinue() -> Bool {
             return !about.isEmpty && !priorExperience.isEmpty
         }
         
-        func login(basicInfo: BasicSignUpInformation) async -> Result<StudentResponse, RequestError> {
-            
+        func login(basicInfo: BasicSignUpInformation) async -> Result<TeacherResponse, RequestError> {
             //                let image = UIImage(named: "profileImage")
             //                let base64String = image?.jpegData(compressionQuality: 0.1)?.base64URLEncodedString()
             //                print(base64String)
             
-            let result = await StudentsService()
-                .postStudent(student: .init(email: basicInfo.email,
+            let result = await TeachersService()
+                .postTeacher(teacher: .init(email: basicInfo.email,
                                             password: basicInfo.password,
                                             firstName: basicInfo.firstname,
                                             lastName: basicInfo.surname,

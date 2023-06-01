@@ -10,6 +10,7 @@ import Foundation
 enum TeacherEndpoint {
     case getTeachers
     case getTeacherDetails(id: Int)
+    case postTeacher(teacher: Teacher)
 }
 
 extension TeacherEndpoint: Endpoint {
@@ -19,6 +20,8 @@ extension TeacherEndpoint: Endpoint {
             return "/teachers"
         case .getTeacherDetails(let id):
             return "/teachers/\(id)"
+        case .postTeacher:
+            return "/teachers/sign-up-teacher"
         }
     }
 
@@ -26,22 +29,26 @@ extension TeacherEndpoint: Endpoint {
         switch self {
         case .getTeachers, .getTeacherDetails:
             return .get
+        case .postTeacher:
+            return .post
         }
     }
 
     var header: [String: String]? {
         switch self {
-        case .getTeachers, .getTeacherDetails:
+        case .getTeachers, .getTeacherDetails, .postTeacher:
             return [
                 "Content-Type": "application/json;charset=utf-8"
             ]
         }
     }
     
-    var body: [String: String]? {
+    var body: Teacher? {
         switch self {
         case .getTeachers, .getTeacherDetails:
             return nil
+        case .postTeacher(let teacher):
+            return teacher
         }
     }
 }
