@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct TeacherProfileScreen: View {
+    @EnvironmentObject private var navigationManager: NavigationManager
+    @EnvironmentObject private var spotify: Spotify
+    
     var body: some View {
         ScrollView {
             VStack {
@@ -173,6 +176,14 @@ struct TeacherProfileScreen: View {
                     
                 }
                 .padding()
+                
+                Button("Logout") {
+                    UserDefaults.standard.set(nil, forKey: "studentUserID")
+                    UserDefaults.standard.set(nil, forKey: "teacherUserID")
+                    
+                    let vc = UIHostingController(rootView: SignUpScreen().environmentObject(navigationManager).environmentObject(spotify))
+                    replaceKeyWindow(with: vc)
+                }
                 
             }
         }

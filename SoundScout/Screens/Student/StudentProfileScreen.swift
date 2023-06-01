@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct StudentProfileScreen: View {
+    @EnvironmentObject private var navigationManager: NavigationManager
+    @EnvironmentObject private var spotify: Spotify
+    
+    @State var student: Student? = nil
+    
     var body: some View {
         ScrollView {
             VStack {
@@ -85,9 +90,29 @@ struct StudentProfileScreen: View {
                 }
                 .padding()
                 
+                Button("Logout") {
+                    UserDefaults.standard.set(nil, forKey: "studentUserID")
+                    UserDefaults.standard.set(nil, forKey: "teacherUserID")
+                    
+                    let vc = UIHostingController(rootView: SignUpScreen().environmentObject(navigationManager).environmentObject(spotify))
+                    replaceKeyWindow(with: vc)
+                }
+                
             }
         }
         .ignoresSafeArea(edges: .top)
+//        .task {
+//            guard let studentID = UserDefaults.standard.string(forKey: "studentUserID") else { return }
+//            print(studentID)
+//            let result = await StudentsService().getStudentDetails(id: studentID)
+//            switch result {
+//            case .success(let success):
+//                print(success)
+//                student = success
+//            case .failure(let failure):
+//                print(failure)
+//            }
+//        }
     }
 }
 

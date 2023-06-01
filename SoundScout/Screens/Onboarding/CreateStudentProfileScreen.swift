@@ -68,12 +68,14 @@ struct CreateStudentProfileScreen: View {
                 
                 Button(action: {
                     Task {
-                        let result = await viewModel.login(basicInfo: basicUserInfo)
+                        let result = await viewModel.signUp(basicInfo: basicUserInfo)
                         switch result {
                         case .success(let success):
                             print(success)
                             UserDefaults.standard.set(success.student.userId, forKey: "studentUserID")
-                            UIApplication.shared.windows.filter { $0.isKeyWindow }.first?.rootViewController = UIHostingController(rootView: StudentContentView().environmentObject(navigationManager).environmentObject(spotify))
+                            
+                            let vc = UIHostingController(rootView: StudentContentView().environmentObject(navigationManager).environmentObject(spotify))
+                            replaceKeyWindow(with: vc)
                         case .failure(let failure):
                             print(failure)
                         }

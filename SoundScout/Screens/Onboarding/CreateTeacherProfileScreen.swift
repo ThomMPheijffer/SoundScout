@@ -70,12 +70,14 @@ struct CreateTeacherProfileScreen: View {
                 
                 Button(action: {
                     Task {
-                        let result = await viewModel.login(basicInfo: basicUserInfo)
+                        let result = await viewModel.signUp(basicInfo: basicUserInfo)
                         switch result {
                         case .success(let success):
                             print(success)
                             UserDefaults.standard.set(success.teacher.userId, forKey: "teacherUserID")
-                            UIApplication.shared.windows.filter { $0.isKeyWindow }.first?.rootViewController = UIHostingController(rootView: TeacherContentView().environmentObject(navigationManager).environmentObject(spotify))
+                            
+                            let vc = UIHostingController(rootView: TeacherContentView().environmentObject(navigationManager).environmentObject(spotify))
+                            replaceKeyWindow(with: vc)
                         case .failure(let failure):
                             print(failure)
                         }

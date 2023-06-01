@@ -18,7 +18,7 @@ extension CreateStudentProfileScreen {
             return !about.isEmpty && !priorExperience.isEmpty
         }
         
-        func login(basicInfo: BasicSignUpInformation) async -> Result<StudentResponse, RequestError> {
+        func signUp(basicInfo: BasicSignUpInformation) async -> Result<StudentResponse, RequestError> {
             
             //                let image = UIImage(named: "profileImage")
             //                let base64String = image?.jpegData(compressionQuality: 0.1)?.base64URLEncodedString()
