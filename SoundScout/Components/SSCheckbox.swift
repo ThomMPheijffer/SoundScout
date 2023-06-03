@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SSCheckbox: View {
-    @Binding var isEnabled: Bool
+    var isEnabled: Bool
     
     var body: some View {
         ZStack {
@@ -26,8 +26,8 @@ struct SSCheckbox: View {
 struct SSCheckbox_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            SSCheckbox(isEnabled: .constant(true))
-            SSCheckbox(isEnabled: .constant(false))
+            SSCheckbox(isEnabled: true)
+            SSCheckbox(isEnabled: false)
         }
     }
 }

@@ -12,7 +12,7 @@ extension CreateTeacherProfileScreen {
     class ViewModel: ObservableObject {
         @Published var about: String = ""
         @Published var priorExperience: String = ""
-        @Published var navigationIsActive = false
+        @Published var selectedInstrumentIds: [String] = []
         
         func canContinue() -> Bool {
             return !about.isEmpty && !priorExperience.isEmpty
@@ -32,6 +32,7 @@ extension CreateTeacherProfileScreen {
                                             priorExperience: priorExperience,
                                             //                                                profileImage: base64String,
                                             profileImage: nil,
+                                            instrumentIds: selectedInstrumentIds,
                                             location: .init(latitude: 1, longitude: 1)))
             
             return result

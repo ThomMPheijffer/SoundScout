@@ -59,8 +59,8 @@ struct CreateStudentProfileScreen: View {
                 Text("I want to learn")
                     .font(.title3)
                     .padding(.bottom, 16)
-                NavigationLink(destination: SelectInstrumentsScreen()) {
-                    SSSecondaryNavigationButtonText(text: "Select instruments", fullWidth: true)
+                NavigationLink(destination: SelectInstrumentsScreen(selectedIds: $viewModel.selectedInstrumentIds)) {
+                    SSSecondaryNavigationButtonText(text: "Select instruments \(viewModel.selectedInstrumentIds.count > 0 ? "(\(viewModel.selectedInstrumentIds.count) selected)": "")", fullWidth: true)
                 }
                 .padding(.bottom, 32)
                 

@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct SelectInstrumentsScreen: View {
+    @Environment(\.presentationMode) var presentationMode
     
-    @State var isEnabled = false
+    @State var instruments: [Instrument] = []
+    @Binding var selectedIds: [String]
     
     var body: some View {
         NavigationStack {
@@ -36,23 +38,23 @@ struct SelectInstrumentsScreen: View {
                                 .padding(.vertical, 32)
                                 .padding(.horizontal, -32)
                             
-                            ForEach(0..<10, id: \.self) { i in
-                                Button(action: {isEnabled.toggle()}) {
+                            ForEach(instruments) { instrument in
+                                Button(action: { selectedIds.contains(instrument.id) ? selectedIds.removeAll { $0 == instrument.id } : selectedIds.append(instrument.id) }) {
                                     HStack {
-                                        SSCheckbox(isEnabled: $isEnabled)
-                                        Text("Piano")
+                                        SSCheckbox(isEnabled: selectedIds.contains(instrument.id))
+                                        Text(instrument.name)
                                             .foregroundColor(.primary)
                                         Spacer()
                                     }
                                     .padding()
                                     .background(SSColors.blue.opacity(0.1))
                                     .overlay(
-                                            RoundedRectangle(cornerRadius: 8)
-                                                .stroke(SSColors.blue.opacity(isEnabled ? 1 : 0), lineWidth: 2)
-                                        )
+                                        RoundedRectangle(cornerRadius: 8)
+                                            .stroke(SSColors.blue.opacity(selectedIds.contains(instrument.id) ? 1 : 0), lineWidth: 2)
+                                    )
                                     .cornerRadius(8)
                                     .padding(.bottom, 16)
-                                    
+
                                 }
                             }
                             
@@ -60,21 +62,33 @@ struct SelectInstrumentsScreen: View {
                     }
                 }
                 .padding(.horizontal)
-            }.padding()
-                .navigationTitle("Select instruments").navigationBarTitleDisplayMode(.large).toolbar {
-                    ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
-                        Button { } label: {
-                            SSPrimaryNavigationButtonText(text: "Done")
-                        }
+            }
+            .padding()
+            .navigationTitle("Select instruments").navigationBarTitleDisplayMode(.large).toolbar {
+                ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
+                    Button { presentationMode.wrappedValue.dismiss() } label: {
+                        SSPrimaryNavigationButtonText(text: "Done")
                     }
                 }
-            
+            }
+            .task {
+                let result = await InstrumentsService().getAllInstruments()
+                switch result {
+                case .success(let instruments):
+                    print(instruments)
+                    self.instruments = instruments.instruments
+                case .failure(let failure):
+                    print("FAILURE")
+                    print(failure)
+                }
+            }
         }
     }
 }
+
 struct SelectInstrumentsScreen_Previews: PreviewProvider {
     static var previews: some View {
-        SelectInstrumentsScreen()
+        SelectInstrumentsScreen(selectedIds: .constant([]))
     }
 }
 
