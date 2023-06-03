@@ -63,17 +63,17 @@ struct FindTeachersScreen: View {
             }
             .searchable(text: $searchText, prompt: "Search songs")
         }
-//        .task {
-//            let result = await TeachersService().getAllTeachers()
-//            switch result {
-//            case .success(let teachers):
-//                print(teachers)
-//                self.teachers = teachers.teachers
-//            case .failure(let failure):
-//                print("FAILURE")
-//                print(failure)
-//            }
-//        }
+        .task {
+            let result = await TeachersService().getAllTeachers()
+            switch result {
+            case .success(let teachers):
+                print(teachers)
+                self.teachers = teachers.teachers
+            case .failure(let failure):
+                print("FAILURE")
+                print(failure)
+            }
+        }
     }
 }
 
