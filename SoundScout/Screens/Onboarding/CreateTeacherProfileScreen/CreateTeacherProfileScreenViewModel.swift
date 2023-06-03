@@ -24,7 +24,8 @@ extension CreateTeacherProfileScreen {
             //                print(base64String)
             
             let result = await TeachersService()
-                .postTeacher(teacher: .init(email: basicInfo.email,
+                .postTeacher(teacher: .init(id: nil,
+                                            email: basicInfo.email,
                                             password: basicInfo.password,
                                             firstName: basicInfo.firstname,
                                             lastName: basicInfo.surname,

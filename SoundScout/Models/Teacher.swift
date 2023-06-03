@@ -12,6 +12,7 @@ struct Teachers: Codable {
 }
 
 struct Teacher: Codable {
+    let id: String?
     let email: String
     let password: String
     let firstName: String
@@ -19,8 +20,21 @@ struct Teacher: Codable {
     let about: String
     let priorExperience: String
     let profileImage: String?
-    let instrumentIds: [String]
+    let instrumentIds: [String]?
     let location: Location
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case email
+        case password
+        case firstName
+        case lastName
+        case about
+        case priorExperience
+        case profileImage
+        case instrumentIds
+        case location
+    }
 }
 
 struct TeacherResponse: Codable {

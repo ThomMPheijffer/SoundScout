@@ -12,12 +12,13 @@ struct FindTeachersScreen: View {
     @State private var contentSize: CGSize = .zero
     @State private var searchText = ""
     
+    @State var teachers: [Teacher] = []
+    
     var body: some View {
-        
         NavigationStack {
             ScrollView {
                 LazyVGrid(columns: columns, alignment: .leading, spacing: 16) {
-                    ForEach(0..<10, id: \.self) { i in
+                    ForEach(teachers, id: \.id!) { teacher in
                         NavigationLink(destination: TeacherProfileScreen()) {
                             HStack {
                                 Color.blue
@@ -25,7 +26,7 @@ struct FindTeachersScreen: View {
                                     .cornerRadius(40)
                                 VStack(alignment: .leading, spacing: 8) {
                                     HStack {
-                                        Text("Walter Nikolic")
+                                        Text("\(teacher.firstName) \(teacher.lastName)")
                                         Spacer()
                                         Image(systemName: "chevron.right")
                                             .foregroundColor(.primary)
@@ -62,6 +63,17 @@ struct FindTeachersScreen: View {
             }
             .searchable(text: $searchText, prompt: "Search songs")
         }
+//        .task {
+//            let result = await TeachersService().getAllTeachers()
+//            switch result {
+//            case .success(let teachers):
+//                print(teachers)
+//                self.teachers = teachers.teachers
+//            case .failure(let failure):
+//                print("FAILURE")
+//                print(failure)
+//            }
+//        }
     }
 }
 

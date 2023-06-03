@@ -64,8 +64,6 @@ struct CreateTeacherProfileScreen: View {
                 }
                 .padding(.bottom, 32)
                 
-                
-                
                 Spacer()
                 
                 Button(action: {

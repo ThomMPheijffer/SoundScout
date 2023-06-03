@@ -10,7 +10,7 @@ import Foundation
 enum StudentEndpoint {
     case getStudents
     case getStudentDetails(id: String)
-    case postStudent(student: Student)
+    case postStudent(student: SignUpStudent)
 }
 
 extension StudentEndpoint: Endpoint {
@@ -43,7 +43,7 @@ extension StudentEndpoint: Endpoint {
         }
     }
     
-    var body: Student? {
+    var body: SignUpStudent? {
         switch self {
         case .getStudents, .getStudentDetails:
             return nil
