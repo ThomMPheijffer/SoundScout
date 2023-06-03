@@ -27,7 +27,7 @@ struct LogInScreen: View {
                 
                 SSTextField(title: "Email", text: $viewModel.email)
                     .padding(.bottom, 16)
-                SSTextField(title: "Password", text: $viewModel.password)
+                SSTextField(title: "Password", text: $viewModel.password, isSecured: true)
                     .padding(.bottom, 16)
                 
                 Text("Forgot password?").foregroundColor(SSColors.blue)

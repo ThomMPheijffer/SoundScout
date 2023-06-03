@@ -85,8 +85,6 @@ struct CreateStudentProfileScreen: View {
                     SSPrimaryNavigationButtonText(text: "Continue", isActive: viewModel.canContinue())
                 }
                 .disabled(!viewModel.canContinue())
-                
-//                NavigationLink(destination: StudentContentView(), isActive: $viewModel.navigationIsActive) { EmptyView() }
             }
             .padding(.horizontal)
             

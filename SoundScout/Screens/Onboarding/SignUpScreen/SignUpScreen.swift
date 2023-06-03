@@ -53,7 +53,7 @@ struct SignUpScreen: View {
                         .padding(.bottom, 16)
                     SSTextField(title: "Email", text: $viewModel.email)
                         .padding(.bottom, 16)
-                    SSTextField(title: "Password", text: $viewModel.password)
+                    SSTextField(title: "Password", text: $viewModel.password, isSecured: true)
                         .padding(.bottom, 16)
                     
                     Spacer()
