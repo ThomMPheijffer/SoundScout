@@ -10,7 +10,7 @@ import Foundation
 protocol TeachersServiceable {
     func getAllTeachers() async -> Result<Teachers, RequestError>
     func getTeacherDetails(id: String) async -> Result<Teacher, RequestError>
-    func postTeacher(teacher: Teacher) async -> Result<TeacherResponse, RequestError>
+    func postTeacher(teacher: SignUpTeacher) async -> Result<TeacherResponse, RequestError>
 }
 
 struct TeachersService: HTTPClient, TeachersServiceable {
@@ -22,7 +22,7 @@ struct TeachersService: HTTPClient, TeachersServiceable {
         return await sendRequest(endpoint: TeacherEndpoint.getTeacherDetails(id: id), responseModel: Teacher.self)
     }
     
-    func postTeacher(teacher: Teacher) async -> Result<TeacherResponse, RequestError> {
+    func postTeacher(teacher: SignUpTeacher) async -> Result<TeacherResponse, RequestError> {
         return await sendRequest(endpoint: TeacherEndpoint.postTeacher(teacher: teacher), responseModel: TeacherResponse.self)
     }
 }

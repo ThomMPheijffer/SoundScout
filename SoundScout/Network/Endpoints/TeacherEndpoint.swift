@@ -10,7 +10,7 @@ import Foundation
 enum TeacherEndpoint {
     case getTeachers
     case getTeacherDetails(id: String)
-    case postTeacher(teacher: Teacher)
+    case postTeacher(teacher: SignUpTeacher)
 }
 
 extension TeacherEndpoint: Endpoint {
@@ -43,7 +43,7 @@ extension TeacherEndpoint: Endpoint {
         }
     }
     
-    var body: Teacher? {
+    var body: SignUpTeacher? {
         switch self {
         case .getTeachers, .getTeacherDetails:
             return nil

@@ -24,6 +24,8 @@ struct SignUpStudent: Codable {
 }
 
 struct Student: Codable {
+    let id: String
+    let userID: String
     let email: String
     let password: String
     let firstName: String
