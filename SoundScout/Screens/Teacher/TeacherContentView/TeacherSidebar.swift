@@ -12,13 +12,13 @@ struct TeacherSidebar: View {
     
     var body: some View {
         List(selection: $selection) {
-            NavigationLink(value: TeacherPanel.home) {
-                Label("Home", systemImage: "house")
-            }
-            
-            NavigationLink(value: TeacherPanel.schedule) {
-                Label("Schedule", systemImage: "calendar")
-            }
+//            NavigationLink(value: TeacherPanel.home) {
+//                Label("Home", systemImage: "house")
+//            }
+//
+//            NavigationLink(value: TeacherPanel.schedule) {
+//                Label("Schedule", systemImage: "calendar")
+//            }
             
             NavigationLink(value: TeacherPanel.students) {
                 Label("My Students", systemImage: "person.3")
@@ -32,9 +32,9 @@ struct TeacherSidebar: View {
                 Label("Profile", systemImage: "person")
             }
             
-            NavigationLink(value: TeacherPanel.myMessages) {
-                Label("Messages", systemImage: "message")
-            }
+//            NavigationLink(value: TeacherPanel.myMessages) {
+//                Label("Messages", systemImage: "message")
+//            }
         }
         .navigationTitle("SoundScout")
     }

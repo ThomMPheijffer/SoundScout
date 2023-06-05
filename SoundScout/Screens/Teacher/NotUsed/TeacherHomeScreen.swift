@@ -21,7 +21,7 @@ struct TeacherHomeScreen: View {
         VStack(spacing: 32) {
             SSContentBackground(padding: 32) {
                 SSContentHeader(text: "Schedule", buttonText: "Show complete schedule") {
-                    navigationManager.teacherSelection = .schedule
+//                    navigationManager.teacherSelection = .schedule
                 }
             }
             
