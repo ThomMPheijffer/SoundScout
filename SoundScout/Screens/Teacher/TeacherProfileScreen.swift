@@ -13,6 +13,12 @@ struct TeacherProfileScreen: View {
     
     @State var teacher: Teacher? = nil
     
+    init(loadedTeacher: Teacher? = nil) {
+        if loadedTeacher != nil {
+            self._teacher = State.init(initialValue: loadedTeacher)
+        }
+    }
+    
     var body: some View {
         Group {
             if teacher != nil {
@@ -67,6 +73,7 @@ struct TeacherProfileScreen: View {
                                 .font(.title2)
                                 .bold()
                                 .padding(.bottom)
+                                .frame(maxWidth: .infinity, alignment: .leading)
                             Text(teacher!.about)
                                 .foregroundColor(.secondary)
                         }
@@ -195,6 +202,7 @@ struct TeacherProfileScreen: View {
             }
         }
         .task {
+            guard teacher == nil else { return }
             guard let teacherID = UserDefaults.standard.string(forKey: "teacherUserID") else { return }
             let result = await TeachersService().getTeacherDetails(id: teacherID)
             switch result {
