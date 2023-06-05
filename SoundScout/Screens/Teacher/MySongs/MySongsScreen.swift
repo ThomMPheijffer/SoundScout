@@ -9,22 +9,23 @@ import SwiftUI
 
 struct MySongsScreen: View {
     @State private var searchText = ""
+    @State private var songs : [Song] = []
     @EnvironmentObject var spotify: Spotify
     
     var body: some View {
         NavigationStack {
             List {
-                ForEach(0..<10, id: \.self) { i in
+                ForEach(songs, id: \.title) { song in
                     NavigationLink(destination: SongDetailScreen()) {
                         HStack(spacing: 0) {
                             Color.green
                                 .frame(width: 40, height: 40)
                             
-                            Text("Thinking out loud")
+                            Text(song.title)
                                 .font(.callout)
                                 .padding(.leading, 16)
                             
-                            Text("Ed Sheeran")
+                            Text(song.artist)
                                 .font(.callout)
                                 .foregroundColor(.secondary)
                                 .padding(.leading, 64)
@@ -54,7 +55,7 @@ struct MySongsScreen: View {
                 switch result {
                 case .success(let songs):
                     print(songs)
-                    //self.songs = .instruments
+                    self.songs = songs.songs
                 case .failure(let failure):
                     print("FAILURE")
                     print(failure)
