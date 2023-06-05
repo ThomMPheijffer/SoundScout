@@ -9,14 +9,14 @@ import SwiftUI
 
 
 enum StudentPanel: Hashable {
-    case home
-    case schedule
+//    case home
+//    case schedule
     case myTeachers
     case findTeachers
     case songs
     case myLessons
     case profile
-    case myMessages
+//    case myMessages
 }
 
 struct StudentContentView: View {
@@ -28,10 +28,10 @@ struct StudentContentView: View {
             StudentSidebar(selection: $navigationManager.studentSelection)
         } detail: {
             switch navigationManager.studentSelection {
-            case .home:
-                StudentHomeScreen()
-            case .schedule:
-                Text("Schedule")
+//            case .home:
+//                StudentHomeScreen()
+//            case .schedule:
+//                Text("Schedule")
             case .myTeachers:
                 MyTeachersScreen()
             case .findTeachers:
@@ -42,12 +42,8 @@ struct StudentContentView: View {
                 LessonsScreen(userType: .student)
             case .profile:
                 StudentProfileScreen()
-            case .myMessages:
-                StudentProfileScreen()
-//            case .lessonDetails:
-//                StudentLessonDetailsScreen()
-//            case .songDetails:
-//                StudentSongDetailsScreen()
+//            case .myMessages:
+//                StudentProfileScreen()
             default:
                 Text("Default")
             }
