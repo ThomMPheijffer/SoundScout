@@ -43,7 +43,7 @@ extension StudentEndpoint: Endpoint {
         }
     }
     
-    var body: SignUpStudent? {
+    var body: (any Codable)? {
         switch self {
         case .getStudents, .getStudentDetails:
             return nil

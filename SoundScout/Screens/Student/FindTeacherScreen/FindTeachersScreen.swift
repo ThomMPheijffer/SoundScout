@@ -19,7 +19,7 @@ struct FindTeachersScreen: View {
             ScrollView {
                 LazyVGrid(columns: columns, alignment: .leading, spacing: 16) {
                     ForEach(teachers, id: \.id) { teacher in
-                        NavigationLink(destination: TeacherProfileScreen(loadedTeacher: teacher)) {
+                        NavigationLink(destination: TeacherProfileScreen(loadedTeacher: teacher, canConnect: true)) {
                             HStack {
                                 Color.blue
                                     .frame(width: 80, height: 80)

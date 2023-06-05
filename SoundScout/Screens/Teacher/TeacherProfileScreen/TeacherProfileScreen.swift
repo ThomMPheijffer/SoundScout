@@ -12,8 +12,10 @@ struct TeacherProfileScreen: View {
     @EnvironmentObject private var spotify: Spotify
     
     @State var teacher: Teacher? = nil
+    let canConnect: Bool
     
-    init(loadedTeacher: Teacher? = nil) {
+    init(loadedTeacher: Teacher? = nil, canConnect: Bool = false) {
+        self.canConnect = canConnect
         if loadedTeacher != nil {
             self._teacher = State.init(initialValue: loadedTeacher)
         }
@@ -57,12 +59,12 @@ struct TeacherProfileScreen: View {
                             
                             Spacer()
                             
-                            Button(action: {}) {
-                                SSPrimaryNavigationButtonText(text: "Book a lesson", fullWidth: false)
-                            }
-                            
-                            Button(action: {}) {
-                                SSSecondaryNavigationButtonText(text: "Message")
+                            if canConnect {
+                                Button(action: {
+                                    
+                                }) {
+                                    SSPrimaryNavigationButtonText(text: "Add to my Teachers", fullWidth: false)
+                                }
                             }
                         }
                         .padding()

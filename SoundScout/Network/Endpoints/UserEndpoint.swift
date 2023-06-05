@@ -35,7 +35,7 @@ extension UserEndpoint: Endpoint {
         }
     }
     
-    var body: LoginCredentials? {
+    var body: (any Codable)? {
         switch self {
         case .login(let credentials):
             return credentials

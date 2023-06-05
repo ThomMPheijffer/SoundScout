@@ -43,7 +43,7 @@ extension InstrumentsEndpoint: Endpoint {
         }
     }
     
-    var body: Instrument? {
+    var body: (any Codable)? {
         switch self {
         case .getInstruments, .getInstrumentDetails:
             return nil
