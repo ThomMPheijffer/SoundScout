@@ -31,6 +31,9 @@
 		4EC8DD382A24EDBC0065F575 /* TeacherLessonDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8DD372A24EDBC0065F575 /* TeacherLessonDetailsScreen.swift */; };
 		4EC8DD3A2A24EF2E0065F575 /* TeacherSongDeatilsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8DD392A24EF2E0065F575 /* TeacherSongDeatilsScreen.swift */; };
 		4EC8DD3C2A24F11C0065F575 /* TeacherRecordExerciseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8DD3B2A24F11C0065F575 /* TeacherRecordExerciseScreen.swift */; };
+		4EC8DD422A2E0ADC0065F575 /* SongEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8DD412A2E0ADC0065F575 /* SongEndpoint.swift */; };
+		4EC8DD442A2E0B890065F575 /* SongsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8DD432A2E0B890065F575 /* SongsService.swift */; };
+		4EC8DD462A2E0C0B0065F575 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8DD452A2E0C0B0065F575 /* Song.swift */; };
 		DC43EA0F2A1BCBCA00C08056 /* AddSongScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC43EA0E2A1BCBCA00C08056 /* AddSongScreen.swift */; };
 		DC43EA112A1BCD7000C08056 /* SongDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC43EA102A1BCD7000C08056 /* SongDetailScreen.swift */; };
 		DC4C54A12A1E436900E8141C /* SpotifyAPI in Frameworks */ = {isa = PBXBuildFile; productRef = DC4C54A02A1E436900E8141C /* SpotifyAPI */; };
@@ -105,6 +108,9 @@
 		4EC8DD372A24EDBC0065F575 /* TeacherLessonDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherLessonDetailsScreen.swift; sourceTree = "<group>"; };
 		4EC8DD392A24EF2E0065F575 /* TeacherSongDeatilsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherSongDeatilsScreen.swift; sourceTree = "<group>"; };
 		4EC8DD3B2A24F11C0065F575 /* TeacherRecordExerciseScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherRecordExerciseScreen.swift; sourceTree = "<group>"; };
+		4EC8DD412A2E0ADC0065F575 /* SongEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongEndpoint.swift; sourceTree = "<group>"; };
+		4EC8DD432A2E0B890065F575 /* SongsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsService.swift; sourceTree = "<group>"; };
+		4EC8DD452A2E0C0B0065F575 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		DC43EA0E2A1BCBCA00C08056 /* AddSongScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSongScreen.swift; sourceTree = "<group>"; };
 		DC43EA102A1BCD7000C08056 /* SongDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailScreen.swift; sourceTree = "<group>"; };
 		DC4C54A32A1E442100E8141C /* Spotify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spotify.swift; sourceTree = "<group>"; };
@@ -292,6 +298,7 @@
 				DCC84C8F2A2797AF00A9F423 /* TeacherEndpoint.swift */,
 				DCC84C9C2A27BBDA00A9F423 /* StudentEndpoint.swift */,
 				DCC84CA62A28C16800A9F423 /* UserEndpoint.swift */,
+				4EC8DD412A2E0ADC0065F575 /* SongEndpoint.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -303,6 +310,7 @@
 				DCC84C912A2797EE00A9F423 /* TeachersService.swift */,
 				DCC84C9E2A27BCE700A9F423 /* StudentsService.swift */,
 				DCC84CAA2A28C29900A9F423 /* UserService.swift */,
+				4EC8DD432A2E0B890065F575 /* SongsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -316,6 +324,7 @@
 				DCC84CA02A27BD3700A9F423 /* Student.swift */,
 				DCC84CA22A27BD6900A9F423 /* Location.swift */,
 				DCC84C8D2A27976D00A9F423 /* User.swift */,
+				4EC8DD452A2E0C0B0065F575 /* Song.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -583,10 +592,13 @@
 				DCC84C812A27932800A9F423 /* HTTPMethod.swift in Sources */,
 				DCCD07762A1636CD002CB449 /* SSSecondaryNavigationButtonText.swift in Sources */,
 				DCC84C8A2A2793B200A9F423 /* Instrument.swift in Sources */,
+				4EC8DD422A2E0ADC0065F575 /* SongEndpoint.swift in Sources */,
+				4EC8DD462A2E0C0B0065F575 /* Song.swift in Sources */,
 				4EC8DD2C2A1FAD3B0065F575 /* LessonsScreen.swift in Sources */,
 				4E78014F2A1A1B5100E3B385 /* SelectInstrumentsScreen.swift in Sources */,
 				4EC8DD062A1E45E70065F575 /* FilterScreen.swift in Sources */,
 				4EC8DD1C2A1F8D400065F575 /* MyTeachersScreen.swift in Sources */,
+				4EC8DD442A2E0B890065F575 /* SongsService.swift in Sources */,
 				DCCD076A2A163245002CB449 /* SSTextField.swift in Sources */,
 				DC4C54A42A1E442100E8141C /* Spotify.swift in Sources */,
 				4EC8DD382A24EDBC0065F575 /* TeacherLessonDetailsScreen.swift in Sources */,

@@ -48,6 +48,18 @@ struct MySongsScreen: View {
                 }
             }
             .searchable(text: $searchText, prompt: "Search songs")
+            
+            .task {
+                let result = await SongsService().getAllSongs()
+                switch result {
+                case .success(let songs):
+                    print(songs)
+                    //self.songs = .instruments
+                case .failure(let failure):
+                    print("FAILURE")
+                    print(failure)
+                }
+            }
         }
         
     }
