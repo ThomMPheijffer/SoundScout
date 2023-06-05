@@ -10,17 +10,17 @@ import SwiftUI
 class NavigationManager: ObservableObject {
     static let shared = NavigationManager()
 
-    @Published var teacherSelection: TeacherPanel? = .home
-    @Published var studentSelection: StudentPanel? = .home
+    @Published var teacherSelection: TeacherPanel? = .students
+    @Published var studentSelection: StudentPanel? = .findTeachers
 }
 
 enum TeacherPanel: Hashable {
-    case home
-    case schedule
+//    case home
+//    case schedule
     case students
     case songs
     case profile
-    case myMessages
+//    case myMessages
 }
 
 struct TeacherContentView: View {
@@ -32,18 +32,18 @@ struct TeacherContentView: View {
             TeacherSidebar(selection: $navigationManager.teacherSelection)
         } detail: {
             switch navigationManager.teacherSelection {
-            case .home:
-                TeacherHomeScreen()
-            case .schedule:
-                Text("Schedule")
+//            case .home:
+//                TeacherHomeScreen()
+//            case .schedule:
+//                Text("Schedule")
             case .students:
                 MyStudentsScreen()
             case .songs:
                 MySongsScreen()
             case .profile:
                 TeacherProfileScreen()
-            case .myMessages:
-                TeacherMessagesScreen()
+//            case .myMessages:
+//                TeacherMessagesScreen()
             default:
                 Text("Default")
             }
