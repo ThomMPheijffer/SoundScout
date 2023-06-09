@@ -23,7 +23,7 @@ struct SignUpTeacher: Codable {
     let location: Location
 }
 
-struct Teacher: Codable {
+struct Teacher: Codable, Identifiable {
     let id: String
     let userID: String
     let email: String

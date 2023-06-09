@@ -12,6 +12,7 @@ protocol StudentsServiceable {
     func getStudentDetails(id: String) async -> Result<Student, RequestError>
     func postStudent(student: SignUpStudent) async -> Result<StudentResponse, RequestError>
     func addTeacherToStudent(studentId: String, body: AddTeacherToStudentModel) async -> Result<StudentResponse, RequestError>
+    func getTeachers(studentId: String) async -> Result<Teachers, RequestError>
 }
 
 struct StudentsService: HTTPClient, StudentsServiceable {
@@ -29,5 +30,9 @@ struct StudentsService: HTTPClient, StudentsServiceable {
     
     func addTeacherToStudent(studentId: String, body: AddTeacherToStudentModel) async -> Result<StudentResponse, RequestError> {
         return await sendRequest(endpoint: StudentEndpoint.addTeacherToStudent(studentId: studentId, body: body), responseModel: StudentResponse.self)
+    }
+    
+    func getTeachers(studentId: String) async -> Result<Teachers, RequestError> {
+        return await sendRequest(endpoint: StudentEndpoint.getTeachers(studentId: studentId), responseModel: Teachers.self)
     }
 }

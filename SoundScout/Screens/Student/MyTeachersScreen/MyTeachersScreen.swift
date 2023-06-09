@@ -11,11 +11,13 @@ struct MyTeachersScreen: View {
     var columns: [GridItem] = Array(repeating: GridItem(.flexible(), spacing: 16), count: 3)
     @State private var contentSize: CGSize = .zero
     
+    @State var teachers: [Teacher] = []
+    
     var body: some View {
         NavigationStack {
             ScrollView {
                 LazyVGrid(columns: columns, alignment: .leading, spacing: 16) {
-                    ForEach(0..<10, id: \.self) { i in
+                    ForEach(teachers) { teacher in
                         NavigationLink(destination: TeacherProfileScreen()) {
                             HStack {
                                 Color.blue
@@ -23,7 +25,7 @@ struct MyTeachersScreen: View {
                                     .cornerRadius(40)
                                 VStack(alignment: .leading, spacing: 8) {
                                     HStack {
-                                        Text("Walter Nikolic")
+                                        Text("\(teacher.firstName) \(teacher.lastName)")
                                         Spacer()
                                         Image(systemName: "chevron.right")
                                             .foregroundColor(.blue)
@@ -60,6 +62,17 @@ struct MyTeachersScreen: View {
             }
             .padding()
             .navigationTitle("My Teachers")
+            .task {
+                guard let studentId = UserDefaults.standard.string(forKey: "studentID") else { return }
+                let result = await StudentsService().getTeachers(studentId: studentId)
+                switch result {
+                case .success(let data):
+                    print(data)
+                    self.teachers = data.teachers
+                case .failure(let failure):
+                    print(failure)
+                }
+            }
         }
     }
 }

@@ -12,6 +12,7 @@ enum StudentEndpoint {
     case getStudentDetails(id: String)
     case postStudent(student: SignUpStudent)
     case addTeacherToStudent(studentId: String, body: AddTeacherToStudentModel)
+    case getTeachers(studentId: String)
 }
 
 extension StudentEndpoint: Endpoint {
@@ -23,14 +24,14 @@ extension StudentEndpoint: Endpoint {
             return "/students/user/\(id)"
         case .postStudent:
             return "/students/sign-up-student"
-        case .addTeacherToStudent(let studentId, _):
+        case .addTeacherToStudent(let studentId, _), .getTeachers(let studentId):
             return "/students/user/\(studentId)/teachers"
         }
     }
 
     var method: RequestMethod {
         switch self {
-        case .getStudents, .getStudentDetails:
+        case .getStudents, .getStudentDetails, .getTeachers:
             return .get
         case .postStudent:
             return .post
@@ -41,7 +42,7 @@ extension StudentEndpoint: Endpoint {
 
     var header: [String: String]? {
         switch self {
-        case .getStudents, .getStudentDetails, .postStudent, .addTeacherToStudent:
+        case .getStudents, .getStudentDetails, .postStudent, .addTeacherToStudent, .getTeachers:
             return [
                 "Content-Type": "application/json;charset=utf-8"
             ]
@@ -50,7 +51,7 @@ extension StudentEndpoint: Endpoint {
     
     var body: (any Codable)? {
         switch self {
-        case .getStudents, .getStudentDetails:
+        case .getStudents, .getStudentDetails, .getTeachers:
             return nil
         case .postStudent(let student):
             return student
