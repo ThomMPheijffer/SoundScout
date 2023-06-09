@@ -13,7 +13,9 @@ struct LoginCredentials: Codable {
 }
 
 struct LoginResponse: Codable {
-    let userID: String
+    let userId: String
+    let studentId: String?
+    let teacherId: String?
     let isTeacher: Bool
     let isStudent: Bool
 }

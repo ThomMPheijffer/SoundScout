@@ -11,6 +11,7 @@ enum StudentEndpoint {
     case getStudents
     case getStudentDetails(id: String)
     case postStudent(student: SignUpStudent)
+    case addTeacherToStudent(studentId: String, body: AddTeacherToStudentModel)
 }
 
 extension StudentEndpoint: Endpoint {
@@ -22,6 +23,8 @@ extension StudentEndpoint: Endpoint {
             return "/students/user/\(id)"
         case .postStudent:
             return "/students/sign-up-student"
+        case .addTeacherToStudent(let studentId, _):
+            return "/students/user/\(studentId)/teachers"
         }
     }
 
@@ -31,12 +34,14 @@ extension StudentEndpoint: Endpoint {
             return .get
         case .postStudent:
             return .post
+        case .addTeacherToStudent:
+            return .put
         }
     }
 
     var header: [String: String]? {
         switch self {
-        case .getStudents, .getStudentDetails, .postStudent:
+        case .getStudents, .getStudentDetails, .postStudent, .addTeacherToStudent:
             return [
                 "Content-Type": "application/json;charset=utf-8"
             ]
@@ -49,6 +54,8 @@ extension StudentEndpoint: Endpoint {
             return nil
         case .postStudent(let student):
             return student
+        case .addTeacherToStudent(_, let teacherId):
+            return teacherId
         }
     }
 }

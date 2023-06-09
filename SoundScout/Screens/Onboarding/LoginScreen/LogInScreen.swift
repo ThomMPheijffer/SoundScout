@@ -42,12 +42,14 @@ struct LogInScreen: View {
                         case .success(let success):
                             print(success)
                             if success.isTeacher {
-                                UserDefaults.standard.set(success.userID, forKey: "teacherUserID")
+                                UserDefaults.standard.set(success.userId, forKey: "teacherUserID")
+                                UserDefaults.standard.set(success.teacherId!, forKey: "teacherID")
                                 
                                 let vc = UIHostingController(rootView: TeacherContentView().environmentObject(navigationManager).environmentObject(spotify))
                                 replaceKeyWindow(with: vc)
                             } else if success.isStudent {
-                                UserDefaults.standard.set(success.userID, forKey: "studentUserID")
+                                UserDefaults.standard.set(success.userId, forKey: "studentUserID")
+                                UserDefaults.standard.set(success.studentId!, forKey: "studentID")
                                 
                                 let vc = UIHostingController(rootView: StudentContentView().environmentObject(navigationManager).environmentObject(spotify))
                                 replaceKeyWindow(with: vc)

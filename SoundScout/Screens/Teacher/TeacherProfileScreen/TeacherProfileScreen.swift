@@ -61,7 +61,19 @@ struct TeacherProfileScreen: View {
                             
                             if canConnect {
                                 Button(action: {
-                                    
+                                    Task {
+                                        guard let teacherId = teacher?.id else { return }
+                                        guard let studentId = UserDefaults.standard.string(forKey: "studentID") else { return }
+                                        let result = await StudentsService().addTeacherToStudent(studentId: studentId, body: .init(teacherId: teacherId))
+                                        
+                                        switch result {
+                                        case .success(let success):
+                                            print(success)
+                                            print("Succesfully connected")
+                                        case .failure(let failure):
+                                            print(failure)
+                                        }
+                                    }
                                 }) {
                                     SSPrimaryNavigationButtonText(text: "Add to my Teachers", fullWidth: false)
                                 }

@@ -44,3 +44,7 @@ struct StudentResponse: Codable {
 struct StudentReponseNested: Codable {
     let userId: String
 }
+
+struct AddTeacherToStudentModel: Codable {
+    let teacherId: String
+}
