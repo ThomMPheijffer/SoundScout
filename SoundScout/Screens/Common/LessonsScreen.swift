@@ -13,85 +13,39 @@ struct LessonsScreen: View {
     let student: Student?
     let teacher: Teacher?
     
-    let datesJanuary = [
-        "3rd January",
-        "21st January",
-        "23rd January",
-        "28th January",
-    ]
-    let datesFebruary = [
-        "5th February",
-        "12th February",
-        "22nd February",
-    ]
+    @State var lessonWrapper = [LessonWrapper]()
     
     var body: some View {
             VStack(alignment: .leading) {
-                Text("January 2023").font(.headline).bold()
-                
-                SSContentBackground(padding: 32, horizontalPaddingOnly: true) {
-                    
-                    ForEach(0..<datesJanuary.count, id: \.self) { i in
-                        
-                        VStack(spacing: 0) {
-                            HStack {
-                                Text(datesJanuary[i])
-                                Spacer()
-                                
-                                NavigationLink(destination: destinationForSelectionView) {
-                                    HStack {
-                                        Text("Show details")
-                                        Image(systemName: "chevron.right")
-                                    }
-                                    .font(.callout)
-                                    .bold()
-                                }
-                                
-                            }
-                            .padding(.vertical)
-                            
-                            if i != (datesJanuary.count - 1) {
-                                Divider()
-                                    .padding(.horizontal, -32)
-                            }
-                        }
-                        
-                        
-                    }
-                }
-                .padding(.bottom, 32)
-                
-                VStack(alignment: .leading) {
-                    Text("February 2023").font(.headline).bold()
-                    
+                ForEach(lessonWrapper, id: \.self) { wrapper in
+                    Text(wrapper.lessons.first!.lessonDate.getMonthYearString())
+
                     SSContentBackground(padding: 32, horizontalPaddingOnly: true) {
-                        
-                        ForEach(0..<datesFebruary.count, id: \.self) { i in
-                            
-                            VStack {
+                        ForEach(0..<wrapper.lessons.count, id: \.self) { i in
+                            VStack(spacing: 0) {
                                 HStack {
-                                    Text(datesFebruary[i])
+                                    Text(wrapper.lessons[i].lessonDate, style: .date)
                                     Spacer()
-                                    HStack {
-                                        Text("Show details")
-                                        Image(systemName: "chevron.right")
+
+                                    NavigationLink(destination: destinationForSelectionView) {
+                                        HStack {
+                                            Text("Show details")
+                                            Image(systemName: "chevron.right")
+                                        }
+                                        .font(.callout)
+                                        .bold()
                                     }
-                                    .foregroundColor(SSColors.blue)
-                                    .bold()
                                 }
-                                .font(.callout)
-                                
-                            }
-                            .padding(.vertical)
-                            
-                            if i != (datesFebruary.count - 1) {
-                                Divider()
-                                    .padding(.horizontal, -32)
+                                .padding(.vertical)
+
+                                if i != (wrapper.lessons.count - 1) {
+                                    Divider()
+                                        .padding(.horizontal, -32)
+                                }
                             }
                         }
-                        
-                        
                     }
+                    .padding(.bottom, 32)
                 }
                 
                 Spacer()
@@ -105,6 +59,30 @@ struct LessonsScreen: View {
                             SSPrimaryNavigationButtonText(text: "Create lesson")
                         }
                     }
+                }
+            }
+            .task {
+                let userId = teacher?.id ?? (student?.id ?? "")
+                guard userId != "" else { fatalError("No teacher and no student mode") }
+                let result = await LessonsService().getLessons(userId: userId)
+                switch result {
+                case .success(let data):
+                    let groupedByMonth = Dictionary(grouping: data.lessons) { lesson in
+                        lesson.lessonDate.getMonthYearString()
+                    }
+                    
+                    let sortedDictionary = groupedByMonth.sorted { first, second in
+                        first.value.first!.lessonDate > second.value.first!.lessonDate
+                    }
+                    
+                    var wrapper = [LessonWrapper]()
+                    for (_, lessons) in sortedDictionary {
+                        wrapper.append(LessonWrapper(lessons: lessons))
+                    }
+                    
+                    self.lessonWrapper = wrapper
+                case .failure(let failure):
+                    print(failure)
                 }
             }
     }
@@ -126,5 +104,13 @@ struct LessonsScreen: View {
 struct LessonsScreen_Previews: PreviewProvider {
     static var previews: some View {
         LessonsScreen(student: nil, teacher: nil)
+    }
+}
+
+extension Date {
+    func getMonthYearString() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM yyyy"
+        return formatter.string(from: self)
     }
 }

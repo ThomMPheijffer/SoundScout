@@ -11,9 +11,11 @@ struct Lessons: Codable {
     let lessons: [Lesson]
 }
 
-struct Lesson: Codable {
+struct Lesson: Codable, Identifiable {
+    var id: String { lessonId }
+    
     let lessonId: String
-//    let lessonDate: Date
+    let lessonDate: Date
     let lessonNotes: String
     let teacherId: String
     let studentId: String
@@ -26,4 +28,16 @@ struct PostLesson: Codable {
     let teacherId: String
     let studentId: String
     let songIds: [String]?
+}
+
+struct LessonWrapper: Identifiable, Hashable {
+    static func == (lhs: LessonWrapper, rhs: LessonWrapper) -> Bool {
+        lhs.id == rhs.id
+    }
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
+    let id = UUID()
+    let lessons: [Lesson]
 }
