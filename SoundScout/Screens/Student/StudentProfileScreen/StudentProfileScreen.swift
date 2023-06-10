@@ -42,7 +42,7 @@ struct StudentProfileScreen: View {
                             
                             Spacer()
                             
-                            NavigationLink(destination: LessonsScreen(userType: .teacher)) {
+                            NavigationLink(destination: LessonsScreen(student: nil, teacher: nil)) {
                                 SSPrimaryNavigationButtonText(text: "Lessons", fullWidth: false)
                             }
                             

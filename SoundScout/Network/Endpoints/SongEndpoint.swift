@@ -26,15 +26,6 @@ extension SongEndpoint: Endpoint {
     
         }
     }
-
-    var header: [String: String]? {
-        switch self {
-        case .getSongs:
-            return [
-                "Content-Type": "application/json;charset=utf-8"
-            ]
-        }
-    }
     
     var body: (any Codable)? {
         switch self {

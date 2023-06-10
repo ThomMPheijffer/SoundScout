@@ -15,7 +15,7 @@ struct FindTeachersScreen: View {
     @State var teachers: [Teacher] = []
     
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             ScrollView {
                 LazyVGrid(columns: columns, alignment: .leading, spacing: 16) {
                     ForEach(teachers, id: \.id) { teacher in
@@ -62,7 +62,7 @@ struct FindTeachersScreen: View {
                 }
             }
             .searchable(text: $searchText, prompt: "Search songs")
-        }
+//        }
         .task {
             let result = await TeachersService().getAllTeachers()
             switch result {

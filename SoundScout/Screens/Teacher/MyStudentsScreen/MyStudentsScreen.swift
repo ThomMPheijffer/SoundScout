@@ -11,19 +11,21 @@ struct MyStudentsScreen: View {
     var columns: [GridItem] = Array(repeating: GridItem(.flexible(), spacing: 16), count: 3)
     @State private var contentSize: CGSize = .zero
     
+    @State var students: [Student] = []
+    
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             ScrollView {
                 LazyVGrid(columns: columns, alignment: .leading, spacing: 16) {
-                    ForEach(0..<10, id: \.self) { i in
-                        NavigationLink(destination: StudentProfileScreen()) {
+                    ForEach(students) { student in
+                        NavigationLink(destination: LessonsScreen(student: student, teacher: nil)) {
                             HStack {
                                 Color.blue
                                     .frame(width: 80, height: 80)
                                     .cornerRadius(40)
                                 VStack(alignment: .leading, spacing: 8) {
                                     HStack {
-                                        Text("Walter Nikolic")
+                                        Text("\(student.firstName) \(student.lastName)")
                                         Spacer()
                                         Image(systemName: "chevron.right")
                                             .foregroundColor(.blue)
@@ -60,7 +62,18 @@ struct MyStudentsScreen: View {
             }
             .padding()
             .navigationTitle("My Students")
-        }
+            .task {
+                guard let teacherId = UserDefaults.standard.string(forKey: "teacherID") else { return }
+                let result = await TeachersService().getStudents(teacherId: teacherId)
+                switch result {
+                case .success(let data):
+                    print(data)
+                    self.students = data.students
+                case .failure(let failure):
+                    print(failure)
+                }
+            }
+//        }
     }
 }
 

@@ -14,7 +14,7 @@ struct MyTeachersScreen: View {
     @State var teachers: [Teacher] = []
     
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             ScrollView {
                 LazyVGrid(columns: columns, alignment: .leading, spacing: 16) {
                     ForEach(teachers) { teacher in
@@ -73,7 +73,7 @@ struct MyTeachersScreen: View {
                     print(failure)
                 }
             }
-        }
+//        }
     }
 }
 

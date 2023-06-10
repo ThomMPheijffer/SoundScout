@@ -10,10 +10,12 @@ import SwiftUI
 struct SSContentBackground<Content: View>: View {
     
     let padding: CGFloat
+    let horizontalPaddingOnly: Bool
     let content: Content
     
-    init(padding: CGFloat = 64, @ViewBuilder _ content: () -> Content) {
+    init(padding: CGFloat = 64, horizontalPaddingOnly: Bool = false, @ViewBuilder _ content: () -> Content) {
         self.padding = padding
+        self.horizontalPaddingOnly = horizontalPaddingOnly
         self.content = content()
     }
     
@@ -21,7 +23,7 @@ struct SSContentBackground<Content: View>: View {
         VStack(alignment: .leading, spacing: 0) {
             content
         }
-        .padding(padding)
+        .padding(horizontalPaddingOnly ? .horizontal : .all, padding)
         .frame(maxWidth: .infinity)
         .background(Color.black.opacity(0.03))
         .cornerRadius(16)

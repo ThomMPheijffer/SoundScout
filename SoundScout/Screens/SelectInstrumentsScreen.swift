@@ -14,7 +14,7 @@ struct SelectInstrumentsScreen: View {
     @Binding var selectedIds: [String]
     
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             HStack {
                 SSContentBackground {
                     ScrollView(showsIndicators: false) {
@@ -82,7 +82,7 @@ struct SelectInstrumentsScreen: View {
                     print(failure)
                 }
             }
-        }
+//        }
     }
 }
 

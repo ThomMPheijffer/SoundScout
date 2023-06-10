@@ -13,7 +13,7 @@ struct MySongsScreen: View {
     @EnvironmentObject var spotify: Spotify
     
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             List {
                 ForEach(songs, id: \.title) { song in
                     NavigationLink(destination: SongDetailScreen()) {
@@ -61,7 +61,7 @@ struct MySongsScreen: View {
                     print(failure)
                 }
             }
-        }
+//        }
         
     }
 }

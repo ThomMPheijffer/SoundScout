@@ -25,15 +25,6 @@ extension UserEndpoint: Endpoint {
             return .post
         }
     }
-
-    var header: [String: String]? {
-        switch self {
-        case .login:
-            return [
-                "Content-Type": "application/json;charset=utf-8"
-            ]
-        }
-    }
     
     var body: (any Codable)? {
         switch self {

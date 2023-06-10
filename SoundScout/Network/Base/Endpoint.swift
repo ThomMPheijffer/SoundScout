@@ -26,4 +26,10 @@ extension Endpoint {
     var host: String {
         return "api-ztqk.onrender.com"
     }
+    
+    var header: [String: String]? {
+        return [
+            "Content-Type": "application/json;charset=utf-8"
+        ]
+    }
 }

@@ -11,6 +11,7 @@ enum TeacherEndpoint {
     case getTeachers
     case getTeacherDetails(id: String)
     case postTeacher(teacher: SignUpTeacher)
+    case getStudents(teacherId: String)
 }
 
 extension TeacherEndpoint: Endpoint {
@@ -22,30 +23,23 @@ extension TeacherEndpoint: Endpoint {
             return "/teachers/user/\(id)"
         case .postTeacher:
             return "/teachers/sign-up-teacher"
+        case .getStudents(teacherId: let id):
+            return "/teachers/user/\(id)/students"
         }
     }
 
     var method: RequestMethod {
         switch self {
-        case .getTeachers, .getTeacherDetails:
+        case .getTeachers, .getTeacherDetails, .getStudents:
             return .get
         case .postTeacher:
             return .post
         }
     }
-
-    var header: [String: String]? {
-        switch self {
-        case .getTeachers, .getTeacherDetails, .postTeacher:
-            return [
-                "Content-Type": "application/json;charset=utf-8"
-            ]
-        }
-    }
     
     var body: (any Codable)? {
         switch self {
-        case .getTeachers, .getTeacherDetails:
+        case .getTeachers, .getTeacherDetails, .getStudents:
             return nil
         case .postTeacher(let teacher):
             return teacher

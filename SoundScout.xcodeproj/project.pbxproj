@@ -81,6 +81,11 @@
 		DCD409652A1A1CAC008220F1 /* MyStudentsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD409642A1A1CAC008220F1 /* MyStudentsScreen.swift */; };
 		DCD409672A1A2016008220F1 /* MySongsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD409662A1A2016008220F1 /* MySongsScreen.swift */; };
 		DCD409692A1A30CE008220F1 /* SSCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD409682A1A30CE008220F1 /* SSCheckbox.swift */; };
+		DCEB3C872A3382DC005FC601 /* CreateLessonScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEB3C862A3382DC005FC601 /* CreateLessonScreen.swift */; };
+		DCEB3C8A2A339B22005FC601 /* CreateLessonScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEB3C892A339B22005FC601 /* CreateLessonScreenViewModel.swift */; };
+		DCEB3C8C2A33ACA5005FC601 /* LessonEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEB3C8B2A33ACA5005FC601 /* LessonEndpoint.swift */; };
+		DCEB3C8E2A33AD6E005FC601 /* LessonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEB3C8D2A33AD6E005FC601 /* LessonService.swift */; };
+		DCEB3C902A33ADE1005FC601 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEB3C8F2A33ADE1005FC601 /* Lesson.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -158,6 +163,11 @@
 		DCD409642A1A1CAC008220F1 /* MyStudentsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStudentsScreen.swift; sourceTree = "<group>"; };
 		DCD409662A1A2016008220F1 /* MySongsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySongsScreen.swift; sourceTree = "<group>"; };
 		DCD409682A1A30CE008220F1 /* SSCheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSCheckbox.swift; sourceTree = "<group>"; };
+		DCEB3C862A3382DC005FC601 /* CreateLessonScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLessonScreen.swift; sourceTree = "<group>"; };
+		DCEB3C892A339B22005FC601 /* CreateLessonScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLessonScreenViewModel.swift; sourceTree = "<group>"; };
+		DCEB3C8B2A33ACA5005FC601 /* LessonEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonEndpoint.swift; sourceTree = "<group>"; };
+		DCEB3C8D2A33AD6E005FC601 /* LessonService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonService.swift; sourceTree = "<group>"; };
+		DCEB3C8F2A33ADE1005FC601 /* Lesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -299,6 +309,7 @@
 				DCC84C9C2A27BBDA00A9F423 /* StudentEndpoint.swift */,
 				DCC84CA62A28C16800A9F423 /* UserEndpoint.swift */,
 				4EC8DD412A2E0ADC0065F575 /* SongEndpoint.swift */,
+				DCEB3C8B2A33ACA5005FC601 /* LessonEndpoint.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -311,6 +322,7 @@
 				DCC84C9E2A27BCE700A9F423 /* StudentsService.swift */,
 				DCC84CAA2A28C29900A9F423 /* UserService.swift */,
 				4EC8DD432A2E0B890065F575 /* SongsService.swift */,
+				DCEB3C8D2A33AD6E005FC601 /* LessonService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -320,6 +332,7 @@
 			children = (
 				DCC84C962A27B3D600A9F423 /* Onboarding */,
 				DCC84C892A2793B200A9F423 /* Instrument.swift */,
+				DCEB3C8F2A33ADE1005FC601 /* Lesson.swift */,
 				DCC84C8B2A27973B00A9F423 /* Teacher.swift */,
 				DCC84CA02A27BD3700A9F423 /* Student.swift */,
 				DCC84CA22A27BD6900A9F423 /* Location.swift */,
@@ -470,6 +483,7 @@
 				DC24C5F02A2E00A8001C5845 /* TeacherProfileScreen */,
 				DC24C5F12A2E00BE001C5845 /* MySongs */,
 				4EC8DD372A24EDBC0065F575 /* TeacherLessonDetailsScreen.swift */,
+				DCEB3C882A339B04005FC601 /* CreateLessonScreen */,
 				4EC8DD392A24EF2E0065F575 /* TeacherSongDeatilsScreen.swift */,
 				4EC8DD3B2A24F11C0065F575 /* TeacherRecordExerciseScreen.swift */,
 				DC24C5F22A2E00E1001C5845 /* NotUsed */,
@@ -499,6 +513,15 @@
 				4EC8DD2B2A1FAD3B0065F575 /* LessonsScreen.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		DCEB3C882A339B04005FC601 /* CreateLessonScreen */ = {
+			isa = PBXGroup;
+			children = (
+				DCEB3C862A3382DC005FC601 /* CreateLessonScreen.swift */,
+				DCEB3C892A339B22005FC601 /* CreateLessonScreenViewModel.swift */,
+			);
+			path = CreateLessonScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -610,6 +633,7 @@
 				DCA07E8A2A1F85CB00C3BB3B /* StudentProfileScreen.swift in Sources */,
 				DCD409672A1A2016008220F1 /* MySongsScreen.swift in Sources */,
 				DCC84C952A27B36700A9F423 /* SignUpScreenViewModel.swift in Sources */,
+				DCEB3C8E2A33AD6E005FC601 /* LessonService.swift in Sources */,
 				DCC84C7D2A27931A00A9F423 /* Endpoint.swift in Sources */,
 				DCC84CA32A27BD6900A9F423 /* Location.swift in Sources */,
 				DCC84CA52A28AE1400A9F423 /* CreateTeacherProfileScreenViewModel.swift in Sources */,
@@ -627,6 +651,7 @@
 				DCCD07652A162980002CB449 /* Constants.swift in Sources */,
 				4E7801492A165A9400E3B385 /* CreateTeacherProfileScreen.swift in Sources */,
 				DCC84C9B2A27B9D900A9F423 /* CreateStudentProfileScreenViewModel.swift in Sources */,
+				DCEB3C8A2A339B22005FC601 /* CreateLessonScreenViewModel.swift in Sources */,
 				DCC84C832A27932D00A9F423 /* RequestError.swift in Sources */,
 				4E78014D2A1942E500E3B385 /* CreateStudentProfileScreen.swift in Sources */,
 				4EC8DD242A1F8FD40065F575 /* StudentMessagesScreen.swift in Sources */,
@@ -634,8 +659,10 @@
 				DC4C54AA2A1E514700E8141C /* SearchSongScreen.swift in Sources */,
 				4E7801472A16401400E3B385 /* LogInScreen.swift in Sources */,
 				DCCD07702A163508002CB449 /* SignUpScreen.swift in Sources */,
+				DCEB3C8C2A33ACA5005FC601 /* LessonEndpoint.swift in Sources */,
 				4EC8DD322A2375CF0065F575 /* StudentExercisesScreen.swift in Sources */,
 				4EC8DCF82A1A8E9D0065F575 /* FindTeachersScreen.swift in Sources */,
+				DCEB3C902A33ADE1005FC601 /* Lesson.swift in Sources */,
 				4EC8DD3A2A24EF2E0065F575 /* TeacherSongDeatilsScreen.swift in Sources */,
 				DCC84C852A27933400A9F423 /* InstrumentsEndpoint.swift in Sources */,
 				DCC84C992A27B3EB00A9F423 /* BasicSignUpInformation.swift in Sources */,
@@ -646,6 +673,7 @@
 				DCC84C872A27934700A9F423 /* InstrumentsService.swift in Sources */,
 				4EC8DD302A2291C90065F575 /* StudentSongDetailsScreen.swift in Sources */,
 				DCC84CB02A28C53900A9F423 /* ReplaceKeyWindow.swift in Sources */,
+				DCEB3C872A3382DC005FC601 /* CreateLessonScreen.swift in Sources */,
 				4EC8DD1A2A1F8CF50065F575 /* SSContentHeader.swift in Sources */,
 				DCCD07722A16357E002CB449 /* SSSegmentedControlButton.swift in Sources */,
 				DCC84C9F2A27BCE700A9F423 /* StudentsService.swift in Sources */,

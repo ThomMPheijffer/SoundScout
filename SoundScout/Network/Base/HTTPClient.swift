@@ -32,7 +32,10 @@ extension HTTPClient {
         request.allHTTPHeaderFields = endpoint.header
         
         if let body = endpoint.body {
-            request.httpBody = try! JSONEncoder().encode(body)
+            let encoder = JSONEncoder()
+            encoder.dateEncodingStrategy = .iso8601
+            request.httpBody = try! encoder.encode(body)
+            print(String(decoding: request.httpBody!, as: UTF8.self))
         }
         
         do {
@@ -45,8 +48,11 @@ extension HTTPClient {
             case 200...299:
                 print(responseModel)
                 print(data)
-                let decodedResponse = try! JSONDecoder().decode(responseModel, from: data)
-//                guard let decodedResponse = try? JSONDecoder().decode(responseModel, from: data) else { return .failure(.decode) }
+                print(String(decoding: data, as: UTF8.self))
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601
+                let decodedResponse = try! decoder.decode(responseModel, from: data)
+//                guard let decodedResponse = try? decoder.decode(responseModel, from: data) else { return .failure(.decode) }
                 return .success(decodedResponse)
             case 401:
                 return .failure(.unauthorized)

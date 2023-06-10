@@ -10,12 +10,8 @@ import SwiftUI
 struct LessonsScreen: View {
     @EnvironmentObject private var navigationManager: NavigationManager
     
-    enum UserType {
-        case student
-        case teacher
-    }
-    
-    let userType: UserType
+    let student: Student?
+    let teacher: Teacher?
     
     let datesJanuary = [
         "3rd January",
@@ -30,16 +26,14 @@ struct LessonsScreen: View {
     ]
     
     var body: some View {
-        VStack(spacing: 32) {
-            
             VStack(alignment: .leading) {
                 Text("January 2023").font(.headline).bold()
                 
-                SSContentBackground(padding: 32) {
+                SSContentBackground(padding: 32, horizontalPaddingOnly: true) {
                     
                     ForEach(0..<datesJanuary.count, id: \.self) { i in
                         
-                        VStack {
+                        VStack(spacing: 0) {
                             HStack {
                                 Text(datesJanuary[i])
                                 Spacer()
@@ -54,9 +48,9 @@ struct LessonsScreen: View {
                                 }
                                 
                             }
-                            .padding(i == 3 ? .top : .vertical)
+                            .padding(.vertical)
                             
-                            if i != 3 {
+                            if i != (datesJanuary.count - 1) {
                                 Divider()
                                     .padding(.horizontal, -32)
                             }
@@ -65,11 +59,12 @@ struct LessonsScreen: View {
                         
                     }
                 }
+                .padding(.bottom, 32)
                 
                 VStack(alignment: .leading) {
-                    
                     Text("February 2023").font(.headline).bold()
-                    SSContentBackground(padding: 32) {
+                    
+                    SSContentBackground(padding: 32, horizontalPaddingOnly: true) {
                         
                         ForEach(0..<datesFebruary.count, id: \.self) { i in
                             
@@ -87,9 +82,9 @@ struct LessonsScreen: View {
                                 .font(.callout)
                                 
                             }
-                            .padding(i == 3 ? .top : .vertical)
+                            .padding(.vertical)
                             
-                            if i != 3 {
+                            if i != (datesFebruary.count - 1) {
                                 Divider()
                                     .padding(.horizontal, -32)
                             }
@@ -103,16 +98,25 @@ struct LessonsScreen: View {
             }
             .padding()
             .navigationTitle("Lessons")
-        }
+            .toolbar {
+                if student != nil {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        NavigationLink(destination: CreateLessonScreen(studentId: student!.id)) {
+                            SSPrimaryNavigationButtonText(text: "Create lesson")
+                        }
+                    }
+                }
+            }
     }
     
     @ViewBuilder
     var destinationForSelectionView: some View {
-        switch userType {
-        case .student:
+        if teacher != nil {
             StudentLessonDetailsScreen()
-        case .teacher:
+        } else if student != nil {
             TeacherLessonDetailsScreen()
+        } else {
+            Text("No user type passed through")
         }
     }
 }
@@ -121,6 +125,6 @@ struct LessonsScreen: View {
 
 struct LessonsScreen_Previews: PreviewProvider {
     static var previews: some View {
-        LessonsScreen(userType: .student)
+        LessonsScreen(student: nil, teacher: nil)
     }
 }

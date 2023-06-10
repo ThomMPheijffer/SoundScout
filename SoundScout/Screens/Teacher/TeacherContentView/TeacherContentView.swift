@@ -31,24 +31,25 @@ struct TeacherContentView: View {
         NavigationSplitView {
             TeacherSidebar(selection: $navigationManager.teacherSelection)
         } detail: {
-            switch navigationManager.teacherSelection {
-//            case .home:
-//                TeacherHomeScreen()
-//            case .schedule:
-//                Text("Schedule")
-            case .students:
-                MyStudentsScreen()
-            case .songs:
-                MySongsScreen()
-            case .profile:
-                TeacherProfileScreen()
-//            case .myMessages:
-//                TeacherMessagesScreen()
-            default:
-                Text("Default")
+            NavigationStack {
+                switch navigationManager.teacherSelection {
+                    //            case .home:
+                    //                TeacherHomeScreen()
+                    //            case .schedule:
+                    //                Text("Schedule")
+                case .students:
+                    MyStudentsScreen()
+                case .songs:
+                    MySongsScreen()
+                case .profile:
+                    TeacherProfileScreen()
+                    //            case .myMessages:
+                    //                TeacherMessagesScreen()
+                default:
+                    Text("Default")
+                }
             }
         }
-
     }
 }
 
