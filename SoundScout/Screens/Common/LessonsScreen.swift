@@ -16,18 +16,21 @@ struct LessonsScreen: View {
     @State var lessonWrapper = [LessonWrapper]()
     
     var body: some View {
+        ScrollView {
             VStack(alignment: .leading) {
                 ForEach(lessonWrapper, id: \.self) { wrapper in
                     Text(wrapper.lessons.first!.lessonDate.getMonthYearString())
-
+                        .font(.headline)
+                        .bold()
+                    
                     SSContentBackground(padding: 32, horizontalPaddingOnly: true) {
                         ForEach(0..<wrapper.lessons.count, id: \.self) { i in
                             VStack(spacing: 0) {
                                 HStack {
                                     Text(wrapper.lessons[i].lessonDate, style: .date)
                                     Spacer()
-
-                                    NavigationLink(destination: destinationForSelectionView) {
+                                    
+                                    NavigationLink(destination: destinationForSelectionView(lesson: wrapper.lessons[i])) {
                                         HStack {
                                             Text("Show details")
                                             Image(systemName: "chevron.right")
@@ -37,7 +40,7 @@ struct LessonsScreen: View {
                                     }
                                 }
                                 .padding(.vertical)
-
+                                
                                 if i != (wrapper.lessons.count - 1) {
                                     Divider()
                                         .padding(.horizontal, -32)
@@ -48,51 +51,51 @@ struct LessonsScreen: View {
                     .padding(.bottom, 32)
                 }
                 
-                Spacer()
             }
-            .padding()
-            .navigationTitle("Lessons")
-            .toolbar {
-                if student != nil {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        NavigationLink(destination: CreateLessonScreen(studentId: student!.id)) {
-                            SSPrimaryNavigationButtonText(text: "Create lesson")
-                        }
+        }
+        .padding()
+        .navigationTitle("Lessons")
+        .toolbar {
+            if student != nil {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink(destination: CreateLessonScreen(studentId: student!.id)) {
+                        SSPrimaryNavigationButtonText(text: "Create lesson")
                     }
                 }
             }
-            .task {
-                let userId = teacher?.id ?? (student?.id ?? "")
-                guard userId != "" else { fatalError("No teacher and no student mode") }
-                let result = await LessonsService().getLessons(userId: userId)
-                switch result {
-                case .success(let data):
-                    let groupedByMonth = Dictionary(grouping: data.lessons) { lesson in
-                        lesson.lessonDate.getMonthYearString()
-                    }
-                    
-                    let sortedDictionary = groupedByMonth.sorted { first, second in
-                        first.value.first!.lessonDate > second.value.first!.lessonDate
-                    }
-                    
-                    var wrapper = [LessonWrapper]()
-                    for (_, lessons) in sortedDictionary {
-                        wrapper.append(LessonWrapper(lessons: lessons))
-                    }
-                    
-                    self.lessonWrapper = wrapper
-                case .failure(let failure):
-                    print(failure)
+        }
+        .task {
+            let userId = teacher?.id ?? (student?.id ?? "")
+            guard userId != "" else { fatalError("No teacher and no student mode") }
+            let result = await LessonsService().getLessons(userId: userId)
+            switch result {
+            case .success(let data):
+                let groupedByMonth = Dictionary(grouping: data.lessons) { lesson in
+                    lesson.lessonDate.getMonthYearString()
                 }
+                
+                let sortedDictionary = groupedByMonth.sorted { first, second in
+                    first.value.first!.lessonDate > second.value.first!.lessonDate
+                }
+                
+                var wrapper = [LessonWrapper]()
+                for (_, lessons) in sortedDictionary {
+                    wrapper.append(LessonWrapper(lessons: lessons))
+                }
+                
+                self.lessonWrapper = wrapper
+            case .failure(let failure):
+                print(failure)
             }
+        }
     }
     
     @ViewBuilder
-    var destinationForSelectionView: some View {
+    func destinationForSelectionView(lesson: Lesson) -> some View {
         if teacher != nil {
             StudentLessonDetailsScreen()
         } else if student != nil {
-            TeacherLessonDetailsScreen()
+            TeacherLessonDetailsScreen(lesson: lesson)
         } else {
             Text("No user type passed through")
         }
