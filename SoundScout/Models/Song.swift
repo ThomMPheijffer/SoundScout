@@ -17,6 +17,7 @@ struct Song: Codable {
     let title: String
     let artist: String
     let teacherNotes: String
+    let coverUrl: String?
 }
 
 struct PostSong: Codable {
@@ -24,5 +25,5 @@ struct PostSong: Codable {
     let title: String
     let artist: String
     let teacherNotes: String
-    let url: URL?
+    let coverUrl: String?
 }

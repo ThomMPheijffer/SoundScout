@@ -13,56 +13,67 @@ struct MySongsScreen: View {
     @EnvironmentObject var spotify: Spotify
     
     var body: some View {
-//        NavigationStack {
-            List {
-                ForEach(songs, id: \.title) { song in
-                    NavigationLink(destination: SongDetailScreen()) {
-                        HStack(spacing: 0) {
+        List {
+            ForEach(songs, id: \.title) { song in
+                NavigationLink(destination: SongDetailScreen(song: song)) {
+                    HStack(spacing: 0) {
+                        if let coverUrl = URL(string: song.coverUrl ?? "") {
+                            AsyncImage(url: coverUrl) { image in
+                                image
+                                    .resizable()
+                                    .scaledToFill()
+                            } placeholder: {
+                                Color.purple.opacity(0.1)
+                            }
+                            .frame(width: 40, height: 40)
+                            .cornerRadius(4)
+                            .shadow(radius: 2)
+                        } else {
                             Color.green
                                 .frame(width: 40, height: 40)
-                            
-                            Text(song.title)
-                                .font(.callout)
-                                .padding(.leading, 16)
-                            
-                            Text(song.artist)
-                                .font(.callout)
-                                .foregroundColor(.secondary)
-                                .padding(.leading, 64)
                         }
+                        
+                        Text(song.title)
+                            .font(.callout)
+                            .padding(.leading, 16)
+                            .frame(width: 200, alignment: .leading)
+                        
+                        Text(song.artist)
+                            .font(.callout)
+                            .foregroundColor(.secondary)
+                            .padding(.leading, 64)
                     }
                 }
             }
-            .navigationTitle("My Songs")
-            .toolbar {
-                ToolbarItemGroup(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        spotify.isAuthorized ? spotify.api.authorizationManager.deauthorize() : spotify.authorize()
-                    }) {
-                        SSPrimaryNavigationButtonText(text: spotify.isAuthorized ? "Logout" : "Authorize Spotify")
-                    }
-                    
-                    
-                    NavigationLink(destination: AddSongScreen()) {
-                        SSPrimaryNavigationButtonText(text: "Add song")
-                    }
+        }
+        .navigationTitle("My Songs")
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                Button(action: {
+                    spotify.isAuthorized ? spotify.api.authorizationManager.deauthorize() : spotify.authorize()
+                }) {
+                    SSPrimaryNavigationButtonText(text: spotify.isAuthorized ? "Logout" : "Authorize Spotify")
+                }
+                
+                
+                NavigationLink(destination: AddSongScreen()) {
+                    SSPrimaryNavigationButtonText(text: "Add song")
                 }
             }
-            .searchable(text: $searchText, prompt: "Search songs")
-            
-            .task {
-                let result = await SongsService().getAllSongs()
-                switch result {
-                case .success(let songs):
-                    print(songs)
-                    self.songs = songs.songs
-                case .failure(let failure):
-                    print("FAILURE")
-                    print(failure)
-                }
-            }
-//        }
+        }
+        .searchable(text: $searchText, prompt: "Search songs")
         
+        .task {
+            let result = await SongsService().getAllSongs()
+            switch result {
+            case .success(let songs):
+                print(songs)
+                self.songs = songs.songs
+            case .failure(let failure):
+                print("FAILURE")
+                print(failure)
+            }
+        }
     }
 }
 

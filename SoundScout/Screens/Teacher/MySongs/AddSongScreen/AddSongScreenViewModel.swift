@@ -18,7 +18,7 @@ extension AddSongScreen {
         
         func postSong() async -> Result<Song, RequestError> {
             guard let teacherId = UserDefaults.standard.string(forKey: "teacherID") else { return .failure(.unknown) }
-            let result = await SongsService().postSong(song: .init(teacherId: teacherId, title: songName, artist: artist, teacherNotes: teacherNotes, url: coverUrl))
+            let result = await SongsService().postSong(song: .init(teacherId: teacherId, title: songName, artist: artist, teacherNotes: teacherNotes, coverUrl: coverUrl?.absoluteString))
             return result
         }
         
