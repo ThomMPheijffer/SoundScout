@@ -32,9 +32,9 @@ struct StudentSidebar: View {
                 Label("My songs", systemImage: "music.note.list")
             }
             
-            NavigationLink(value: StudentPanel.myLessons) {
-                Label("My lessons", systemImage: "music.note.list")
-            }
+//            NavigationLink(value: StudentPanel.myLessons) {
+//                Label("My lessons", systemImage: "music.note.list")
+//            }
 
             NavigationLink(value: StudentPanel.profile) {
                 Label("Profile", systemImage: "person")

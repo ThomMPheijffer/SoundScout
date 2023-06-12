@@ -15,54 +15,52 @@ struct FindTeachersScreen: View {
     @State var teachers: [Teacher] = []
     
     var body: some View {
-//        NavigationStack {
-            ScrollView {
-                LazyVGrid(columns: columns, alignment: .leading, spacing: 16) {
-                    ForEach(teachers, id: \.id) { teacher in
-                        NavigationLink(destination: TeacherProfileScreen(loadedTeacher: teacher, canConnect: true)) {
-                            HStack {
-                                Color.blue
-                                    .frame(width: 80, height: 80)
-                                    .cornerRadius(40)
-                                VStack(alignment: .leading, spacing: 8) {
-                                    HStack {
-                                        Text("\(teacher.firstName) \(teacher.lastName)")
-                                        Spacer()
-                                        Image(systemName: "chevron.right")
-                                            .foregroundColor(.primary)
-                                    }
-                                    
-                                    Text("Online")
-                                        .font(.caption)
-                                        .foregroundColor(.secondary)
-                                    
+        ScrollView {
+            LazyVGrid(columns: columns, alignment: .leading, spacing: 16) {
+                ForEach(teachers, id: \.id) { teacher in
+                    NavigationLink(destination: TeacherProfileScreen(loadedTeacher: teacher, canConnect: true)) {
+                        HStack {
+                            Color.blue
+                                .frame(width: 80, height: 80)
+                                .cornerRadius(40)
+                            VStack(alignment: .leading, spacing: 8) {
+                                HStack {
+                                    Text("\(teacher.firstName) \(teacher.lastName)")
                                     Spacer()
-                                    
-                                    Text("$32")
-                                        .font(.body)
-                                        .foregroundColor(SSColors.blue)
+                                    Image(systemName: "chevron.right")
+                                        .foregroundColor(.primary)
                                 }
+                                
+                                Text("Online")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                                
+                                Spacer()
+                                
+                                Text("$32")
+                                    .font(.body)
+                                    .foregroundColor(SSColors.blue)
                             }
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.black.opacity(0.05).cornerRadius(16))
-                            .modifier(StudentSizeModifier())
-                            .onPreferenceChange(StudentSizePreferenceKey.self) { self.contentSize = $0 }
                         }
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.black.opacity(0.05).cornerRadius(16))
+                        .modifier(StudentSizeModifier())
+                        .onPreferenceChange(StudentSizePreferenceKey.self) { self.contentSize = $0 }
                     }
                 }
             }
-            .padding()
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink(destination: FilterScreen()) {
-                        SSPrimaryNavigationButtonText(text: "Filter")
-                    }
+        }
+        .padding()
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink(destination: FilterScreen()) {
+                    SSPrimaryNavigationButtonText(text: "Filter")
                 }
             }
-            .searchable(text: $searchText, prompt: "Search songs")
-//        }
+        }
+        .searchable(text: $searchText, prompt: "Search songs")
         .task {
             let result = await TeachersService().getAllTeachers()
             switch result {

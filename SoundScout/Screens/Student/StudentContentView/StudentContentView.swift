@@ -14,7 +14,7 @@ enum StudentPanel: Hashable {
     case myTeachers
     case findTeachers
     case songs
-    case myLessons
+//    case myLessons
     case profile
 //    case myMessages
 }
@@ -27,25 +27,27 @@ struct StudentContentView: View {
         NavigationSplitView {
             StudentSidebar(selection: $navigationManager.studentSelection)
         } detail: {
-            switch navigationManager.studentSelection {
-//            case .home:
-//                StudentHomeScreen()
-//            case .schedule:
-//                Text("Schedule")
-            case .myTeachers:
-                MyTeachersScreen()
-            case .findTeachers:
-                FindTeachersScreen()
-            case .songs:
-                MySongsScreen()
-            case .myLessons:
-                LessonsScreen(student: nil, teacher: nil)
-            case .profile:
-                StudentProfileScreen()
-//            case .myMessages:
-//                StudentProfileScreen()
-            default:
-                Text("Default")
+            NavigationStack {
+                switch navigationManager.studentSelection {
+                    //            case .home:
+                    //                StudentHomeScreen()
+                    //            case .schedule:
+                    //                Text("Schedule")
+                case .myTeachers:
+                    MyTeachersScreen()
+                case .findTeachers:
+                    FindTeachersScreen()
+                case .songs:
+                    MySongsScreen()
+//                case .myLessons:
+//                    LessonsScreen(student: nil, teacher: nil)
+                case .profile:
+                    StudentProfileScreen()
+                    //            case .myMessages:
+                    //                StudentProfileScreen()
+                default:
+                    Text("Default")
+                }
             }
         }
 

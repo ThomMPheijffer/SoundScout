@@ -201,7 +201,9 @@ struct TeacherProfileScreen: View {
                         .padding()
                         
                         Button("Logout") {
+                            UserDefaults.standard.set(nil, forKey: "studentID")
                             UserDefaults.standard.set(nil, forKey: "studentUserID")
+                            UserDefaults.standard.set(nil, forKey: "teacherID")
                             UserDefaults.standard.set(nil, forKey: "teacherUserID")
                             
                             let vc = UIHostingController(rootView: SignUpScreen().environmentObject(navigationManager).environmentObject(spotify))

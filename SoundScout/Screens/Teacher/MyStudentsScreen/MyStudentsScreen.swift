@@ -14,7 +14,6 @@ struct MyStudentsScreen: View {
     @State var students: [Student] = []
     
     var body: some View {
-//        NavigationStack {
             ScrollView {
                 LazyVGrid(columns: columns, alignment: .leading, spacing: 16) {
                     ForEach(students) { student in
@@ -50,15 +49,6 @@ struct MyStudentsScreen: View {
                         }
                     }
                 }
-                HStack {
-                    NavigationLink(destination: Text("jflasdfjslkf")) {
-                        SSPrimaryNavigationButtonText(text: "Past students")
-                    }
-                    .frame(maxWidth: contentSize.width, alignment: .leading)
-                    .padding(.top, 16)
-                    
-                    Spacer()
-                }
             }
             .padding()
             .navigationTitle("My Students")
@@ -73,7 +63,6 @@ struct MyStudentsScreen: View {
                     print(failure)
                 }
             }
-//        }
     }
 }
 
