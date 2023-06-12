@@ -38,14 +38,14 @@ struct StudentExercisesScreen: View {
                         Text("80 bpm")
                             .foregroundColor(.secondary)
                         
-                        NavigationLink(destination: StudentSongDetailsScreen()) {
-                            HStack {
-                                Text("Practise")
-                                Image(systemName: "chevron.right")
-                            }
-                            .font(.callout)
-                            .bold()
-                        }
+//                        NavigationLink(destination: StudentSongDetailsScreen(song: .init(id: "", teacherId: "", title: "", artist: "", teacherNotes: ""))) {
+//                            HStack {
+//                                Text("Practise")
+//                                Image(systemName: "chevron.right")
+//                            }
+//                            .font(.callout)
+//                            .bold()
+//                        }
                     }
                     .font(.callout)
                     

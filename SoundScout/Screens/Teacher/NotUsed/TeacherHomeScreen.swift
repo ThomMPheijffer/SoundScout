@@ -51,14 +51,14 @@ struct TeacherHomeScreen: View {
                                 
                                 Spacer()
                                 
-                                NavigationLink(destination: StudentSongDetailsScreen()) {
-                                    HStack {
-                                        Text("Show material")
-                                        Image(systemName: "chevron.right")
-                                    }
-                                    .font(.callout)
-                                    .bold()
-                                }
+//                                NavigationLink(destination: StudentSongDetailsScreen()) {
+//                                    HStack {
+//                                        Text("Show material")
+//                                        Image(systemName: "chevron.right")
+//                                    }
+//                                    .font(.callout)
+//                                    .bold()
+//                                }
                             }
                             .font(.callout)
                             

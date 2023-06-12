@@ -22,36 +22,49 @@ struct StudentLessonDetailsScreen: View {
                 SSContentBackground(padding: 32) {
                     Text( "Lesson notes")
                         .font(.title2)
+                        .bold()
                         .padding(.bottom, 8)
                     Text(lesson.lessonNotes)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
-                
-                SSContentBackground(padding: 32) {
-                    Text("Songs")
-                        .font(.title2)
-                        .bold()
-                        .padding(.bottom, 8)
-                    
-                    Divider()
-                        .padding(.horizontal, -32)
-                    
-                    ForEach(0..<4, id: \.self) { i in
+             
+                if let unwrappedSongs = lesson.songs, unwrappedSongs.count > 0 {
+                    SSContentBackground(padding: 32, horizontalPaddingOnly: true) {
+                        Text("Songs")
+                            .font(.title2)
+                            .bold()
+                            .padding(.bottom, 8)
+                            .padding(.top, 32)
                         
-                        VStack {
+                        Divider()
+                            .padding(.horizontal, -32)
+                        
+                        ForEach(0..<unwrappedSongs.count, id: \.self) { i in
                             HStack {
-                                Color.green
+                                if let coverUrl = URL(string: unwrappedSongs[i].coverUrl ?? "") {
+                                    AsyncImage(url: coverUrl) { image in
+                                        image
+                                            .resizable()
+                                            .scaledToFill()
+                                    } placeholder: {
+                                        Color.purple.opacity(0.1)
+                                    }
                                     .frame(width: 40, height: 40)
-                                Text("Thinking out loud")
-                                    .frame(width: 200, alignment: .leading)
-                                
-                                Text("Ed Sheeran")
-                                    .foregroundColor(.secondary)
-                                    .padding(.leading)
-                                
+                                    .cornerRadius(4)
+                                    .shadow(radius: 2)
+                                } else {
+                                    Color.green
+                                        .frame(width: 40, height: 40)
+                                }
+                                VStack(alignment: .leading) {
+                                    Text(unwrappedSongs[i].title)
+                                    Text(unwrappedSongs[i].artist)
+                                        .foregroundColor(.secondary)
+                                }
+
                                 Spacer()
-                                
-                                NavigationLink(destination: StudentSongDetailsScreen()) {
+
+                                NavigationLink(destination: StudentSongDetailsScreen(song: unwrappedSongs[i])) {
                                     HStack {
                                         Text("Show material")
                                         Image(systemName: "chevron.right")
@@ -61,13 +74,12 @@ struct StudentLessonDetailsScreen: View {
                                 }
                             }
                             .font(.callout)
-                            
-                        }
-                        .padding(i == 3 ? .top : .vertical, 8)
-                        
-                        if i != 3 {
-                            Divider()
-                                .padding(.horizontal, -32)
+                            .padding(.vertical)
+
+                            if i != (unwrappedSongs.count - 1) {
+                                Divider()
+                                    .padding(.horizontal, -32)
+                            }
                         }
                     }
                 }

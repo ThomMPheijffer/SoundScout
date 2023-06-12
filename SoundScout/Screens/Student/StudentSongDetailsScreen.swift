@@ -6,7 +6,9 @@
 //
 import SwiftUI
 
-struct StudentSongDetailsScreen: View {    
+struct StudentSongDetailsScreen: View {
+    let song: Song
+    
     let additionalResources = [
         "Thinking out loud - easy",
         "Thinking out loud - hard",
@@ -18,15 +20,28 @@ struct StudentSongDetailsScreen: View {
         ScrollView {
             VStack(alignment: .leading) {
                 HStack {
-                    Color.green
+                    if let coverUrl = URL(string: song.coverUrl ?? "") {
+                        AsyncImage(url: coverUrl) { image in
+                            image
+                                .resizable()
+                                .scaledToFill()
+                        } placeholder: {
+                            Color.purple.opacity(0.1)
+                        }
                         .frame(width: 220, height: 220)
+                        .cornerRadius(8)
+                        .shadow(radius: 2)
+                    } else {
+                        Color.green
+                            .frame(width: 220, height: 220)
+                    }
                     
                     VStack(alignment: .leading) {
-                        Text("Thinking out loud")
+                        Text(song.title)
                             .font(.title2)
                             .bold()
                             .padding(.bottom, 8)
-                        Text("Ed Sheeran")
+                        Text(song.artist)
                             .font(.body)
                             .foregroundColor(.secondary)
                         
@@ -52,7 +67,8 @@ struct StudentSongDetailsScreen: View {
                         .font(.title2)
                         .bold()
                         .padding(.bottom, 8)
-                    Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ultricies felis eu enim consequat, nec luctus enim posuere. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque hendrerit nunc nunc, at cursus tortor interdum at. Ut eget vehicula lacus. Nam non fermentum nulla.")
+                    Text(song.teacherNotes)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 .padding(.bottom, 32)
                 
