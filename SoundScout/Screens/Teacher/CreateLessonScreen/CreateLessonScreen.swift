@@ -48,8 +48,9 @@ struct CreateLessonScreen: View {
                         }
                     }
                 }) {
-                    SSPrimaryNavigationButtonText(text: "Create lesson")
+                    SSPrimaryNavigationButtonText(text: "Create lesson", isActive: viewModel.canContinue())
                 }
+                .disabled(!viewModel.canContinue())
                 .padding(.top, 128)
             }
             

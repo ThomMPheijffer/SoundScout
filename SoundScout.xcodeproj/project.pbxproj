@@ -40,6 +40,7 @@
 		DC4C54A42A1E442100E8141C /* Spotify.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4C54A32A1E442100E8141C /* Spotify.swift */; };
 		DC4C54A72A1E461B00E8141C /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = DC4C54A62A1E461B00E8141C /* KeychainAccess */; };
 		DC4C54AA2A1E514700E8141C /* SearchSongScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4C54A92A1E514700E8141C /* SearchSongScreen.swift */; };
+		DC7ACFAC2A36FDF7005B8466 /* AddSongScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7ACFAB2A36FDF7005B8466 /* AddSongScreenViewModel.swift */; };
 		DCA07E882A1F77AD00C3BB3B /* TeacherProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA07E872A1F77AD00C3BB3B /* TeacherProfileScreen.swift */; };
 		DCA07E8A2A1F85CB00C3BB3B /* StudentProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA07E892A1F85CB00C3BB3B /* StudentProfileScreen.swift */; };
 		DCC84C7D2A27931A00A9F423 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC84C7C2A27931A00A9F423 /* Endpoint.swift */; };
@@ -121,6 +122,7 @@
 		DC4C54A32A1E442100E8141C /* Spotify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spotify.swift; sourceTree = "<group>"; };
 		DC4C54A82A1E477200E8141C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DC4C54A92A1E514700E8141C /* SearchSongScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSongScreen.swift; sourceTree = "<group>"; };
+		DC7ACFAB2A36FDF7005B8466 /* AddSongScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSongScreenViewModel.swift; sourceTree = "<group>"; };
 		DCA07E872A1F77AD00C3BB3B /* TeacherProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherProfileScreen.swift; sourceTree = "<group>"; };
 		DCA07E892A1F85CB00C3BB3B /* StudentProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentProfileScreen.swift; sourceTree = "<group>"; };
 		DCC84C7C2A27931A00A9F423 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -255,7 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				DCD409662A1A2016008220F1 /* MySongsScreen.swift */,
-				DC43EA0E2A1BCBCA00C08056 /* AddSongScreen.swift */,
+				DC7ACFAA2A36FDE2005B8466 /* AddSongScreen */,
 				DC4C54A92A1E514700E8141C /* SearchSongScreen.swift */,
 				DC43EA102A1BCD7000C08056 /* SongDetailScreen.swift */,
 			);
@@ -278,6 +280,15 @@
 				DCC84CAF2A28C53900A9F423 /* ReplaceKeyWindow.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		DC7ACFAA2A36FDE2005B8466 /* AddSongScreen */ = {
+			isa = PBXGroup;
+			children = (
+				DC43EA0E2A1BCBCA00C08056 /* AddSongScreen.swift */,
+				DC7ACFAB2A36FDF7005B8466 /* AddSongScreenViewModel.swift */,
+			);
+			path = AddSongScreen;
 			sourceTree = "<group>";
 		};
 		DCC84C782A2792CB00A9F423 /* Network */ = {
@@ -653,6 +664,7 @@
 				DCC84C9B2A27B9D900A9F423 /* CreateStudentProfileScreenViewModel.swift in Sources */,
 				DCEB3C8A2A339B22005FC601 /* CreateLessonScreenViewModel.swift in Sources */,
 				DCC84C832A27932D00A9F423 /* RequestError.swift in Sources */,
+				DC7ACFAC2A36FDF7005B8466 /* AddSongScreenViewModel.swift in Sources */,
 				4E78014D2A1942E500E3B385 /* CreateStudentProfileScreen.swift in Sources */,
 				4EC8DD242A1F8FD40065F575 /* StudentMessagesScreen.swift in Sources */,
 				DCCD07682A162B11002CB449 /* OnboardingSidebar.swift in Sources */,

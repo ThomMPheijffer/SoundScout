@@ -19,3 +19,10 @@ struct Song: Codable {
     let teacherNotes: String
 }
 
+struct PostSong: Codable {
+    let teacherId: String
+    let title: String
+    let artist: String
+    let teacherNotes: String
+    let url: URL?
+}

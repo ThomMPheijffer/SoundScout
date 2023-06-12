@@ -16,5 +16,9 @@ extension CreateLessonScreen {
             guard let teacherId = UserDefaults.standard.string(forKey: "teacherID") else { print("no teacher id"); return .failure(.unknown) }
             return await LessonsService().postLesson(lesson: .init(lessonDate: lessonDate, lessonNotes: lessonNotes, teacherId: teacherId, studentId: studentId, songIds: nil))
         }
+        
+        func canContinue() -> Bool {
+            return !lessonNotes.isEmpty
+        }
     }
 }
