@@ -62,7 +62,6 @@ struct MySongsScreen: View {
             }
         }
         .searchable(text: $searchText, prompt: "Search songs")
-        
         .task {
             guard let teacherId = UserDefaults.standard.string(forKey: "teacherID") else { return }
             let result = await SongsService().getSongsForTeacher(teacherId: teacherId)

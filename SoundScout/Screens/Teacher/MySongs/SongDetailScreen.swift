@@ -43,8 +43,8 @@ struct SongDetailScreen: View {
                         Button(action: {}) {
                             SSSecondaryNavigationButtonText(text: "Play")
                         }
-                        Button(action: {}) {
-                            SSSecondaryNavigationButtonText(text: "Interactive Exercises")
+                        NavigationLink(destination: ExercisesOverviewScreen(song: song)) {
+                            SSPrimaryNavigationButtonText(text: "Interactive Exercises", fullWidth: false)
                         }
                         
                         Spacer()

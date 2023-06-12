@@ -41,13 +41,13 @@ struct AddSongScreen: View {
             }
             
             SSTextField(title: "Teacher notes", text: $viewModel.teacherNotes, axis: .horizontal)
-                .padding(.bottom, 32)
-            
-            Text("Interactive exercise")
-                .padding(.bottom)
-            NavigationLink(destination: Text("Create interactive exercise")) {
-                SSSecondaryNavigationButtonText(text: "Create interactive exercise")
-            }
+//                .padding(.bottom, 32)
+//
+//            Text("Interactive exercise")
+//                .padding(.bottom)
+//            NavigationLink(destination: Text("Create interactive exercise")) {
+//                SSSecondaryNavigationButtonText(text: "Create interactive exercise")
+//            }
             .padding(.bottom, 64)
             
             Button(action: {
