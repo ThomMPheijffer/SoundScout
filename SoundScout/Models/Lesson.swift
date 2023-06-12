@@ -19,7 +19,7 @@ struct Lesson: Codable, Identifiable {
     let lessonNotes: String
     let teacherId: String
     let studentId: String
-    let songIds: [Song]?
+    let songs: [Song]?
 }
 
 struct PostLesson: Codable {
@@ -39,5 +39,5 @@ struct LessonWrapper: Identifiable, Hashable {
     }
     
     let id = UUID()
-    let lessons: [Lesson]
+    var lessons: [Lesson]
 }

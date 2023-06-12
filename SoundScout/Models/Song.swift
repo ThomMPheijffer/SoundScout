@@ -11,7 +11,7 @@ struct Songs: Codable {
     let songs: [Song]
 }
 
-struct Song: Codable {
+struct Song: Codable, Identifiable {
     let id: String
     let teacherId: String
     let title: String

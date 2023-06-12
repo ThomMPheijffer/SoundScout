@@ -27,29 +27,43 @@ struct TeacherLessonDetailsScreen: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 
-                SSContentBackground(padding: 32) {
-                    Text("Songs")
-                        .font(.title2)
-                        .bold()
-                        .padding(.bottom, 8)
-                    
-                    Divider()
-                        .padding(.horizontal, -32)
-                    
-                    ForEach(0..<4, id: \.self) { i in
-                        
-                        VStack {
+                if let unwrappedSongs = lesson.songs, unwrappedSongs.count > 0 {
+                    SSContentBackground(padding: 32, horizontalPaddingOnly: true) {
+                        Text("Songs")
+                            .font(.title2)
+                            .bold()
+                            .padding(.bottom, 8)
+                            .padding(.top, 32)
+
+                        Divider()
+                            .padding(.horizontal, -32)
+
+                        ForEach(0..<unwrappedSongs.count, id: \.self) { i in
                             HStack {
-                                Color.green
+                                if let coverUrl = URL(string: unwrappedSongs[i].coverUrl ?? "") {
+                                    AsyncImage(url: coverUrl) { image in
+                                        image
+                                            .resizable()
+                                            .scaledToFill()
+                                    } placeholder: {
+                                        Color.purple.opacity(0.1)
+                                    }
                                     .frame(width: 40, height: 40)
-                                Text("Thinking out loud")
-                                
+                                    .cornerRadius(4)
+                                    .shadow(radius: 2)
+                                } else {
+                                    Color.green
+                                        .frame(width: 40, height: 40)
+                                }
+                                VStack(alignment: .leading) {
+                                    Text(unwrappedSongs[i].title)
+                                    Text(unwrappedSongs[i].artist)
+                                        .foregroundColor(.secondary)
+                                }
+
                                 Spacer()
-                                
-                                Text("Ed Sheeran")
-                                    .foregroundColor(.secondary)
-                                
-                                NavigationLink(destination: TeacherSongDetailsScreen()) {
+
+                                NavigationLink(destination: TeacherSongDetailsScreen(song: unwrappedSongs[i])) {
                                     HStack {
                                         Text("Show material")
                                         Image(systemName: "chevron.right")
@@ -59,13 +73,12 @@ struct TeacherLessonDetailsScreen: View {
                                 }
                             }
                             .font(.callout)
-                            
-                        }
-                        .padding(i == 3 ? .top : .vertical, 8)
-                        
-                        if i != 3 {
-                            Divider()
-                                .padding(.horizontal, -32)
+                            .padding(.vertical)
+
+                            if i != (unwrappedSongs.count - 1) {
+                                Divider()
+                                    .padding(.horizontal, -32)
+                            }
                         }
                     }
                 }

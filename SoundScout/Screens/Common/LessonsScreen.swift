@@ -83,7 +83,15 @@ struct LessonsScreen: View {
                     wrapper.append(LessonWrapper(lessons: lessons))
                 }
                 
-                self.lessonWrapper = wrapper
+                var sortedWrapper = [LessonWrapper]()
+                for wrapperElement in wrapper {
+                    let sortedLessons = wrapperElement.lessons.sorted { first, second in
+                        first.lessonDate > second.lessonDate
+                    }
+                    sortedWrapper.append(LessonWrapper(lessons: sortedLessons))
+                }
+                
+                self.lessonWrapper = sortedWrapper
             case .failure(let failure):
                 print(failure)
             }

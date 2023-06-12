@@ -29,7 +29,7 @@
 		4EC8DD302A2291C90065F575 /* StudentSongDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8DD2F2A2291C90065F575 /* StudentSongDetailsScreen.swift */; };
 		4EC8DD322A2375CF0065F575 /* StudentExercisesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8DD312A2375CF0065F575 /* StudentExercisesScreen.swift */; };
 		4EC8DD382A24EDBC0065F575 /* TeacherLessonDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8DD372A24EDBC0065F575 /* TeacherLessonDetailsScreen.swift */; };
-		4EC8DD3A2A24EF2E0065F575 /* TeacherSongDeatilsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8DD392A24EF2E0065F575 /* TeacherSongDeatilsScreen.swift */; };
+		4EC8DD3A2A24EF2E0065F575 /* TeacherSongDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8DD392A24EF2E0065F575 /* TeacherSongDetailsScreen.swift */; };
 		4EC8DD3C2A24F11C0065F575 /* TeacherRecordExerciseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8DD3B2A24F11C0065F575 /* TeacherRecordExerciseScreen.swift */; };
 		4EC8DD422A2E0ADC0065F575 /* SongEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8DD412A2E0ADC0065F575 /* SongEndpoint.swift */; };
 		4EC8DD442A2E0B890065F575 /* SongsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8DD432A2E0B890065F575 /* SongsService.swift */; };
@@ -47,6 +47,7 @@
 		DC7ACFB52A370E05005B8466 /* ExercisesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7ACFB42A370E05005B8466 /* ExercisesService.swift */; };
 		DC7ACFB72A3714B6005B8466 /* CreateExerciseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7ACFB62A3714B6005B8466 /* CreateExerciseScreen.swift */; };
 		DC7ACFBA2A371574005B8466 /* CreateExerciseScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7ACFB92A371574005B8466 /* CreateExerciseScreenViewModel.swift */; };
+		DC7ACFBC2A3724B7005B8466 /* SelectSongScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7ACFBB2A3724B7005B8466 /* SelectSongScreen.swift */; };
 		DCA07E882A1F77AD00C3BB3B /* TeacherProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA07E872A1F77AD00C3BB3B /* TeacherProfileScreen.swift */; };
 		DCA07E8A2A1F85CB00C3BB3B /* StudentProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA07E892A1F85CB00C3BB3B /* StudentProfileScreen.swift */; };
 		DCC84C7D2A27931A00A9F423 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC84C7C2A27931A00A9F423 /* Endpoint.swift */; };
@@ -118,7 +119,7 @@
 		4EC8DD2F2A2291C90065F575 /* StudentSongDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentSongDetailsScreen.swift; sourceTree = "<group>"; };
 		4EC8DD312A2375CF0065F575 /* StudentExercisesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentExercisesScreen.swift; sourceTree = "<group>"; };
 		4EC8DD372A24EDBC0065F575 /* TeacherLessonDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherLessonDetailsScreen.swift; sourceTree = "<group>"; };
-		4EC8DD392A24EF2E0065F575 /* TeacherSongDeatilsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherSongDeatilsScreen.swift; sourceTree = "<group>"; };
+		4EC8DD392A24EF2E0065F575 /* TeacherSongDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherSongDetailsScreen.swift; sourceTree = "<group>"; };
 		4EC8DD3B2A24F11C0065F575 /* TeacherRecordExerciseScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherRecordExerciseScreen.swift; sourceTree = "<group>"; };
 		4EC8DD412A2E0ADC0065F575 /* SongEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongEndpoint.swift; sourceTree = "<group>"; };
 		4EC8DD432A2E0B890065F575 /* SongsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsService.swift; sourceTree = "<group>"; };
@@ -135,6 +136,7 @@
 		DC7ACFB42A370E05005B8466 /* ExercisesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesService.swift; sourceTree = "<group>"; };
 		DC7ACFB62A3714B6005B8466 /* CreateExerciseScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateExerciseScreen.swift; sourceTree = "<group>"; };
 		DC7ACFB92A371574005B8466 /* CreateExerciseScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateExerciseScreenViewModel.swift; sourceTree = "<group>"; };
+		DC7ACFBB2A3724B7005B8466 /* SelectSongScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSongScreen.swift; sourceTree = "<group>"; };
 		DCA07E872A1F77AD00C3BB3B /* TeacherProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherProfileScreen.swift; sourceTree = "<group>"; };
 		DCA07E892A1F85CB00C3BB3B /* StudentProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentProfileScreen.swift; sourceTree = "<group>"; };
 		DCC84C7C2A27931A00A9F423 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -529,7 +531,7 @@
 				4EC8DD372A24EDBC0065F575 /* TeacherLessonDetailsScreen.swift */,
 				DC7ACFAD2A370B62005B8466 /* InteractiveExercises */,
 				DCEB3C882A339B04005FC601 /* CreateLessonScreen */,
-				4EC8DD392A24EF2E0065F575 /* TeacherSongDeatilsScreen.swift */,
+				4EC8DD392A24EF2E0065F575 /* TeacherSongDetailsScreen.swift */,
 				4EC8DD3B2A24F11C0065F575 /* TeacherRecordExerciseScreen.swift */,
 				DC24C5F22A2E00E1001C5845 /* NotUsed */,
 			);
@@ -565,6 +567,7 @@
 			children = (
 				DCEB3C862A3382DC005FC601 /* CreateLessonScreen.swift */,
 				DCEB3C892A339B22005FC601 /* CreateLessonScreenViewModel.swift */,
+				DC7ACFBB2A3724B7005B8466 /* SelectSongScreen.swift */,
 			);
 			path = CreateLessonScreen;
 			sourceTree = "<group>";
@@ -649,6 +652,7 @@
 			files = (
 				DCD409692A1A30CE008220F1 /* SSCheckbox.swift in Sources */,
 				DCC84C902A2797AF00A9F423 /* TeacherEndpoint.swift in Sources */,
+				DC7ACFBC2A3724B7005B8466 /* SelectSongScreen.swift in Sources */,
 				DCC84CAE2A28C30A00A9F423 /* LoginScreenViewModel.swift in Sources */,
 				DCC84C922A2797EE00A9F423 /* TeachersService.swift in Sources */,
 				4EC8DD2E2A1FB6540065F575 /* StudentLessonDetailScreen.swift in Sources */,
@@ -715,7 +719,7 @@
 				4EC8DD322A2375CF0065F575 /* StudentExercisesScreen.swift in Sources */,
 				4EC8DCF82A1A8E9D0065F575 /* FindTeachersScreen.swift in Sources */,
 				DCEB3C902A33ADE1005FC601 /* Lesson.swift in Sources */,
-				4EC8DD3A2A24EF2E0065F575 /* TeacherSongDeatilsScreen.swift in Sources */,
+				4EC8DD3A2A24EF2E0065F575 /* TeacherSongDetailsScreen.swift in Sources */,
 				DCC84C852A27933400A9F423 /* InstrumentsEndpoint.swift in Sources */,
 				DCC84C992A27B3EB00A9F423 /* BasicSignUpInformation.swift in Sources */,
 				4EC8DD2A2A1F90DB0065F575 /* TeacherHomeScreen.swift in Sources */,
