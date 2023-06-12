@@ -75,6 +75,6 @@ struct SongDetailScreen: View {
             }
         }
         .padding()
-        .navigationTitle("Thinking out loud")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }

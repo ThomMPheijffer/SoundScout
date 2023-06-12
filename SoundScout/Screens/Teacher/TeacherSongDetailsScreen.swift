@@ -53,7 +53,7 @@ struct TeacherSongDetailsScreen: View {
                                 SSSecondaryNavigationButtonText(text: "Play")
                             }
                             
-                            NavigationLink(destination: StudentExercisesScreen()) {
+                            NavigationLink(destination: ExercisesOverviewScreen(song: song)) {
                                 SSPrimaryNavigationButtonText(text: "Exercises", fullWidth: false)
                             }
                         }
