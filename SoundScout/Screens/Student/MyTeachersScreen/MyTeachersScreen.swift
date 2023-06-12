@@ -17,7 +17,7 @@ struct MyTeachersScreen: View {
         ScrollView {
             LazyVGrid(columns: columns, alignment: .leading, spacing: 16) {
                 ForEach(teachers) { teacher in
-                    NavigationLink(destination: TeacherProfileScreen(loadedTeacher: teacher)) {
+                    NavigationLink(destination: LessonsScreen(student: nil, teacher: teacher)) {
                         HStack {
                             Color.blue
                                 .frame(width: 80, height: 80)

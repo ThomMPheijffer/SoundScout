@@ -15,62 +15,69 @@ struct StudentSongDetailsScreen: View {
     ]
     
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Color.green
-                    .frame(width: 220, height: 220)
-                
-                VStack(alignment: .leading) {
-                    Text("Thinking out loud")
-                        .font(.title2)
-                        .bold()
-                        .padding(.bottom, 8)
-                    Text("Ed Sheeran")
-                        .font(.body)
-                        .foregroundColor(.secondary)
-                        .padding(.bottom, 125)
+        ScrollView {
+            VStack(alignment: .leading) {
+                HStack {
+                    Color.green
+                        .frame(width: 220, height: 220)
                     
-                    HStack {
-                        Button(action: {}) {
-                            SSSecondaryNavigationButtonText(text: "Play")
-                        }.padding(16)
-                        
-                        NavigationLink(destination: StudentExercisesScreen()) {
-                            SSPrimaryNavigationButtonText(text: "Exercises", fullWidth: false)
-                        }
-                    }
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding()
-            }
-            
-            SSContentBackground(padding: 32) {
-                Text( "Teacher notes")
-                    .font(.title2)
-                    .bold()
-                    .padding(.bottom, 8)
-                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ultricies felis eu enim consequat, nec luctus enim posuere. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque hendrerit nunc nunc, at cursus tortor interdum at. Ut eget vehicula lacus. Nam non fermentum nulla.")
-            }
-
-            SSContentBackground(padding: 32) {
-                HStack(alignment: .top) {
                     VStack(alignment: .leading) {
-                        Text("Additional resources")
+                        Text("Thinking out loud")
                             .font(.title2)
                             .bold()
                             .padding(.bottom, 8)
-                        ForEach(0..<additionalResources.count, id: \.self) { i in
-                            HStack {
-                                Image(systemName: "doc")
-                                Text(additionalResources[i])
+                        Text("Ed Sheeran")
+                            .font(.body)
+                            .foregroundColor(.secondary)
+                        
+                        Spacer()
+                        
+                        HStack(spacing: 16) {
+                            Button(action: {}) {
+                                SSSecondaryNavigationButtonText(text: "Play")
                             }
-                            .font(.callout)
+                            
+                            NavigationLink(destination: StudentExercisesScreen()) {
+                                SSPrimaryNavigationButtonText(text: "Exercises", fullWidth: false)
+                            }
                         }
                     }
-                    Spacer()
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.leading)
                 }
+                .padding(.bottom, 32)
+                
+                SSContentBackground(padding: 32) {
+                    Text( "Teacher notes")
+                        .font(.title2)
+                        .bold()
+                        .padding(.bottom, 8)
+                    Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ultricies felis eu enim consequat, nec luctus enim posuere. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque hendrerit nunc nunc, at cursus tortor interdum at. Ut eget vehicula lacus. Nam non fermentum nulla.")
+                }
+                .padding(.bottom, 32)
+                
+                SSContentBackground(padding: 32) {
+                    HStack(alignment: .top) {
+                        VStack(alignment: .leading) {
+                            Text("Additional resources")
+                                .font(.title2)
+                                .bold()
+                                .padding(.bottom, 8)
+                            ForEach(0..<additionalResources.count, id: \.self) { i in
+                                HStack {
+                                    Image(systemName: "doc")
+                                    Text(additionalResources[i])
+                                }
+                                .font(.callout)
+                            }
+                        }
+                        Spacer()
+                    }
+                }
+                
             }
-
-        }.padding()
+            .padding(.horizontal)
+            .navigationBarTitleDisplayMode(.inline)
+        }
     }
 }

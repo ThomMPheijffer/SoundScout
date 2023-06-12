@@ -93,7 +93,7 @@ struct LessonsScreen: View {
     @ViewBuilder
     func destinationForSelectionView(lesson: Lesson) -> some View {
         if teacher != nil {
-            StudentLessonDetailsScreen()
+            StudentLessonDetailsScreen(lesson: lesson)
         } else if student != nil {
             TeacherLessonDetailsScreen(lesson: lesson)
         } else {
