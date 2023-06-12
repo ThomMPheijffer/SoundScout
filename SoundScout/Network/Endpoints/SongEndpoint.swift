@@ -8,21 +8,23 @@
 import Foundation
 
 enum SongEndpoint {
-    case getSongs
+    case getSongsForTeacher(teacherId: String)
     case postSong(song: PostSong)
 }
 
 extension SongEndpoint: Endpoint {
     var path: String {
         switch self {
-        case .getSongs, .postSong:
+        case .getSongsForTeacher(let teacherId):
+            return "/songs/user/\(teacherId)"
+        case .postSong:
             return "/songs"
         }
     }
 
     var method: RequestMethod {
         switch self {
-        case .getSongs:
+        case .getSongsForTeacher:
             return .get
         case .postSong:
             return .post
@@ -32,7 +34,7 @@ extension SongEndpoint: Endpoint {
     
     var body: (any Codable)? {
         switch self {
-        case .getSongs:
+        case .getSongsForTeacher:
             return nil
         case .postSong(let song):
             return song

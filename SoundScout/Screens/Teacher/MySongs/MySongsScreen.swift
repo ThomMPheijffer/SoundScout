@@ -64,7 +64,8 @@ struct MySongsScreen: View {
         .searchable(text: $searchText, prompt: "Search songs")
         
         .task {
-            let result = await SongsService().getAllSongs()
+            guard let teacherId = UserDefaults.standard.string(forKey: "teacherID") else { return }
+            let result = await SongsService().getSongsForTeacher(teacherId: teacherId)
             switch result {
             case .success(let songs):
                 print(songs)
