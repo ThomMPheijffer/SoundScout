@@ -65,6 +65,9 @@ struct SearchSongScreen: View {
     @EnvironmentObject var spotify: Spotify
     @ObservedObject var viewModel = SearchSongViewModel()
     
+    var onSelectSong: ((Track) -> Void)? = nil
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
         NavigationStack {
             Group {
@@ -73,21 +76,27 @@ struct SearchSongScreen: View {
                 } else {
                     List {
                         ForEach(viewModel.tracks, id: \.self) { track in
-                            HStack {
-                                AsyncImage(url: track.album?.images?.first?.url) { image in
-                                    image
-                                        .resizable()
-                                        .scaledToFill()
-                                } placeholder: {
-                                    Color.purple.opacity(0.1)
+                            Button(action: { onSelectSong?(track); dismiss() }) {
+                                HStack {
+                                    AsyncImage(url: track.album?.images?.first?.url) { image in
+                                        image
+                                            .resizable()
+                                            .scaledToFill()
+                                    } placeholder: {
+                                        Color.purple.opacity(0.1)
+                                    }
+                                    .frame(width: 40, height: 40)
+                                    .cornerRadius(4)
+                                    
+                                    VStack(alignment: .leading) {
+                                        Text(track.name)
+                                        Text(track.artists?.first?.name ?? "")
+                                            .foregroundColor(.secondary)
+                                            .font(.subheadline)
+                                    }
                                 }
-                                .frame(width: 30, height: 30)
-                                .cornerRadius(4)
-                                
-                                Text(track.name)
-                                Text(track.artists?.first?.name ?? "")
+                                .foregroundColor(.primary)
                             }
-                            .foregroundColor(.primary)
                         }
                     }
                 }
