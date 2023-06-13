@@ -10,6 +10,7 @@ import Foundation
 protocol ExercisesServiceable {
     func getExercises(songId: String) async -> Result<Exercises, RequestError>
     func postExercise(exercise: PostExercise) async -> Result<Exercise, RequestError>
+    func postDocumentToExercise(exerciseId: String, document: DocumentUpload) async -> Result<Exercise, RequestError>
 }
 
 struct ExercisesService: HTTPClient, ExercisesServiceable {
@@ -19,5 +20,9 @@ struct ExercisesService: HTTPClient, ExercisesServiceable {
     
     func postExercise(exercise: PostExercise) async -> Result<Exercise, RequestError> {
         await sendRequest(endpoint: ExercisesEndpoint.postExercise(exercise: exercise), responseModel: Exercise.self)
+    }
+    
+    func postDocumentToExercise(exerciseId: String, document: DocumentUpload) async -> Result<Exercise, RequestError> {
+        await sendRequest(endpoint: ExercisesEndpoint.postDocumentToExercise(exerciseId: exerciseId, document: document), responseModel: Exercise.self)
     }
 }

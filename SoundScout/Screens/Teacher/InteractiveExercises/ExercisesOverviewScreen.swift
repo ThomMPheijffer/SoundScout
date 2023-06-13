@@ -14,7 +14,7 @@ struct ExercisesOverviewScreen: View {
     var body: some View {
         List {
             ForEach(exercises, id: \.title) { exercise in
-                NavigationLink(destination: Text(exercise.title)) {
+                NavigationLink(destination: ExerciseDetailScreen(song: song, exercise: exercise)) {
                     HStack(spacing: 0) {
                         if let coverUrl = URL(string: song.coverUrl ?? "") {
                             AsyncImage(url: coverUrl) { image in

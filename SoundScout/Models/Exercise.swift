@@ -23,3 +23,7 @@ struct PostExercise: Codable {
     let title: String
     let tempo: Int
 }
+
+struct DocumentUpload: Codable {
+    let document: Data
+}
