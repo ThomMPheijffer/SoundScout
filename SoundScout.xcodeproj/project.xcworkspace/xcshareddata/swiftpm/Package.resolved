@@ -19,6 +19,15 @@
       }
     },
     {
+      "identity" : "pspdfkit-sp",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/PSPDFKit/PSPDFKit-SP",
+      "state" : {
+        "revision" : "612f0c3e86a8a6c5a9fac87da9b990ce836c3214",
+        "version" : "12.3.0"
+      }
+    },
+    {
       "identity" : "regularexpressions",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Peter-Schorn/RegularExpressions.git",

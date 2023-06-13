@@ -50,6 +50,8 @@
 		DC7ACFBC2A3724B7005B8466 /* SelectSongScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7ACFBB2A3724B7005B8466 /* SelectSongScreen.swift */; };
 		DC7ACFBE2A377E71005B8466 /* ExerciseDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7ACFBD2A377E71005B8466 /* ExerciseDetailScreen.swift */; };
 		DC7ACFC02A38F782005B8466 /* samplePDF.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DC7ACFBF2A38F782005B8466 /* samplePDF.pdf */; };
+		DC7ACFC32A38FADA005B8466 /* PSPDFKit in Frameworks */ = {isa = PBXBuildFile; productRef = DC7ACFC22A38FADA005B8466 /* PSPDFKit */; };
+		DC7ACFC52A38FB18005B8466 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7ACFC42A38FB18005B8466 /* TestView.swift */; };
 		DCA07E882A1F77AD00C3BB3B /* TeacherProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA07E872A1F77AD00C3BB3B /* TeacherProfileScreen.swift */; };
 		DCA07E8A2A1F85CB00C3BB3B /* StudentProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA07E892A1F85CB00C3BB3B /* StudentProfileScreen.swift */; };
 		DCC84C7D2A27931A00A9F423 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC84C7C2A27931A00A9F423 /* Endpoint.swift */; };
@@ -141,6 +143,7 @@
 		DC7ACFBB2A3724B7005B8466 /* SelectSongScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSongScreen.swift; sourceTree = "<group>"; };
 		DC7ACFBD2A377E71005B8466 /* ExerciseDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailScreen.swift; sourceTree = "<group>"; };
 		DC7ACFBF2A38F782005B8466 /* samplePDF.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = samplePDF.pdf; sourceTree = "<group>"; };
+		DC7ACFC42A38FB18005B8466 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		DCA07E872A1F77AD00C3BB3B /* TeacherProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherProfileScreen.swift; sourceTree = "<group>"; };
 		DCA07E892A1F85CB00C3BB3B /* StudentProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentProfileScreen.swift; sourceTree = "<group>"; };
 		DCC84C7C2A27931A00A9F423 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -196,6 +199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC4C54A72A1E461B00E8141C /* KeychainAccess in Frameworks */,
+				DC7ACFC32A38FADA005B8466 /* PSPDFKit in Frameworks */,
 				DC4C54A12A1E436900E8141C /* SpotifyAPI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -492,6 +496,7 @@
 				DCD4095D2A1A168C008220F1 /* Teacher */,
 				DCCD076C2A1634F3002CB449 /* Onboarding */,
 				4E78014E2A1A1B5100E3B385 /* SelectInstrumentsScreen.swift */,
+				DC7ACFC42A38FB18005B8466 /* TestView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -597,6 +602,7 @@
 			packageProductDependencies = (
 				DC4C54A02A1E436900E8141C /* SpotifyAPI */,
 				DC4C54A62A1E461B00E8141C /* KeychainAccess */,
+				DC7ACFC22A38FADA005B8466 /* PSPDFKit */,
 			);
 			productName = SoundScout;
 			productReference = DCCD07532A1625C4002CB449 /* SoundScout.app */;
@@ -629,6 +635,7 @@
 			packageReferences = (
 				DC4C549F2A1E436900E8141C /* XCRemoteSwiftPackageReference "SpotifyAPI" */,
 				DC4C54A52A1E461B00E8141C /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				DC7ACFC12A38FADA005B8466 /* XCRemoteSwiftPackageReference "PSPDFKit-SP" */,
 			);
 			productRefGroup = DCCD07542A1625C4002CB449 /* Products */;
 			projectDirPath = "";
@@ -733,6 +740,7 @@
 				4EC8DD2A2A1F90DB0065F575 /* TeacherHomeScreen.swift in Sources */,
 				4EC8DD1E2A1F8DD70065F575 /* StudentHomeScreen.swift in Sources */,
 				DC43EA0F2A1BCBCA00C08056 /* AddSongScreen.swift in Sources */,
+				DC7ACFC52A38FB18005B8466 /* TestView.swift in Sources */,
 				DCC84CA72A28C16800A9F423 /* UserEndpoint.swift in Sources */,
 				DCC84C872A27934700A9F423 /* InstrumentsService.swift in Sources */,
 				4EC8DD302A2291C90065F575 /* StudentSongDetailsScreen.swift in Sources */,
@@ -967,6 +975,14 @@
 				minimumVersion = 4.2.1;
 			};
 		};
+		DC7ACFC12A38FADA005B8466 /* XCRemoteSwiftPackageReference "PSPDFKit-SP" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/PSPDFKit/PSPDFKit-SP";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -979,6 +995,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DC4C54A52A1E461B00E8141C /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
+		};
+		DC7ACFC22A38FADA005B8466 /* PSPDFKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DC7ACFC12A38FADA005B8466 /* XCRemoteSwiftPackageReference "PSPDFKit-SP" */;
+			productName = PSPDFKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
