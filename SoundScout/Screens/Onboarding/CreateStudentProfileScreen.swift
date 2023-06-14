@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import CoreLocation
 
 struct CreateStudentProfileScreen: View {
     @StateObject var locationManager = LocationManager()

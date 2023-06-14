@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct CreateTeacherProfileScreen: View {
+    @StateObject var locationManager = LocationManager()
     @EnvironmentObject private var navigationManager: NavigationManager
     @EnvironmentObject private var spotify: Spotify
     
     let basicUserInfo: BasicSignUpInformation
     @ObservedObject var viewModel = ViewModel()
-    
-    @State private var selectedIndex = 0
     
     var body: some View {
         HStack {
@@ -30,8 +29,28 @@ struct CreateTeacherProfileScreen: View {
                     
                     Spacer()
                     
-                    NavigationLink(destination: Text("Profile picture")) {
-                        SSSecondaryNavigationButtonText(text: "Select profile picture")
+                    if viewModel.imageUrl != nil {
+                        Image(uiImage: .init(data: try! .init(contentsOf: viewModel.imageUrl!))!)
+                            .resizable()
+                            .scaledToFill()
+                            .clipShape(Circle())
+                            .frame(width: 50, height: 50)
+                            .background {
+                                Circle().fill(
+                                    LinearGradient(
+                                        colors: [.yellow, .orange],
+                                        startPoint: .top,
+                                        endPoint: .bottom
+                                    )
+                                )
+                            }
+                    } else {
+                        Button(action: {  viewModel.showingImagePicker = true }) {
+                            SSSecondaryNavigationButtonText(text: "Select profile picture")
+                        }
+                        .sheet(isPresented: $viewModel.showingImagePicker) {
+                            SSImagePicker(selectedImageURL: $viewModel.imageUrl)
+                        }
                     }
                 }.padding(.bottom, 64)
                 
@@ -41,28 +60,29 @@ struct CreateTeacherProfileScreen: View {
                 SSTextField(title: "Relevant education/prior experience", text: $viewModel.priorExperience, axis: .vertical)
                     .padding(.bottom, 16)
                 
-//                Text("I prefer teaching")
-//                    .font(.title3)
-//                    .padding(.bottom, 16)
-//                HStack {
-//                    SSSegmentedControlButton(selectedIndex: $selectedIndex, index: 0, text: "Online")
-//                    Spacer()
-//                        .frame(width: 16)
-//                    SSSegmentedControlButton(selectedIndex: $selectedIndex, index: 1, text: "In-person")
-//                    Spacer()
-//                        .frame(width: 16)
-//                    SSSegmentedControlButton(selectedIndex: $selectedIndex, index: 2, text: "Both")
-//                }
-//                .padding(.top, 8)
-//                .padding(.bottom, 32)
-                
                 Text("I can teach")
                     .font(.title3)
                     .padding(.bottom, 16)
                 NavigationLink(destination: SelectInstrumentsScreen(selectedIds: $viewModel.selectedInstrumentIds)) {
                     SSSecondaryNavigationButtonText(text: "Select instruments \(viewModel.selectedInstrumentIds.count > 0 ? "(\(viewModel.selectedInstrumentIds.count) selected)": "")", fullWidth: true)
                 }
-                .padding(.bottom, 32)
+                .padding(.bottom, 16)
+                
+                Text("Location")
+                    .font(.title3)
+                    .padding(.bottom)
+                
+                if locationManager.location != nil {
+                    Text(viewModel.addressText)
+                        .foregroundColor(.secondary)
+                } else {
+                    Button(action: {
+                        locationManager.requestLocation()
+                    }) {
+                        SSPrimaryNavigationButtonText(text: "Give access to current location", fullWidth: false)
+                    }
+                    .padding(.bottom, 32)
+                }
                 
                 Spacer()
                 
@@ -73,6 +93,7 @@ struct CreateTeacherProfileScreen: View {
                         case .success(let success):
                             print(success)
                             UserDefaults.standard.set(success.teacher.userId, forKey: "teacherUserID")
+                            UserDefaults.standard.set(success.teacher.id, forKey: "teacherID")
                             
                             let vc = UIHostingController(rootView: TeacherContentView().environmentObject(navigationManager).environmentObject(spotify))
                             replaceKeyWindow(with: vc)
@@ -91,6 +112,9 @@ struct CreateTeacherProfileScreen: View {
         }
         .padding()
         .padding(.leading)
+        .onChange(of: locationManager.location) { newValue in
+            viewModel.getCityName(for: locationManager.location)
+        }
     }
 }
 

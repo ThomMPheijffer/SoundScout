@@ -10,7 +10,7 @@ import Foundation
 enum TeacherEndpoint {
     case getTeachers
     case getTeacherDetails(id: String)
-    case postTeacher(teacher: SignUpTeacher)
+    case postTeacher(teacherMultipartForm: MultipartRequest)
     case getStudents(teacherId: String)
 }
 
@@ -39,10 +39,17 @@ extension TeacherEndpoint: Endpoint {
     
     var body: (any Codable)? {
         switch self {
+        case .getTeachers, .getTeacherDetails, .getStudents, .postTeacher:
+            return nil
+        }
+    }
+    
+    var multipartRequest: MultipartRequest? {
+        switch self {
         case .getTeachers, .getTeacherDetails, .getStudents:
             return nil
-        case .postTeacher(let teacher):
-            return teacher
+        case .postTeacher(let multipartform):
+            return multipartform
         }
     }
 }

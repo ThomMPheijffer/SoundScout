@@ -41,7 +41,7 @@ extension CreateStudentProfileScreen {
             
             var multipart = MultipartRequest()
             multipart.add(key: "payload", value: student.stringified())
-            multipart.add(key: "profilePicture", fileName: "pic.jpeg", fileMimeType: "image/jpeg", fileData: imageData)
+            multipart.add(key: "profilePicture", fileName: "\(UUID().uuidString).jpeg", fileMimeType: "image/jpeg", fileData: imageData)
             
             let result = await StudentsService()
                 .postStudent(studentMultipartForm: multipart)
