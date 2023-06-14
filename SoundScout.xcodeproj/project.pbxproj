@@ -49,9 +49,8 @@
 		DC7ACFBA2A371574005B8466 /* CreateExerciseScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7ACFB92A371574005B8466 /* CreateExerciseScreenViewModel.swift */; };
 		DC7ACFBC2A3724B7005B8466 /* SelectSongScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7ACFBB2A3724B7005B8466 /* SelectSongScreen.swift */; };
 		DC7ACFBE2A377E71005B8466 /* ExerciseDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7ACFBD2A377E71005B8466 /* ExerciseDetailScreen.swift */; };
-		DC7ACFC02A38F782005B8466 /* samplePDF.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DC7ACFBF2A38F782005B8466 /* samplePDF.pdf */; };
 		DC7ACFC32A38FADA005B8466 /* PSPDFKit in Frameworks */ = {isa = PBXBuildFile; productRef = DC7ACFC22A38FADA005B8466 /* PSPDFKit */; };
-		DC7ACFC52A38FB18005B8466 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7ACFC42A38FB18005B8466 /* TestView.swift */; };
+		DC7ACFCB2A390A62005B8466 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7ACFCA2A390A62005B8466 /* MultipartFormData.swift */; };
 		DCA07E882A1F77AD00C3BB3B /* TeacherProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA07E872A1F77AD00C3BB3B /* TeacherProfileScreen.swift */; };
 		DCA07E8A2A1F85CB00C3BB3B /* StudentProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA07E892A1F85CB00C3BB3B /* StudentProfileScreen.swift */; };
 		DCC84C7D2A27931A00A9F423 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC84C7C2A27931A00A9F423 /* Endpoint.swift */; };
@@ -142,8 +141,7 @@
 		DC7ACFB92A371574005B8466 /* CreateExerciseScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateExerciseScreenViewModel.swift; sourceTree = "<group>"; };
 		DC7ACFBB2A3724B7005B8466 /* SelectSongScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSongScreen.swift; sourceTree = "<group>"; };
 		DC7ACFBD2A377E71005B8466 /* ExerciseDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailScreen.swift; sourceTree = "<group>"; };
-		DC7ACFBF2A38F782005B8466 /* samplePDF.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = samplePDF.pdf; sourceTree = "<group>"; };
-		DC7ACFC42A38FB18005B8466 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		DC7ACFCA2A390A62005B8466 /* MultipartFormData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartFormData.swift; sourceTree = "<group>"; };
 		DCA07E872A1F77AD00C3BB3B /* TeacherProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherProfileScreen.swift; sourceTree = "<group>"; };
 		DCA07E892A1F85CB00C3BB3B /* StudentProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentProfileScreen.swift; sourceTree = "<group>"; };
 		DCC84C7C2A27931A00A9F423 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -331,9 +329,18 @@
 			path = CreateExerciseScreen;
 			sourceTree = "<group>";
 		};
+		DC7ACFC92A390A54005B8466 /* MultipartFormData */ = {
+			isa = PBXGroup;
+			children = (
+				DC7ACFCA2A390A62005B8466 /* MultipartFormData.swift */,
+			);
+			path = MultipartFormData;
+			sourceTree = "<group>";
+		};
 		DCC84C782A2792CB00A9F423 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				DC7ACFC92A390A54005B8466 /* MultipartFormData */,
 				DCC84C792A2792D000A9F423 /* Base */,
 				DCC84C7A2A2792D300A9F423 /* Endpoints */,
 				DCC84C7B2A2792D700A9F423 /* Services */,
@@ -458,7 +465,6 @@
 				DCCD076B2A1634EB002CB449 /* Screens */,
 				DC4C54A22A1E441400E8141C /* Utils */,
 				DCCD07642A162980002CB449 /* Constants.swift */,
-				DC7ACFBF2A38F782005B8466 /* samplePDF.pdf */,
 				DCCD075A2A1625C5002CB449 /* Assets.xcassets */,
 				DCCD075C2A1625C5002CB449 /* Preview Content */,
 			);
@@ -496,7 +502,6 @@
 				DCD4095D2A1A168C008220F1 /* Teacher */,
 				DCCD076C2A1634F3002CB449 /* Onboarding */,
 				4E78014E2A1A1B5100E3B385 /* SelectInstrumentsScreen.swift */,
-				DC7ACFC42A38FB18005B8466 /* TestView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -653,7 +658,6 @@
 			files = (
 				DCCD075E2A1625C5002CB449 /* Preview Assets.xcassets in Resources */,
 				DCCD075B2A1625C5002CB449 /* Assets.xcassets in Resources */,
-				DC7ACFC02A38F782005B8466 /* samplePDF.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -703,6 +707,7 @@
 				DCC84C7D2A27931A00A9F423 /* Endpoint.swift in Sources */,
 				DCC84CA32A27BD6900A9F423 /* Location.swift in Sources */,
 				DCC84CA52A28AE1400A9F423 /* CreateTeacherProfileScreenViewModel.swift in Sources */,
+				DC7ACFCB2A390A62005B8466 /* MultipartFormData.swift in Sources */,
 				DC7ACFB12A370C74005B8466 /* Exercise.swift in Sources */,
 				DCC84C7F2A27932200A9F423 /* HTTPClient.swift in Sources */,
 				DC43EA112A1BCD7000C08056 /* SongDetailScreen.swift in Sources */,
@@ -740,7 +745,6 @@
 				4EC8DD2A2A1F90DB0065F575 /* TeacherHomeScreen.swift in Sources */,
 				4EC8DD1E2A1F8DD70065F575 /* StudentHomeScreen.swift in Sources */,
 				DC43EA0F2A1BCBCA00C08056 /* AddSongScreen.swift in Sources */,
-				DC7ACFC52A38FB18005B8466 /* TestView.swift in Sources */,
 				DCC84CA72A28C16800A9F423 /* UserEndpoint.swift in Sources */,
 				DCC84C872A27934700A9F423 /* InstrumentsService.swift in Sources */,
 				4EC8DD302A2291C90065F575 /* StudentSongDetailsScreen.swift in Sources */,

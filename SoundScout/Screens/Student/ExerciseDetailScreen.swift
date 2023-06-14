@@ -13,6 +13,10 @@ struct ExerciseDetailScreen: View {
     
     @State var practises = [Exercise]()
     
+    @State var importFile = false
+    @State var selectedURL: URL? = nil
+    @State var added = false
+    
     var body: some View {
         HStack(spacing: 0) {
             ScrollView {
@@ -125,31 +129,50 @@ struct ExerciseDetailScreen: View {
                 
                 Spacer()
                 
-                Button(action: {
-                    print("upload tapped")
-                    let urlPath = Bundle.main.url(forResource: "samplePDF", withExtension: "pdf")
-                    print(urlPath)
-                    let data = try! Data(contentsOf: urlPath!)
-                    print(data)
-                    
+                Button {
+                    importFile = true
+                } label: {
+                    Text("Browse files")
+                }
+                .onChange(of: added) { newValue in
                     Task {
-                        let result = await ExercisesService().postDocumentToExercise(exerciseId: exercise.id, document: .init(document: data))
-                        print(result)
-                        switch result {
-                        case .success(let success):
-                            print(success)
-                        case .failure(let failure):
-                            print(failure)
-                        }
+                        guard let urlPath = selectedURL else { return }
+                        selectedURL = nil
+                        added = false
+                        
+                        let pdfData = try! Data(contentsOf: urlPath)
+                        
+                        var multipart = MultipartRequest()
+                        
+                        multipart.add(
+                            key: "document",
+                            fileName: "Test.pdf",
+                            fileMimeType: "application/pdf",
+                            fileData: pdfData
+                        )
+                        
+                        /// Create a regular HTTP URL request & use multipart components
+                        let url = URL(string: "https://api-ztqk.onrender.com/exercises/6486dfab7ca2611e33302ecd/add-document")!
+                        var request = URLRequest(url: url)
+                        request.httpMethod = "POST"
+                        request.setValue(multipart.httpContentTypeHeadeValue, forHTTPHeaderField: "Content-Type")
+                        request.httpBody = multipart.httpBody
+                        
+                        /// Fire the request using URL sesson or anything else...
+                        let (data, response) = try await URLSession.shared.data(for: request)
+                        
+                        print((response as! HTTPURLResponse).statusCode)
+                        print(String(data: data, encoding: .utf8)!)
                     }
-                }) {
-                    Text("UPLOAD")
                 }
             }
             .frame(width: UIScreen.main.bounds.width / 4)
         }
         .navigationTitle(exercise.title)
         .navigationBarTitleDisplayMode(.large)
+        .sheet(isPresented: $importFile) {
+            ProjectDocumentPicker(selectedUrl: $selectedURL, added: $added)
+        }
     }
 }
 
@@ -158,4 +181,49 @@ struct ExerciseDetailScreen_Previews: PreviewProvider {
     static var previews: some View {
         ExerciseDetailScreen(song: .init(id: "", teacherId: "", title: "Thinking out loud", artist: "Ed Sheeren", teacherNotes: "Lorem Ipsum", coverUrl: "https://i.scdn.co/image/ab67616d0000b27313b3e37318a0c247b550bccd"), exercise: .init(id: "", songId: "", title: "Intro", tempo: 80))
     }
+}
+
+
+
+
+
+
+import Foundation
+import SwiftUI
+
+struct ProjectDocumentPicker: UIViewControllerRepresentable {
+    @Binding var selectedUrl: URL?
+    @Binding var added: Bool
+    func makeUIViewController(context: Context) -> some UIViewController {
+        let controller = UIDocumentPickerViewController(forOpeningContentTypes: [.pdf])
+        controller.allowsMultipleSelection = false
+        controller.shouldShowFileExtensions = true
+        controller.delegate = context.coordinator
+        return controller
+    }
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+        
+    }
+    func makeCoordinator() -> DocumentPickerCoordinator {
+        DocumentPickerCoordinator(selectedUrl: $selectedUrl, added: $added)
+    }
+    
+}
+class DocumentPickerCoordinator: NSObject, UIDocumentPickerDelegate {
+    @Binding var selectedUrl: URL?
+    @Binding var added: Bool
+
+    init(selectedUrl: Binding<URL?>, added: Binding<Bool> ) {
+        self._selectedUrl = selectedUrl
+        self._added = added
+    }
+    
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        guard let url = urls.first else {
+            return
+        }
+        selectedUrl = url
+        added = true
+    }
+    
 }

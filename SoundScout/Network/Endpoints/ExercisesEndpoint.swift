@@ -10,7 +10,6 @@ import Foundation
 enum ExercisesEndpoint {
     case getExercises(songId: String)
     case postExercise(exercise: PostExercise)
-    case postDocumentToExercise(exerciseId: String, document: DocumentUpload)
 }
 
 extension ExercisesEndpoint: Endpoint {
@@ -20,8 +19,6 @@ extension ExercisesEndpoint: Endpoint {
             return "/exercises/song/\(id)"
         case .postExercise:
             return "/exercises"
-        case .postDocumentToExercise(let exerciseId, _):
-            return "/exercises/\(exerciseId)/add-document"
         }
     }
 
@@ -29,7 +26,7 @@ extension ExercisesEndpoint: Endpoint {
         switch self {
         case .getExercises:
             return .get
-        case .postExercise, .postDocumentToExercise:
+        case .postExercise:
             return .post
         }
     }
@@ -40,8 +37,6 @@ extension ExercisesEndpoint: Endpoint {
             return nil
         case .postExercise(let exercise):
             return exercise
-        case .postDocumentToExercise(_, let document):
-            return document
         }
     }
 }
