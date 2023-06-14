@@ -6,16 +6,16 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct CreateStudentProfileScreen: View {
+    @StateObject var locationManager = LocationManager()
     @EnvironmentObject private var navigationManager: NavigationManager
     @EnvironmentObject private var spotify: Spotify
     
     let basicUserInfo: BasicSignUpInformation
     @ObservedObject var viewModel = ViewModel()
-    
-    @State private var selectedIndex = 0
-    
+        
     var body: some View {
         HStack {
             OnboardingSidebar()
@@ -30,9 +30,30 @@ struct CreateStudentProfileScreen: View {
                     
                     Spacer()
                     
-                    NavigationLink(destination: Text("Profile picture")) {
-                        SSSecondaryNavigationButtonText(text: "Select profile picture")
+                    if viewModel.imageUrl != nil {
+                        Image(uiImage: .init(data: try! .init(contentsOf: viewModel.imageUrl!))!)
+                            .resizable()
+                            .scaledToFill()
+                            .clipShape(Circle())
+                            .frame(width: 50, height: 50)
+                            .background {
+                                Circle().fill(
+                                    LinearGradient(
+                                        colors: [.yellow, .orange],
+                                        startPoint: .top,
+                                        endPoint: .bottom
+                                    )
+                                )
+                            }
+                    } else {
+                        Button(action: {  viewModel.showingImagePicker = true }) {
+                            SSSecondaryNavigationButtonText(text: "Select profile picture")
+                        }
+                        .sheet(isPresented: $viewModel.showingImagePicker) {
+                            SSImagePicker(selectedImageURL: $viewModel.imageUrl)
+                        }
                     }
+                    
                 }.padding(.bottom, 64)
                 
                 SSTextField(title: "About", text: $viewModel.about, axis: .vertical)
@@ -41,28 +62,29 @@ struct CreateStudentProfileScreen: View {
                 SSTextField(title: "Prior experience", text: $viewModel.priorExperience, axis: .vertical)
                     .padding(.bottom, 16)
                 
-//                Text("I prefer taking lessons")
-//                    .font(.title3)
-//                    .padding(.bottom, 16)
-//                HStack {
-//                    SSSegmentedControlButton(selectedIndex: $selectedIndex, index: 0, text: "Online")
-//                    Spacer()
-//                        .frame(width: 16)
-//                    SSSegmentedControlButton(selectedIndex: $selectedIndex, index: 1, text: "In-person")
-//                    Spacer()
-//                        .frame(width: 16)
-//                    SSSegmentedControlButton(selectedIndex: $selectedIndex, index: 2, text: "Both")
-//                }
-//                .padding(.top, 8)
-//                .padding(.bottom, 32)
-                
                 Text("I want to learn")
                     .font(.title3)
                     .padding(.bottom, 16)
                 NavigationLink(destination: SelectInstrumentsScreen(selectedIds: $viewModel.selectedInstrumentIds)) {
                     SSSecondaryNavigationButtonText(text: "Select instruments \(viewModel.selectedInstrumentIds.count > 0 ? "(\(viewModel.selectedInstrumentIds.count) selected)": "")", fullWidth: true)
                 }
-                .padding(.bottom, 32)
+                .padding(.bottom, 16)
+                
+                Text("Location")
+                    .font(.title3)
+                    .padding(.bottom)
+                
+                if locationManager.location != nil {
+                    Text(viewModel.addressText)
+                        .foregroundColor(.secondary)
+                } else {
+                    Button(action: {
+                        locationManager.requestLocation()
+                    }) {
+                        SSPrimaryNavigationButtonText(text: "Give access to current location", fullWidth: false)
+                    }
+                    .padding(.bottom, 32)
+                }
                 
                 Spacer()
                 
@@ -73,6 +95,7 @@ struct CreateStudentProfileScreen: View {
                         case .success(let success):
                             print(success)
                             UserDefaults.standard.set(success.student.userId, forKey: "studentUserID")
+                            UserDefaults.standard.set(success.student.id, forKey: "studentID")
                             
                             let vc = UIHostingController(rootView: StudentContentView().environmentObject(navigationManager).environmentObject(spotify))
                             replaceKeyWindow(with: vc)
@@ -91,7 +114,11 @@ struct CreateStudentProfileScreen: View {
         }
         .padding()
         .padding(.leading)
+        .onChange(of: locationManager.location) { newValue in
+            viewModel.getCityName(for: locationManager.location)
+        }
     }
+    
 }
 
 struct CreateStudentProfileScreen_Previews: PreviewProvider {
@@ -99,6 +126,3 @@ struct CreateStudentProfileScreen_Previews: PreviewProvider {
         CreateStudentProfileScreen(basicUserInfo: .init(firstname: "", surname: "", email: "", password: ""))
     }
 }
-
-
-

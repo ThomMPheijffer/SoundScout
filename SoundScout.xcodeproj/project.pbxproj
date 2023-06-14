@@ -51,6 +51,10 @@
 		DC7ACFBE2A377E71005B8466 /* ExerciseDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7ACFBD2A377E71005B8466 /* ExerciseDetailScreen.swift */; };
 		DC7ACFC32A38FADA005B8466 /* PSPDFKit in Frameworks */ = {isa = PBXBuildFile; productRef = DC7ACFC22A38FADA005B8466 /* PSPDFKit */; };
 		DC7ACFCB2A390A62005B8466 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7ACFCA2A390A62005B8466 /* MultipartFormData.swift */; };
+		DC7ACFCF2A39C83E005B8466 /* SSImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7ACFCE2A39C83E005B8466 /* SSImagePicker.swift */; };
+		DC7ACFD12A39C86A005B8466 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7ACFD02A39C86A005B8466 /* LocationManager.swift */; };
+		DC7ACFD42A39CC6D005B8466 /* CLLocationCoordinate2D+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7ACFD32A39CC6D005B8466 /* CLLocationCoordinate2D+Extension.swift */; };
+		DC7ACFD62A39CCFE005B8466 /* Encodable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7ACFD52A39CCFE005B8466 /* Encodable+Extensions.swift */; };
 		DCA07E882A1F77AD00C3BB3B /* TeacherProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA07E872A1F77AD00C3BB3B /* TeacherProfileScreen.swift */; };
 		DCA07E8A2A1F85CB00C3BB3B /* StudentProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA07E892A1F85CB00C3BB3B /* StudentProfileScreen.swift */; };
 		DCC84C7D2A27931A00A9F423 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC84C7C2A27931A00A9F423 /* Endpoint.swift */; };
@@ -142,6 +146,10 @@
 		DC7ACFBB2A3724B7005B8466 /* SelectSongScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSongScreen.swift; sourceTree = "<group>"; };
 		DC7ACFBD2A377E71005B8466 /* ExerciseDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailScreen.swift; sourceTree = "<group>"; };
 		DC7ACFCA2A390A62005B8466 /* MultipartFormData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartFormData.swift; sourceTree = "<group>"; };
+		DC7ACFCE2A39C83E005B8466 /* SSImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSImagePicker.swift; sourceTree = "<group>"; };
+		DC7ACFD02A39C86A005B8466 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		DC7ACFD32A39CC6D005B8466 /* CLLocationCoordinate2D+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Extension.swift"; sourceTree = "<group>"; };
+		DC7ACFD52A39CCFE005B8466 /* Encodable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Extensions.swift"; sourceTree = "<group>"; };
 		DCA07E872A1F77AD00C3BB3B /* TeacherProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherProfileScreen.swift; sourceTree = "<group>"; };
 		DCA07E892A1F85CB00C3BB3B /* StudentProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentProfileScreen.swift; sourceTree = "<group>"; };
 		DCC84C7C2A27931A00A9F423 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -298,6 +306,7 @@
 			children = (
 				DC4C54A32A1E442100E8141C /* Spotify.swift */,
 				DCC84CAF2A28C53900A9F423 /* ReplaceKeyWindow.swift */,
+				DC7ACFD02A39C86A005B8466 /* LocationManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -335,6 +344,15 @@
 				DC7ACFCA2A390A62005B8466 /* MultipartFormData.swift */,
 			);
 			path = MultipartFormData;
+			sourceTree = "<group>";
+		};
+		DC7ACFD22A39CC5A005B8466 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DC7ACFD32A39CC6D005B8466 /* CLLocationCoordinate2D+Extension.swift */,
+				DC7ACFD52A39CCFE005B8466 /* Encodable+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		DCC84C782A2792CB00A9F423 /* Network */ = {
@@ -463,6 +481,7 @@
 				DCC84C882A2793A600A9F423 /* Models */,
 				DCCD07662A162AEE002CB449 /* Components */,
 				DCCD076B2A1634EB002CB449 /* Screens */,
+				DC7ACFD22A39CC5A005B8466 /* Extensions */,
 				DC4C54A22A1E441400E8141C /* Utils */,
 				DCCD07642A162980002CB449 /* Constants.swift */,
 				DCCD075A2A1625C5002CB449 /* Assets.xcassets */,
@@ -490,6 +509,7 @@
 				DCCD07772A16391E002CB449 /* SSContentBackground.swift */,
 				DCD409682A1A30CE008220F1 /* SSCheckbox.swift */,
 				4EC8DD192A1F8CF50065F575 /* SSContentHeader.swift */,
+				DC7ACFCE2A39C83E005B8466 /* SSImagePicker.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -703,6 +723,7 @@
 				DCA07E8A2A1F85CB00C3BB3B /* StudentProfileScreen.swift in Sources */,
 				DCD409672A1A2016008220F1 /* MySongsScreen.swift in Sources */,
 				DCC84C952A27B36700A9F423 /* SignUpScreenViewModel.swift in Sources */,
+				DC7ACFD12A39C86A005B8466 /* LocationManager.swift in Sources */,
 				DCEB3C8E2A33AD6E005FC601 /* LessonService.swift in Sources */,
 				DCC84C7D2A27931A00A9F423 /* Endpoint.swift in Sources */,
 				DCC84CA32A27BD6900A9F423 /* Location.swift in Sources */,
@@ -722,6 +743,7 @@
 				4EC8DD3C2A24F11C0065F575 /* TeacherRecordExerciseScreen.swift in Sources */,
 				4EC8DD282A1F90B00065F575 /* TeacherMessagesScreen.swift in Sources */,
 				DCCD07652A162980002CB449 /* Constants.swift in Sources */,
+				DC7ACFD42A39CC6D005B8466 /* CLLocationCoordinate2D+Extension.swift in Sources */,
 				4E7801492A165A9400E3B385 /* CreateTeacherProfileScreen.swift in Sources */,
 				DCC84C9B2A27B9D900A9F423 /* CreateStudentProfileScreenViewModel.swift in Sources */,
 				DCEB3C8A2A339B22005FC601 /* CreateLessonScreenViewModel.swift in Sources */,
@@ -741,6 +763,7 @@
 				DCEB3C902A33ADE1005FC601 /* Lesson.swift in Sources */,
 				4EC8DD3A2A24EF2E0065F575 /* TeacherSongDetailsScreen.swift in Sources */,
 				DCC84C852A27933400A9F423 /* InstrumentsEndpoint.swift in Sources */,
+				DC7ACFCF2A39C83E005B8466 /* SSImagePicker.swift in Sources */,
 				DCC84C992A27B3EB00A9F423 /* BasicSignUpInformation.swift in Sources */,
 				4EC8DD2A2A1F90DB0065F575 /* TeacherHomeScreen.swift in Sources */,
 				4EC8DD1E2A1F8DD70065F575 /* StudentHomeScreen.swift in Sources */,
@@ -748,6 +771,7 @@
 				DCC84CA72A28C16800A9F423 /* UserEndpoint.swift in Sources */,
 				DCC84C872A27934700A9F423 /* InstrumentsService.swift in Sources */,
 				4EC8DD302A2291C90065F575 /* StudentSongDetailsScreen.swift in Sources */,
+				DC7ACFD62A39CCFE005B8466 /* Encodable+Extensions.swift in Sources */,
 				DCC84CB02A28C53900A9F423 /* ReplaceKeyWindow.swift in Sources */,
 				DCEB3C872A3382DC005FC601 /* CreateLessonScreen.swift in Sources */,
 				4EC8DD1A2A1F8CF50065F575 /* SSContentHeader.swift in Sources */,
@@ -885,6 +909,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SoundScout/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need to have access to your location to give better recomendations";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -918,6 +943,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SoundScout/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need to have access to your location to give better recomendations";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

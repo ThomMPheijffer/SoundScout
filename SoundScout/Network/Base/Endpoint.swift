@@ -8,14 +8,13 @@
 import Foundation
 
 protocol Endpoint {
-//    associatedtype RequestBody: Codable
-    
     var scheme: String { get }
     var host: String { get }
     var path: String { get }
     var method: RequestMethod { get }
     var header: [String: String]? { get }
     var body: (any Codable)? { get }
+    var multipartRequest: MultipartRequest? { get }
 }
 
 extension Endpoint {
@@ -31,5 +30,9 @@ extension Endpoint {
         return [
             "Content-Type": "application/json;charset=utf-8"
         ]
+    }
+    
+    var multipartRequest: MultipartRequest? {
+        return nil
     }
 }

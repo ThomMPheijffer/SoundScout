@@ -29,13 +29,19 @@ extension HTTPClient {
         
         var request = URLRequest(url: url)
         request.httpMethod = endpoint.method.rawValue
-        request.allHTTPHeaderFields = endpoint.header
         
-        if let body = endpoint.body {
-            let encoder = JSONEncoder()
-            encoder.dateEncodingStrategy = .iso8601
-            request.httpBody = try! encoder.encode(body)
-            print(String(decoding: request.httpBody!, as: UTF8.self))
+        if let multipart = endpoint.multipartRequest {
+            request.setValue(multipart.httpContentTypeHeadeValue, forHTTPHeaderField: "Content-Type")
+            request.httpBody = multipart.httpBody
+        } else {
+            request.allHTTPHeaderFields = endpoint.header
+            
+            if let body = endpoint.body {
+                let encoder = JSONEncoder()
+                encoder.dateEncodingStrategy = .iso8601
+                request.httpBody = try! encoder.encode(body)
+                print(String(decoding: request.httpBody!, as: UTF8.self))
+            }
         }
         
         do {

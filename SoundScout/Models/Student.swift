@@ -43,6 +43,12 @@ struct StudentResponse: Codable {
 
 struct StudentReponseNested: Codable {
     let userId: String
+    let id: String
+    
+    enum CodingKeys: String, CodingKey {
+        case userId
+        case id = "_id"
+    }
 }
 
 struct AddTeacherToStudentModel: Codable {
