@@ -32,7 +32,6 @@ extension CreateStudentProfileScreen {
                                   lastName: basicInfo.surname,
                                   about: about,
                                   priorExperience: priorExperience,
-                                  profileImage: nil,
                                   instrumentIds: selectedInstrumentIds,
                                   location: .init(latitude: 1, longitude: 1))
             

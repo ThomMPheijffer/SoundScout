@@ -18,7 +18,6 @@ struct SignUpStudent: Codable {
     let lastName: String
     let about: String
     let priorExperience: String
-    let profileImage: String?
     let instrumentIds: [String]
     let location: Location
 }
@@ -32,7 +31,7 @@ struct Student: Codable, Identifiable {
     let lastName: String
     let about: String
     let priorExperience: String
-    let profileImage: String?
+    let profilePicture: String
     let instruments: [Instrument]
     let location: Location
 }

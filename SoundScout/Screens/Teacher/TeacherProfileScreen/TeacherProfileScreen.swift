@@ -29,13 +29,32 @@ struct TeacherProfileScreen: View {
                         SSColors.blueInactive
                             .frame(height: 220)
                             .overlay {
-                                Circle()
-                                    .fill(SSColors.blue)
+                                if let profilePicture = URL(string: teacher?.profilePicture ?? "") {
+                                    AsyncImage(url: profilePicture) { image in
+                                        image
+                                            .resizable()
+                                            .scaledToFill()
+                                    } placeholder: {
+                                        Circle()
+                                            .fill(SSColors.blue)
+                                            .opacity(0.1)
+                                    }
                                     .shadow(radius: 6)
                                     .frame(width: 185, height: 185)
+                                    .cornerRadius(92.5)
+                                    .clipped()
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .padding()
                                     .offset(y: 110)
+                                } else {
+                                    Circle()
+                                        .fill(SSColors.blue)
+                                        .shadow(radius: 6)
+                                        .frame(width: 185, height: 185)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .padding()
+                                        .offset(y: 110)
+                                }
                             }
                         
                         HStack(spacing: 16) {
