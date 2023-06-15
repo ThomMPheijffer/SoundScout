@@ -16,7 +16,8 @@ extension CreateStudentProfileScreen {
         @Published var priorExperience: String = ""
         @Published var selectedInstrumentIds: [String] = []
         
-        @Published var addressText: String = ""
+        @Published var city: String = ""
+        @Published var state: String = ""
         @Published var showingImagePicker = false
         @Published var imageUrl: URL? = nil
         @Published var location: CLLocationCoordinate2D? = nil
@@ -27,14 +28,15 @@ extension CreateStudentProfileScreen {
         
         func signUp(basicInfo: BasicSignUpInformation) async -> Result<StudentResponse, RequestError> {
             let student = SignUpStudent(email: basicInfo.email,
-                                  password: basicInfo.password,
-                                  firstName: basicInfo.firstname,
-                                  lastName: basicInfo.surname,
-                                  about: about,
-                                  priorExperience: priorExperience,
-                                  instrumentIds: selectedInstrumentIds,
-                                  location: .init(latitude: 1, longitude: 1))
+                                        password: basicInfo.password,
+                                        firstName: basicInfo.firstname,
+                                        lastName: basicInfo.surname,
+                                        about: about,
+                                        priorExperience: priorExperience,
+                                        instrumentIds: selectedInstrumentIds,
+                                        location: .init(latitude: location!.latitude, longitude: location!.longitude, city: city, state: state))
             
+            #warning("reduce quality")
             let imageData = try! Data(contentsOf: imageUrl!)
             
             
@@ -59,13 +61,13 @@ extension CreateStudentProfileScreen {
                 if let error = error {
                     print(error)
                 }
-                        
+                
                 guard let placemark = placemarks?.first else { return }
                 guard let city = placemark.locality else { return }
                 guard let state = placemark.administrativeArea else { return }
                 
-                self.addressText = "\(city), \(state)"
-                
+                self.city = city
+                self.state = state
             }
         }
     }

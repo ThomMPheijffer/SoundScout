@@ -62,13 +62,13 @@ struct TeacherProfileScreen: View {
                                 Text("\(teacher!.firstName) \(teacher!.lastName)")
                                     .font(.title2)
                                     .bold()
-                                Text("The Hague, Netherlands")
+                                Text("\(teacher!.location.city), \(teacher!.location.state)")
                                     .font(.title3)
                                     .foregroundColor(.secondary)
                             }
                             
                             VStack(alignment: .leading) {
-                                Text("$100")
+                                Text("$\(teacher!.hourlyRate)")
                                     .font(.title2)
                                     .bold()
                                 Text("lesson")

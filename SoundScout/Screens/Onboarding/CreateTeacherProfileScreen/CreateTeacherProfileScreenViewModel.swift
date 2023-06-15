@@ -13,15 +13,17 @@ extension CreateTeacherProfileScreen {
     class ViewModel: ObservableObject {
         @Published var about: String = ""
         @Published var priorExperience: String = ""
+        @Published var hourlyRate: String = ""
         @Published var selectedInstrumentIds: [String] = []
         
-        @Published var addressText: String = ""
+        @Published var city: String = ""
+        @Published var state: String = ""
         @Published var showingImagePicker = false
         @Published var imageUrl: URL? = nil
         @Published var location: CLLocationCoordinate2D? = nil
         
         func canContinue() -> Bool {
-            return !about.isEmpty && !priorExperience.isEmpty && location != nil && imageUrl != nil
+            return !about.isEmpty && !priorExperience.isEmpty && location != nil && imageUrl != nil && (Int(hourlyRate) != nil)
         }
         
         func signUp(basicInfo: BasicSignUpInformation) async -> Result<TeacherResponse, RequestError> {
@@ -32,8 +34,10 @@ extension CreateTeacherProfileScreen {
                                         about: about,
                                         priorExperience: priorExperience,
                                         instrumentIds: selectedInstrumentIds,
-                                        location: .init(latitude: 1, longitude: 1))
+                                        location: .init(latitude: location!.latitude, longitude: location!.longitude, city: city, state: state),
+                                        hourlyRate: Int(hourlyRate)!)
             
+            #warning("reduce quality")
             let imageData = try! Data(contentsOf: imageUrl!)
             var multipart = MultipartRequest()
             multipart.add(key: "payload", value: teacher.stringified())
@@ -58,8 +62,8 @@ extension CreateTeacherProfileScreen {
                 guard let city = placemark.locality else { return }
                 guard let state = placemark.administrativeArea else { return }
                 
-                self.addressText = "\(city), \(state)"
-                
+                self.city = city
+                self.state = state
             }
         }
     }

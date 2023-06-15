@@ -20,6 +20,7 @@ struct SignUpTeacher: Codable {
     let priorExperience: String
     let instrumentIds: [String]?
     let location: Location
+    let hourlyRate: Int
 }
 
 struct Teacher: Codable, Identifiable {
@@ -34,6 +35,7 @@ struct Teacher: Codable, Identifiable {
     let profilePicture: String
     let instruments: [Instrument]
     let location: Location
+    let hourlyRate: Int
 }
 
 struct TeacherResponse: Codable {

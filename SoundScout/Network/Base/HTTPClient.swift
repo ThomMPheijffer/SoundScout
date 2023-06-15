@@ -33,6 +33,8 @@ extension HTTPClient {
         if let multipart = endpoint.multipartRequest {
             request.setValue(multipart.httpContentTypeHeadeValue, forHTTPHeaderField: "Content-Type")
             request.httpBody = multipart.httpBody
+            
+            print(String(decoding: request.httpBody!, as: UTF8.self))
         } else {
             request.allHTTPHeaderFields = endpoint.header
             

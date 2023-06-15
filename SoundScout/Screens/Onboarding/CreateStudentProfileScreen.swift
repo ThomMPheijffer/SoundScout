@@ -74,7 +74,7 @@ struct CreateStudentProfileScreen: View {
                     .padding(.bottom)
                 
                 if locationManager.location != nil {
-                    Text(viewModel.addressText)
+                    Text("\(viewModel.city), \(viewModel.state)")
                         .foregroundColor(.secondary)
                 } else {
                     Button(action: {
