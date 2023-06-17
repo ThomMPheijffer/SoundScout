@@ -70,11 +70,61 @@ struct SongDetailScreen: View {
                     .font(.title2)
                     .bold()
                     .padding(.bottom)
-                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ultricies felis eu enim consequat, nec luctus enim posuere. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque hendrerit nunc nunc, at cursus tortor interdum at. Ut eget vehicula lacus. Nam non fermentum nulla.")
-                    .foregroundColor(.secondary)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
+                if song.documentUrls.count != 0 {
+                    ForEach(song.documentUrls, id: \.self) { url in
+//                        NavigationLink(destination: PDFViewer(pdfURL: URL(string: url)!)) {
+                        #warning("Refactor this to make it async")
+                        NavigationLink(destination: PDFKitRepresentedView(try! Data(contentsOf: URL(string: url)!))) {
+                            HStack {
+                                Image(systemName: "doc")
+                                Text((URL(string: url)!.lastPathComponent as NSString).deletingPathExtension)
+                                    .underline()
+                            }
+                            .foregroundColor(.secondary)
+                        }
+                    }
+                } else {
+                    Text("No additional resources provided for this song.")
+                        .foregroundColor(.secondary)
+                }
             }
         }
         .padding()
         .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+
+
+
+
+import PDFKit
+import SwiftUI
+
+struct PDFKitRepresentedView: UIViewRepresentable {
+    typealias UIViewType = PDFView
+
+    let data: Data
+    let singlePage: Bool
+
+    init(_ data: Data, singlePage: Bool = false) {
+        self.data = data
+        self.singlePage = singlePage
+    }
+
+    func makeUIView(context _: UIViewRepresentableContext<PDFKitRepresentedView>) -> UIViewType {
+        let pdfView = PDFView()
+        pdfView.document = PDFDocument(data: data)
+        pdfView.autoScales = true
+        if singlePage {
+            pdfView.displayMode = .singlePage
+        }
+        return pdfView
+    }
+
+    func updateUIView(_ pdfView: UIViewType, context _: UIViewRepresentableContext<PDFKitRepresentedView>) {
+        pdfView.document = PDFDocument(data: data)
     }
 }

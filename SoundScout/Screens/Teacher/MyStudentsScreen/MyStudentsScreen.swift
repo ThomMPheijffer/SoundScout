@@ -19,9 +19,25 @@ struct MyStudentsScreen: View {
                     ForEach(students) { student in
                         NavigationLink(destination: LessonsScreen(student: student, teacher: nil)) {
                             HStack {
-                                Color.blue
+                                if let profilePicture = URL(string: student.profilePicture) {
+                                    AsyncImage(url: profilePicture) { image in
+                                        image
+                                            .resizable()
+                                            .scaledToFill()
+                                    } placeholder: {
+                                        Circle()
+                                            .fill(SSColors.blue)
+                                            .opacity(0.1)
+                                    }
+                                    
                                     .frame(width: 80, height: 80)
                                     .cornerRadius(40)
+                                    .clipped()
+                                } else {
+                                    Color.blue
+                                        .frame(width: 80, height: 80)
+                                        .cornerRadius(40)
+                                }
                                 VStack(alignment: .leading, spacing: 8) {
                                     HStack {
                                         Text("\(student.firstName) \(student.lastName)")
@@ -29,10 +45,6 @@ struct MyStudentsScreen: View {
                                         Image(systemName: "chevron.right")
                                             .foregroundColor(.blue)
                                     }
-                                    
-                                    Text("Online")
-                                        .font(.caption)
-                                        .foregroundColor(.secondary)
                                     
                                     Spacer()
                                     

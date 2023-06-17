@@ -49,15 +49,17 @@ struct MySongsScreen: View {
         .navigationTitle("My Songs")
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
-                Button(action: {
-                    spotify.isAuthorized ? spotify.api.authorizationManager.deauthorize() : spotify.authorize()
-                }) {
-                    SSPrimaryNavigationButtonText(text: spotify.isAuthorized ? "Logout" : "Authorize Spotify")
-                }
-                
-                
-                NavigationLink(destination: AddSongScreen()) {
-                    SSPrimaryNavigationButtonText(text: "Add song")
+                if let teacherId = UserDefaults.standard.string(forKey: "teacherID") {
+                    Button(action: {
+                        spotify.isAuthorized ? spotify.api.authorizationManager.deauthorize() : spotify.authorize()
+                    }) {
+                        SSPrimaryNavigationButtonText(text: spotify.isAuthorized ? "Logout" : "Authorize Spotify")
+                    }
+                    
+                    
+                    NavigationLink(destination: AddSongScreen()) {
+                        SSPrimaryNavigationButtonText(text: "Add song")
+                    }
                 }
             }
         }

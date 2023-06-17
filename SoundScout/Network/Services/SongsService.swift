@@ -10,6 +10,7 @@ import Foundation
 protocol SongsServiceable {
     func getSongsForTeacher(teacherId: String) async -> Result<Songs, RequestError>
     func postSong(song: PostSong) async -> Result<Song, RequestError>
+    func postDocument(songId: String, documentMultipartForm: MultipartRequest) async -> Result<Song, RequestError>
 }
 
 struct SongsService: HTTPClient, SongsServiceable {
@@ -19,6 +20,10 @@ struct SongsService: HTTPClient, SongsServiceable {
     
     func postSong(song: PostSong) async -> Result<Song, RequestError> {
         return await sendRequest(endpoint: SongEndpoint.postSong(song: song), responseModel: Song.self)
+    }
+    
+    func postDocument(songId: String, documentMultipartForm: MultipartRequest) async -> Result<Song, RequestError> {
+        return await sendRequest(endpoint: SongEndpoint.postDocument(songId: songId, documentMultipartForm: documentMultipartForm), responseModel: Song.self)
     }
     
 }

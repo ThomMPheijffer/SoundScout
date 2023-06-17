@@ -177,11 +177,17 @@ struct ExerciseDetailScreen: View {
 }
 
 
-struct ExerciseDetailScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        ExerciseDetailScreen(song: .init(id: "", teacherId: "", title: "Thinking out loud", artist: "Ed Sheeren", teacherNotes: "Lorem Ipsum", coverUrl: "https://i.scdn.co/image/ab67616d0000b27313b3e37318a0c247b550bccd"), exercise: .init(id: "", songId: "", title: "Intro", tempo: 80))
-    }
-}
+
+
+
+
+
+
+
+
+
+
+
 
 
 

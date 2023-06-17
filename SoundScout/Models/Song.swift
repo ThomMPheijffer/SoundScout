@@ -18,6 +18,7 @@ struct Song: Codable, Identifiable {
     let artist: String
     let teacherNotes: String
     let coverUrl: String?
+    let documentUrls: [String]
 }
 
 struct PostSong: Codable {

@@ -20,9 +20,25 @@ struct FindTeachersScreen: View {
                 ForEach(teachers, id: \.id) { teacher in
                     NavigationLink(destination: TeacherProfileScreen(loadedTeacher: teacher, canConnect: true)) {
                         HStack {
-                            Color.blue
+                            if let profilePicture = URL(string: teacher.profilePicture) {
+                                AsyncImage(url: profilePicture) { image in
+                                    image
+                                        .resizable()
+                                        .scaledToFill()
+                                } placeholder: {
+                                    Circle()
+                                        .fill(SSColors.blue)
+                                        .opacity(0.1)
+                                }
+                                
                                 .frame(width: 80, height: 80)
                                 .cornerRadius(40)
+                                .clipped()
+                            } else {
+                                Color.blue
+                                    .frame(width: 80, height: 80)
+                                    .cornerRadius(40)
+                            }
                             VStack(alignment: .leading, spacing: 8) {
                                 HStack {
                                     Text("\(teacher.firstName) \(teacher.lastName)")
@@ -37,7 +53,7 @@ struct FindTeachersScreen: View {
                                 
                                 Spacer()
                                 
-                                Text("$32")
+                                Text("$\(teacher.hourlyRate)")
                                     .font(.body)
                                     .foregroundColor(SSColors.blue)
                             }
