@@ -36,6 +36,8 @@
 		4EC8DD462A2E0C0B0065F575 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8DD452A2E0C0B0065F575 /* Song.swift */; };
 		DC43EA0F2A1BCBCA00C08056 /* AddSongScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC43EA0E2A1BCBCA00C08056 /* AddSongScreen.swift */; };
 		DC43EA112A1BCD7000C08056 /* SongDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC43EA102A1BCD7000C08056 /* SongDetailScreen.swift */; };
+		DC4918172A3F0668008A26AF /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4918162A3F0668008A26AF /* AudioRecorder.swift */; };
+		DC4918192A3F0685008A26AF /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4918182A3F0685008A26AF /* AudioPlayer.swift */; };
 		DC4C54A12A1E436900E8141C /* SpotifyAPI in Frameworks */ = {isa = PBXBuildFile; productRef = DC4C54A02A1E436900E8141C /* SpotifyAPI */; };
 		DC4C54A42A1E442100E8141C /* Spotify.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4C54A32A1E442100E8141C /* Spotify.swift */; };
 		DC4C54A72A1E461B00E8141C /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = DC4C54A62A1E461B00E8141C /* KeychainAccess */; };
@@ -133,6 +135,8 @@
 		4EC8DD452A2E0C0B0065F575 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		DC43EA0E2A1BCBCA00C08056 /* AddSongScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSongScreen.swift; sourceTree = "<group>"; };
 		DC43EA102A1BCD7000C08056 /* SongDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailScreen.swift; sourceTree = "<group>"; };
+		DC4918162A3F0668008A26AF /* AudioRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
+		DC4918182A3F0685008A26AF /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		DC4C54A32A1E442100E8141C /* Spotify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spotify.swift; sourceTree = "<group>"; };
 		DC4C54A82A1E477200E8141C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DC4C54A92A1E514700E8141C /* SearchSongScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSongScreen.swift; sourceTree = "<group>"; };
@@ -307,6 +311,8 @@
 				DC4C54A32A1E442100E8141C /* Spotify.swift */,
 				DCC84CAF2A28C53900A9F423 /* ReplaceKeyWindow.swift */,
 				DC7ACFD02A39C86A005B8466 /* LocationManager.swift */,
+				DC4918162A3F0668008A26AF /* AudioRecorder.swift */,
+				DC4918182A3F0685008A26AF /* AudioPlayer.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -742,6 +748,7 @@
 				DCC84C8E2A27976D00A9F423 /* User.swift in Sources */,
 				4EC8DD3C2A24F11C0065F575 /* TeacherRecordExerciseScreen.swift in Sources */,
 				4EC8DD282A1F90B00065F575 /* TeacherMessagesScreen.swift in Sources */,
+				DC4918172A3F0668008A26AF /* AudioRecorder.swift in Sources */,
 				DCCD07652A162980002CB449 /* Constants.swift in Sources */,
 				DC7ACFD42A39CC6D005B8466 /* CLLocationCoordinate2D+Extension.swift in Sources */,
 				4E7801492A165A9400E3B385 /* CreateTeacherProfileScreen.swift in Sources */,
@@ -763,6 +770,7 @@
 				DCEB3C902A33ADE1005FC601 /* Lesson.swift in Sources */,
 				4EC8DD3A2A24EF2E0065F575 /* TeacherSongDetailsScreen.swift in Sources */,
 				DCC84C852A27933400A9F423 /* InstrumentsEndpoint.swift in Sources */,
+				DC4918192A3F0685008A26AF /* AudioPlayer.swift in Sources */,
 				DC7ACFCF2A39C83E005B8466 /* SSImagePicker.swift in Sources */,
 				DCC84C992A27B3EB00A9F423 /* BasicSignUpInformation.swift in Sources */,
 				4EC8DD2A2A1F90DB0065F575 /* TeacherHomeScreen.swift in Sources */,

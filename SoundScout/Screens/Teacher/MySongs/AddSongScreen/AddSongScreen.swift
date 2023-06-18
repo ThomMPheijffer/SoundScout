@@ -49,7 +49,7 @@ struct AddSongScreen: View {
                 SSTextField(title: "Teacher notes", text: $viewModel.teacherNotes, axis: .horizontal)
                     .padding(.bottom, 32)
                 
-                Text("Cover art")
+                Text("Add files")
                     .font(.title3)
                     .padding(.bottom)
                 
@@ -129,6 +129,8 @@ struct AddSongScreen: View {
     func uploadDocumentsFor(song: Song) async {
         print("upload urls \(selectedURLs)")
         for url in selectedURLs {
+            guard url.startAccessingSecurityScopedResource() else { return }
+            defer { url.stopAccessingSecurityScopedResource() }
             let pdfData = try! Data(contentsOf: url)
             var multipart = MultipartRequest()
             multipart.add(
