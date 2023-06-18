@@ -74,7 +74,6 @@ struct SongDetailScreen: View {
                 
                 if song.documentUrls.count != 0 {
                     ForEach(song.documentUrls, id: \.self) { url in
-//                        NavigationLink(destination: PDFViewer(pdfURL: URL(string: url)!)) {
                         #warning("Refactor this to make it async")
                         NavigationLink(destination: PDFKitRepresentedView(try! Data(contentsOf: URL(string: url)!))) {
                             HStack {

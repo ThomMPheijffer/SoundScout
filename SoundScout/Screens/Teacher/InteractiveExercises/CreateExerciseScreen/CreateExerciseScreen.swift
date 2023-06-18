@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CreateExerciseScreen: View {
-    let songId: String
+    let song: Song
     @ObservedObject var viewModel = ViewModel()
     @ObservedObject var audioRecorder = AudioRecorder()
     @ObservedObject var audioPlayer = AudioPlayer()
@@ -20,8 +20,13 @@ struct CreateExerciseScreen: View {
     var body: some View {
         HStack {
             
-            Color.blue
-                .padding()
+            if song.documentUrls.count != 0 {
+                PDFKitRepresentedView(try! Data(contentsOf:  URL(string: song.documentUrls.first!)!))
+                    .padding()
+            } else {
+                Color.blue.padding()
+            }
+                
             
             Divider()
             
@@ -87,7 +92,7 @@ struct CreateExerciseScreen: View {
                     
                     Button(action: {
                         Task {
-                            let result = await viewModel.postExercise(songId: songId)
+                            let result = await viewModel.postExercise(songId: song.id)
                             switch result {
                             case .success(let success):
                                 print(success)

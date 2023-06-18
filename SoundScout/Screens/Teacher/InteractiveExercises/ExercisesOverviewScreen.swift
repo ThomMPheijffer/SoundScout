@@ -40,7 +40,7 @@ struct ExercisesOverviewScreen: View {
         .navigationTitle("Exercises")
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
-                NavigationLink(destination: CreateExerciseScreen(songId: song.id)) {
+                NavigationLink(destination: CreateExerciseScreen(song: song)) {
                     SSPrimaryNavigationButtonText(text: "Create exercise")
                 }
             }
