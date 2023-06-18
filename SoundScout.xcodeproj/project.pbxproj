@@ -42,6 +42,8 @@
 		DC4C54A42A1E442100E8141C /* Spotify.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4C54A32A1E442100E8141C /* Spotify.swift */; };
 		DC4C54A72A1E461B00E8141C /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = DC4C54A62A1E461B00E8141C /* KeychainAccess */; };
 		DC4C54AA2A1E514700E8141C /* SearchSongScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4C54A92A1E514700E8141C /* SearchSongScreen.swift */; };
+		DC60EBE32A3F1E690082F2DC /* TeacherExerciseDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC60EBE22A3F1E690082F2DC /* TeacherExerciseDetailScreen.swift */; };
+		DC60EBE52A3F316C0082F2DC /* SSProjectDocumentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC60EBE42A3F316C0082F2DC /* SSProjectDocumentPicker.swift */; };
 		DC7ACFAC2A36FDF7005B8466 /* AddSongScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7ACFAB2A36FDF7005B8466 /* AddSongScreenViewModel.swift */; };
 		DC7ACFAF2A370B85005B8466 /* ExercisesOverviewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7ACFAE2A370B85005B8466 /* ExercisesOverviewScreen.swift */; };
 		DC7ACFB12A370C74005B8466 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7ACFB02A370C74005B8466 /* Exercise.swift */; };
@@ -140,6 +142,8 @@
 		DC4C54A32A1E442100E8141C /* Spotify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spotify.swift; sourceTree = "<group>"; };
 		DC4C54A82A1E477200E8141C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DC4C54A92A1E514700E8141C /* SearchSongScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSongScreen.swift; sourceTree = "<group>"; };
+		DC60EBE22A3F1E690082F2DC /* TeacherExerciseDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherExerciseDetailScreen.swift; sourceTree = "<group>"; };
+		DC60EBE42A3F316C0082F2DC /* SSProjectDocumentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSProjectDocumentPicker.swift; sourceTree = "<group>"; };
 		DC7ACFAB2A36FDF7005B8466 /* AddSongScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSongScreenViewModel.swift; sourceTree = "<group>"; };
 		DC7ACFAE2A370B85005B8466 /* ExercisesOverviewScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesOverviewScreen.swift; sourceTree = "<group>"; };
 		DC7ACFB02A370C74005B8466 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
@@ -331,6 +335,7 @@
 			children = (
 				DC7ACFAE2A370B85005B8466 /* ExercisesOverviewScreen.swift */,
 				DC7ACFB82A37156A005B8466 /* CreateExerciseScreen */,
+				DC60EBE22A3F1E690082F2DC /* TeacherExerciseDetailScreen.swift */,
 			);
 			path = InteractiveExercises;
 			sourceTree = "<group>";
@@ -516,6 +521,7 @@
 				DCD409682A1A30CE008220F1 /* SSCheckbox.swift */,
 				4EC8DD192A1F8CF50065F575 /* SSContentHeader.swift */,
 				DC7ACFCE2A39C83E005B8466 /* SSImagePicker.swift */,
+				DC60EBE42A3F316C0082F2DC /* SSProjectDocumentPicker.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -694,6 +700,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC60EBE52A3F316C0082F2DC /* SSProjectDocumentPicker.swift in Sources */,
 				DCD409692A1A30CE008220F1 /* SSCheckbox.swift in Sources */,
 				DCC84C902A2797AF00A9F423 /* TeacherEndpoint.swift in Sources */,
 				DC7ACFBC2A3724B7005B8466 /* SelectSongScreen.swift in Sources */,
@@ -747,6 +754,7 @@
 				DCCD07782A16391E002CB449 /* SSContentBackground.swift in Sources */,
 				DCC84C8E2A27976D00A9F423 /* User.swift in Sources */,
 				4EC8DD3C2A24F11C0065F575 /* TeacherRecordExerciseScreen.swift in Sources */,
+				DC60EBE32A3F1E690082F2DC /* TeacherExerciseDetailScreen.swift in Sources */,
 				4EC8DD282A1F90B00065F575 /* TeacherMessagesScreen.swift in Sources */,
 				DC4918172A3F0668008A26AF /* AudioRecorder.swift in Sources */,
 				DCCD07652A162980002CB449 /* Constants.swift in Sources */,

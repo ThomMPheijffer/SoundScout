@@ -64,7 +64,7 @@ struct AddSongScreen: View {
                     SSSecondaryNavigationButtonText(text: "Attach files to song")
                 }
                 .sheet(isPresented: $importFile) {
-                    ProjectDocumentPicker(selectedUrl: $selectedURL, added: $added)
+                    SSProjectDocumentPicker(selectedUrl: $selectedURL, added: $added)
                 }
                 .padding(.bottom, 64)
                 

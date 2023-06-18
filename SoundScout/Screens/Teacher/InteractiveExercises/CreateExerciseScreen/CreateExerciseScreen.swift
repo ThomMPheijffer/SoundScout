@@ -87,16 +87,34 @@ struct CreateExerciseScreen: View {
                                     .imageScale(.large)
                             }
                         }
-                    }.padding(.bottom, 64)
+                    }
                     
+                    Spacer()
                     
                     Button(action: {
                         Task {
                             let result = await viewModel.postExercise(songId: song.id)
                             switch result {
-                            case .success(let success):
-                                print(success)
-                                dismiss()
+                            case .success(let exercise):
+                                print(exercise)
+                                
+                                let recordingData = try! Data(contentsOf: audioRecorder.recordingURL!)
+                                var multipart = MultipartRequest()
+                                multipart.add(
+                                    key: "song",
+                                    fileName: "\(UUID().uuidString).m4a",
+                                    fileMimeType: "audio/mp4",
+                                    fileData: recordingData
+                                )
+                                
+                                let addingSoundResult = await ExercisesService().postSong(exerciseId: exercise.id, songMultipartRequest: multipart)
+                                switch addingSoundResult {
+                                case .success(let success):
+                                    print(success)
+                                    dismiss()
+                                case .failure(let failure):
+                                    print(failure)
+                                }
                             case .failure(let failure):
                                 print(failure)
                             }
@@ -104,6 +122,7 @@ struct CreateExerciseScreen: View {
                     }) {
                         SSPrimaryNavigationButtonText(text: "Create exercise", isActive: viewModel.canContinue())
                     }
+                    
                 }
                 .padding()
                 .navigationTitle("Review exercise")

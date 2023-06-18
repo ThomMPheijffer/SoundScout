@@ -73,22 +73,28 @@ struct TeacherSongDetailsScreen: View {
                 }
                 .padding(.bottom, 32)
                 
-                SSContentBackground(padding: 32) {
-                    HStack(alignment: .top) {
-                        VStack(alignment: .leading) {
-                            Text("Additional resources")
-                                .font(.title2)
-                                .bold()
-                                .padding(.bottom, 8)
-                            ForEach(0..<additionalResources.count, id: \.self) { i in
+                SSContentBackground(padding: 16) {
+                    Text("Additional resources")
+                        .font(.title2)
+                        .bold()
+                        .padding(.bottom)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    if song.documentUrls.count != 0 {
+                        ForEach(song.documentUrls, id: \.self) { url in
+                            #warning("Refactor this to make it async")
+                            NavigationLink(destination: PDFKitRepresentedView(try! Data(contentsOf: URL(string: url)!))) {
                                 HStack {
                                     Image(systemName: "doc")
-                                    Text(additionalResources[i])
+                                    Text((URL(string: url)!.lastPathComponent as NSString).deletingPathExtension)
+                                        .underline()
                                 }
-                                .font(.callout)
+                                .foregroundColor(.secondary)
                             }
                         }
-                        Spacer()
+                    } else {
+                        Text("No additional resources provided for this song.")
+                            .foregroundColor(.secondary)
                     }
                 }
                 

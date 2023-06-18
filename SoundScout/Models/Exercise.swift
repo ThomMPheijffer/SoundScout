@@ -16,6 +16,7 @@ struct Exercise: Codable {
     let songId: String
     let title: String
     let tempo: Int
+    let soundUrl: String
 }
 
 struct PostExercise: Codable {

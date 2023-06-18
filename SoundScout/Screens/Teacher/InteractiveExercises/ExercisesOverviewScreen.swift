@@ -14,7 +14,7 @@ struct ExercisesOverviewScreen: View {
     var body: some View {
         List {
             ForEach(exercises, id: \.title) { exercise in
-                NavigationLink(destination: ExerciseDetailScreen(song: song, exercise: exercise)) {
+                NavigationLink(destination: detailViewDestionation(exercise: exercise)) {
                     HStack(spacing: 0) {
                         if let coverUrl = URL(string: song.coverUrl ?? "") {
                             AsyncImage(url: coverUrl) { image in
@@ -53,6 +53,17 @@ struct ExercisesOverviewScreen: View {
             case .failure(let failure):
                 print(failure)
             }
+        }
+    }
+    
+    @ViewBuilder
+    func detailViewDestionation(exercise: Exercise) -> some View {
+        if UserDefaults.standard.string(forKey: "studentID") != nil {
+            ExerciseDetailScreen(song: song, exercise: exercise)
+        } else if UserDefaults.standard.string(forKey: "teacherID") != nil {
+            TeacherExerciseDetailScreen(song: song, exercise: exercise)
+        } else {
+            Text("No student nor teacher signed in")
         }
     }
 }

@@ -10,6 +10,7 @@ import Foundation
 enum ExercisesEndpoint {
     case getExercises(songId: String)
     case postExercise(exercise: PostExercise)
+    case postSong(exerciseId: String, songMultipartRequest: MultipartRequest)
 }
 
 extension ExercisesEndpoint: Endpoint {
@@ -19,6 +20,8 @@ extension ExercisesEndpoint: Endpoint {
             return "/exercises/song/\(id)"
         case .postExercise:
             return "/exercises"
+        case .postSong(let id, _):
+            return "/exercises/\(id)/add-sound"
         }
     }
 
@@ -26,17 +29,26 @@ extension ExercisesEndpoint: Endpoint {
         switch self {
         case .getExercises:
             return .get
-        case .postExercise:
+        case .postExercise, .postSong:
             return .post
         }
     }
     
     var body: (any Codable)? {
         switch self {
-        case .getExercises:
+        case .getExercises, .postSong:
             return nil
         case .postExercise(let exercise):
             return exercise
+        }
+    }
+    
+    var multipartRequest: MultipartRequest? {
+        switch self {
+        case .getExercises, .postExercise:
+            return nil
+        case .postSong(_, let song):
+            return song
         }
     }
 }
