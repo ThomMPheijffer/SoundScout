@@ -82,8 +82,7 @@ struct TeacherSongDetailsScreen: View {
                     
                     if song.documentUrls.count != 0 {
                         ForEach(song.documentUrls, id: \.self) { url in
-                            #warning("Refactor this to make it async")
-                            NavigationLink(destination: PDFKitRepresentedView(try! Data(contentsOf: URL(string: url)!))) {
+                            NavigationLink(destination: PDFKitRepresentedViewAsync(URL(string: url)!)) {
                                 HStack {
                                     Image(systemName: "doc")
                                     Text((URL(string: url)!.lastPathComponent as NSString).deletingPathExtension)

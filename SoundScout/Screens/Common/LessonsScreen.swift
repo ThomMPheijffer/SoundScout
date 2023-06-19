@@ -10,8 +10,22 @@ import SwiftUI
 struct LessonsScreen: View {
     @EnvironmentObject private var navigationManager: NavigationManager
     
-    let student: Student?
-    let teacher: Teacher?
+    enum UserType {
+        case student(studentId: String, teacherId: String?)
+        case teacher(teacherId: String, studentId: String?)
+    }
+    
+    let type: UserType
+    
+//    let studentId: String?
+//    let teacherId: String?
+//    let canCreateLesson: Bool
+//    
+//    init(studentId: String? = nil, teacherId: String? = nil, canCreateLesson: Bool = true) {
+//        self.studentId = studentId
+//        self.teacherId = teacherId
+//        self.canCreateLesson = canCreateLesson
+//    }
     
     @State var lessonWrapper = [LessonWrapper]()
     
@@ -28,6 +42,23 @@ struct LessonsScreen: View {
                             VStack(spacing: 0) {
                                 HStack {
                                     Text(wrapper.lessons[i].lessonDate, style: .date)
+                                    
+                                    if let profilePicture = URL(string: wrapper.lessons[i].profilePicture ?? "") {
+                                        AsyncImage(url: profilePicture) { image in
+                                            image
+                                                .resizable()
+                                                .scaledToFill()
+                                        } placeholder: {
+                                            Circle()
+                                                .fill(SSColors.blue)
+                                                .opacity(0.1)
+                                        }
+                                        
+                                        .frame(width: 30, height: 30)
+                                        .cornerRadius(15)
+                                        .clipped()
+                                    }
+                                    
                                     Spacer()
                                     
                                     NavigationLink(destination: destinationForSelectionView(lesson: wrapper.lessons[i])) {
@@ -56,18 +87,43 @@ struct LessonsScreen: View {
         .padding()
         .navigationTitle("Lessons")
         .toolbar {
-            if student != nil {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink(destination: CreateLessonScreen(studentId: student!.id)) {
-                        SSPrimaryNavigationButtonText(text: "Create lesson")
+            ToolbarItem(placement: .navigationBarTrailing) {
+                switch type {
+                case .teacher(_, let studentId):
+                    if studentId != nil {
+                            NavigationLink(destination: CreateLessonScreen(studentId: studentId!)) {
+                                SSPrimaryNavigationButtonText(text: "Create lesson")
+                            }
+                        
+                    } else {
+                        EmptyView()
                     }
+                default:
+                    EmptyView()
                 }
             }
         }
         .task {
-            let userId = teacher?.id ?? (student?.id ?? "")
-            guard userId != "" else { fatalError("No teacher and no student mode") }
-            let result = await LessonsService().getLessons(userId: userId)
+            let result: Result<Lessons, RequestError>
+            switch type {
+            case .student(let studentId, let teacherId):
+                if teacherId != nil {
+                    print("Specific call student")
+                    result = await LessonsService().getLessonsForSpecificUser(userId: teacherId!, secondUserId: studentId)
+                } else {
+                    print("non Specific call student")
+                    result = await LessonsService().getLessons(userId: studentId)
+                }
+            case .teacher(let teacherId, let studentId):
+                if studentId != nil {
+                    print("Specific call teacher")
+                    result = await LessonsService().getLessonsForSpecificUser(userId: studentId!, secondUserId: teacherId)
+                } else {
+                    print("non Specific call teacher")
+                    result = await LessonsService().getLessons(userId: teacherId)
+                }
+            }
+            
             switch result {
             case .success(let data):
                 let groupedByMonth = Dictionary(grouping: data.lessons) { lesson in
@@ -100,21 +156,12 @@ struct LessonsScreen: View {
     
     @ViewBuilder
     func destinationForSelectionView(lesson: Lesson) -> some View {
-        if teacher != nil {
-            StudentLessonDetailsScreen(lesson: lesson)
-        } else if student != nil {
+        switch type {
+        case .teacher:
             TeacherLessonDetailsScreen(lesson: lesson)
-        } else {
-            Text("No user type passed through")
+        case .student:
+            StudentLessonDetailsScreen(lesson: lesson)
         }
-    }
-}
-
-
-
-struct LessonsScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        LessonsScreen(student: nil, teacher: nil)
     }
 }
 

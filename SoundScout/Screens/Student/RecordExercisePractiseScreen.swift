@@ -22,7 +22,7 @@ struct RecordExercisePractiseScreen: View {
         HStack {
             
             if song.documentUrls.count != 0 {
-                PDFKitRepresentedView(try! Data(contentsOf:  URL(string: song.documentUrls.first!)!))
+                PDFKitRepresentedViewAsync(URL(string: song.documentUrls.first!)!)
                     .padding()
             } else {
                 Color.blue.padding()

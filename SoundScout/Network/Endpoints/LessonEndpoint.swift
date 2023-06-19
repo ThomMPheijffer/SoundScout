@@ -9,6 +9,7 @@ import Foundation
 
 enum LessonEndpoint {
     case getLessons(userId: String)
+    case getLessonsForSpecificUser(userId: String, secondUserId: String)
     case postLesson(lesson: PostLesson)
 }
 
@@ -17,6 +18,8 @@ extension LessonEndpoint: Endpoint {
         switch self {
         case .getLessons(let id):
             return "/lessons/user/\(id)"
+        case .getLessonsForSpecificUser(let id, let secondId):
+            return "/lessons/user/\(id)/user/\(secondId)"
         case .postLesson:
             return "/lessons"
         }
@@ -24,7 +27,7 @@ extension LessonEndpoint: Endpoint {
 
     var method: RequestMethod {
         switch self {
-        case .getLessons:
+        case .getLessons, .getLessonsForSpecificUser:
             return .get
         case .postLesson:
             return .post
@@ -33,7 +36,7 @@ extension LessonEndpoint: Endpoint {
     
     var body: (any Codable)? {
         switch self {
-        case .getLessons:
+        case .getLessons, .getLessonsForSpecificUser:
             return nil
         case .postLesson(let lesson):
             return lesson

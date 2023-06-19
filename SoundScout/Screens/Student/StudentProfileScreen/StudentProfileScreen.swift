@@ -61,7 +61,7 @@ struct StudentProfileScreen: View {
                             
                             Spacer()
                             
-                            NavigationLink(destination: LessonsScreen(student: nil, teacher: nil)) {
+                            NavigationLink(destination: Text("Lessons")) {
                                 SSPrimaryNavigationButtonText(text: "Lessons", fullWidth: false)
                             }
                             

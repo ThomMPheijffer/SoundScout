@@ -20,6 +20,7 @@ struct Lesson: Codable, Identifiable {
     let teacherId: String
     let studentId: String
     let songs: [Song]?
+    let profilePicture: String?
 }
 
 struct PostLesson: Codable {

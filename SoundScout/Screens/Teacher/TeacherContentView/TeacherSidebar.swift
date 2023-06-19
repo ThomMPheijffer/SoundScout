@@ -28,6 +28,10 @@ struct TeacherSidebar: View {
                 Label("My songs", systemImage: "music.note.list")
             }
             
+            NavigationLink(value: TeacherPanel.myLessons) {
+                Label("My lessons", systemImage: "music.note.list")
+            }
+            
             NavigationLink(value: TeacherPanel.profile) {
                 Label("Profile", systemImage: "person")
             }

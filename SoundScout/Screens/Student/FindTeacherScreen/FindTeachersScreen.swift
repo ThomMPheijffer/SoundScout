@@ -47,7 +47,7 @@ struct FindTeachersScreen: View {
                                         .foregroundColor(.primary)
                                 }
                                 
-                                Text("Online")
+                                Text(ListFormatter.localizedString(byJoining: teacher.instruments.map { $0.name }))
                                     .font(.caption)
                                     .foregroundColor(.secondary)
                                 

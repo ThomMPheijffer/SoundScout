@@ -17,7 +17,7 @@ struct MyTeachersScreen: View {
         ScrollView {
             LazyVGrid(columns: columns, alignment: .leading, spacing: 16) {
                 ForEach(teachers) { teacher in
-                    NavigationLink(destination: LessonsScreen(student: nil, teacher: teacher)) {
+                    NavigationLink(destination: LessonsScreen(type: .student(studentId: UserDefaults.standard.string(forKey: "studentID")!, teacherId: teacher.id))) {
                         HStack {
                             if let profilePicture = URL(string: teacher.profilePicture) {
                                 AsyncImage(url: profilePicture) { image in

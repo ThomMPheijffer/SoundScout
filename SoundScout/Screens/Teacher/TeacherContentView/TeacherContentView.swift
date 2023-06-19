@@ -11,7 +11,7 @@ class NavigationManager: ObservableObject {
     static let shared = NavigationManager()
 
     @Published var teacherSelection: TeacherPanel? = .students
-    @Published var studentSelection: StudentPanel? = .findTeachers
+    @Published var studentSelection: StudentPanel? = .myTeachers
 }
 
 enum TeacherPanel: Hashable {
@@ -19,6 +19,7 @@ enum TeacherPanel: Hashable {
 //    case schedule
     case students
     case songs
+    case myLessons
     case profile
 //    case myMessages
 }
@@ -41,6 +42,8 @@ struct TeacherContentView: View {
                     MyStudentsScreen()
                 case .songs:
                     MySongsScreen()
+                case .myLessons:
+                    LessonsScreen(type: .teacher(teacherId: UserDefaults.standard.string(forKey: "teacherID")!, studentId: nil))
                 case .profile:
                     TeacherProfileScreen()
                     //            case .myMessages:

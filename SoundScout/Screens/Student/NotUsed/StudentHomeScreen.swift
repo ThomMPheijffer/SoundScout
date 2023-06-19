@@ -28,7 +28,7 @@ struct StudentHomeScreen: View {
             HStack(spacing: 32) {
                 SSContentBackground(padding: 32) {
                     SSContentHeader(text: "My songs", buttonText: "All songs") {
-                        navigationManager.studentSelection = .songs
+//                        navigationManager.studentSelection = .songs
                     }
                         .padding(.bottom, 16)
                     

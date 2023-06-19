@@ -37,11 +37,11 @@ extension CreateTeacherProfileScreen {
                                         location: .init(latitude: location!.latitude, longitude: location!.longitude, city: city, state: state),
                                         hourlyRate: Int(hourlyRate)!)
             
-            #warning("reduce quality")
             let imageData = try! Data(contentsOf: imageUrl!)
+            let compressedImage = UIImage(data: imageData)!.jpegData(compressionQuality: 0.2)!
             var multipart = MultipartRequest()
             multipart.add(key: "payload", value: teacher.stringified())
-            multipart.add(key: "profilePicture", fileName: "\(UUID().uuidString).jpeg", fileMimeType: "image/jpeg", fileData: imageData)
+            multipart.add(key: "profilePicture", fileName: "\(UUID().uuidString).jpeg", fileMimeType: "image/jpeg", fileData: compressedImage)
             
             return await TeachersService().postTeacher(teacherMultipartForm: multipart)
         }

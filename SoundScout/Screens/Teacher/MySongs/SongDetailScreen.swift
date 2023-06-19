@@ -74,8 +74,7 @@ struct SongDetailScreen: View {
                 
                 if song.documentUrls.count != 0 {
                     ForEach(song.documentUrls, id: \.self) { url in
-                        #warning("Refactor this to make it async")
-                        NavigationLink(destination: PDFKitRepresentedView(try! Data(contentsOf: URL(string: url)!))) {
+                        NavigationLink(destination: PDFKitRepresentedViewAsync(URL(string: url)!)) {
                             HStack {
                                 Image(systemName: "doc")
                                 Text((URL(string: url)!.lastPathComponent as NSString).deletingPathExtension)
@@ -92,38 +91,5 @@ struct SongDetailScreen: View {
         }
         .padding()
         .navigationBarTitleDisplayMode(.inline)
-    }
-}
-
-
-
-
-
-import PDFKit
-import SwiftUI
-
-struct PDFKitRepresentedView: UIViewRepresentable {
-    typealias UIViewType = PDFView
-
-    let data: Data
-    let singlePage: Bool
-
-    init(_ data: Data, singlePage: Bool = false) {
-        self.data = data
-        self.singlePage = singlePage
-    }
-
-    func makeUIView(context _: UIViewRepresentableContext<PDFKitRepresentedView>) -> UIViewType {
-        let pdfView = PDFView()
-        pdfView.document = PDFDocument(data: data)
-        pdfView.autoScales = true
-        if singlePage {
-            pdfView.displayMode = .singlePage
-        }
-        return pdfView
-    }
-
-    func updateUIView(_ pdfView: UIViewType, context _: UIViewRepresentableContext<PDFKitRepresentedView>) {
-        pdfView.document = PDFDocument(data: data)
     }
 }

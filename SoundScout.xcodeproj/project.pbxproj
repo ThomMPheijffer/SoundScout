@@ -48,6 +48,7 @@
 		DC60EBE92A3F351F0082F2DC /* ExercisePractisesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC60EBE82A3F351F0082F2DC /* ExercisePractisesEndpoint.swift */; };
 		DC60EBEB2A3F385F0082F2DC /* ExercisePractise.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC60EBEA2A3F385F0082F2DC /* ExercisePractise.swift */; };
 		DC60EBED2A3F39480082F2DC /* ExercisePractisesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC60EBEC2A3F39480082F2DC /* ExercisePractisesService.swift */; };
+		DC6E47502A407732002DE849 /* PDFKitRepresentedViewAsync.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6E474F2A407732002DE849 /* PDFKitRepresentedViewAsync.swift */; };
 		DC7ACFAC2A36FDF7005B8466 /* AddSongScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7ACFAB2A36FDF7005B8466 /* AddSongScreenViewModel.swift */; };
 		DC7ACFAF2A370B85005B8466 /* ExercisesOverviewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7ACFAE2A370B85005B8466 /* ExercisesOverviewScreen.swift */; };
 		DC7ACFB12A370C74005B8466 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7ACFB02A370C74005B8466 /* Exercise.swift */; };
@@ -151,6 +152,7 @@
 		DC60EBE82A3F351F0082F2DC /* ExercisePractisesEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePractisesEndpoint.swift; sourceTree = "<group>"; };
 		DC60EBEA2A3F385F0082F2DC /* ExercisePractise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePractise.swift; sourceTree = "<group>"; };
 		DC60EBEC2A3F39480082F2DC /* ExercisePractisesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePractisesService.swift; sourceTree = "<group>"; };
+		DC6E474F2A407732002DE849 /* PDFKitRepresentedViewAsync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFKitRepresentedViewAsync.swift; sourceTree = "<group>"; };
 		DC7ACFAB2A36FDF7005B8466 /* AddSongScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSongScreenViewModel.swift; sourceTree = "<group>"; };
 		DC7ACFAE2A370B85005B8466 /* ExercisesOverviewScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesOverviewScreen.swift; sourceTree = "<group>"; };
 		DC7ACFB02A370C74005B8466 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
@@ -531,6 +533,7 @@
 				4EC8DD192A1F8CF50065F575 /* SSContentHeader.swift */,
 				DC7ACFCE2A39C83E005B8466 /* SSImagePicker.swift */,
 				DC60EBE42A3F316C0082F2DC /* SSProjectDocumentPicker.swift */,
+				DC6E474F2A407732002DE849 /* PDFKitRepresentedViewAsync.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -796,6 +799,7 @@
 				4EC8DD2A2A1F90DB0065F575 /* TeacherHomeScreen.swift in Sources */,
 				4EC8DD1E2A1F8DD70065F575 /* StudentHomeScreen.swift in Sources */,
 				DC43EA0F2A1BCBCA00C08056 /* AddSongScreen.swift in Sources */,
+				DC6E47502A407732002DE849 /* PDFKitRepresentedViewAsync.swift in Sources */,
 				DCC84CA72A28C16800A9F423 /* UserEndpoint.swift in Sources */,
 				DCC84C872A27934700A9F423 /* InstrumentsService.swift in Sources */,
 				4EC8DD302A2291C90065F575 /* StudentSongDetailsScreen.swift in Sources */,

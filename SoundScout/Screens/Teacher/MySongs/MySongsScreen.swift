@@ -49,7 +49,7 @@ struct MySongsScreen: View {
         .navigationTitle("My Songs")
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
-                if let teacherId = UserDefaults.standard.string(forKey: "teacherID") {
+                if let _ = UserDefaults.standard.string(forKey: "teacherID") {
                     Button(action: {
                         spotify.isAuthorized ? spotify.api.authorizationManager.deauthorize() : spotify.authorize()
                     }) {
