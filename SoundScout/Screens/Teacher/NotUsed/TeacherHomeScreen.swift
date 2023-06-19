@@ -32,9 +32,16 @@ struct TeacherHomeScreen: View {
                                         Spacer()
                                     } else {
                                         VStack(alignment: .leading) {
-                                            Text("Guitar lesson")
-                                                .font(.caption2)
-                                                .padding(8)
+                                            HStack {
+                                                Circle()
+                                                    .fill(SSColors.blue)
+                                                    .frame(width: 16, height: 16)
+                                                
+                                                Text("Walter")
+                                                    .font(.caption)
+                                            }
+                                            .padding(8)
+                                            
                                             Text("14:00")
                                                 .font(.system(size: 10))
                                                 .foregroundColor(.secondary)
@@ -42,15 +49,10 @@ struct TeacherHomeScreen: View {
                                             
                                             Spacer()
                                             
-                                            HStack {
-                                                Circle()
-                                                    .fill(SSColors.blue)
-                                                    .frame(width: 16, height: 16)
-                                                
-                                                Text("Walter")
-                                                    .font(.system(size: 10))
-                                            }
-                                            .padding(8)
+                                            Text("Guitar lesson")
+                                                .font(.system(size: 10))
+                                                .foregroundColor(.secondary)
+                                                .padding(8)
                                         }
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                         .background(Color(uiColor: .init(red: 223/253, green:236/253, blue: 253/253, alpha: 1)))

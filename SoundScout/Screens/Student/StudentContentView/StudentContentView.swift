@@ -32,7 +32,7 @@ struct StudentContentView: View {
                 case .home:
                     StudentHomeScreen()
                 case .schedule:
-                    Text("Schedule")
+                    ScheduleScreen(userType: .teacher)
                 case .myTeachers:
                     MyTeachersScreen()
                 case .findTeachers:
