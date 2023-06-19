@@ -10,13 +10,13 @@ import SwiftUI
 class NavigationManager: ObservableObject {
     static let shared = NavigationManager()
 
-    @Published var teacherSelection: TeacherPanel? = .students
-    @Published var studentSelection: StudentPanel? = .myTeachers
+    @Published var teacherSelection: TeacherPanel? = .home
+    @Published var studentSelection: StudentPanel? = .home
 }
 
 enum TeacherPanel: Hashable {
-//    case home
-//    case schedule
+    case home
+    case schedule
     case students
     case songs
     case myLessons
@@ -34,10 +34,10 @@ struct TeacherContentView: View {
         } detail: {
             NavigationStack {
                 switch navigationManager.teacherSelection {
-                    //            case .home:
-                    //                TeacherHomeScreen()
-                    //            case .schedule:
-                    //                Text("Schedule")
+                case .home:
+                    TeacherHomeScreen()
+                case .schedule:
+                    Text("Schedule")
                 case .students:
                     MyStudentsScreen()
                 case .songs:

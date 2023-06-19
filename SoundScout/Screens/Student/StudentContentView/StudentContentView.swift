@@ -9,8 +9,8 @@ import SwiftUI
 
 
 enum StudentPanel: Hashable {
-//    case home
-//    case schedule
+    case home
+    case schedule
     case myTeachers
     case findTeachers
 //    case songs
@@ -29,10 +29,10 @@ struct StudentContentView: View {
         } detail: {
             NavigationStack {
                 switch navigationManager.studentSelection {
-                    //            case .home:
-                    //                StudentHomeScreen()
-                    //            case .schedule:
-                    //                Text("Schedule")
+                case .home:
+                    StudentHomeScreen()
+                case .schedule:
+                    Text("Schedule")
                 case .myTeachers:
                     MyTeachersScreen()
                 case .findTeachers:
@@ -50,7 +50,6 @@ struct StudentContentView: View {
                 }
             }
         }
-
     }
 }
 

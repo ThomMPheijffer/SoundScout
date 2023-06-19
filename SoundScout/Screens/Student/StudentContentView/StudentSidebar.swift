@@ -12,13 +12,13 @@ struct StudentSidebar: View {
 
     var body: some View {
         List(selection: $selection) {
-//            NavigationLink(value: StudentPanel.home) {
-//                Label("Home", systemImage: "house")
-//            }
-//
-//            NavigationLink(value: StudentPanel.schedule) {
-//                Label("Schedule", systemImage: "calendar")
-//            }
+            NavigationLink(value: StudentPanel.home) {
+                Label("Home", systemImage: "house")
+            }
+            
+            NavigationLink(value: StudentPanel.schedule) {
+                Label("Schedule", systemImage: "calendar")
+            }
 
             NavigationLink(value: StudentPanel.myTeachers) {
                 Label("My Teachers", systemImage: "person.3")
