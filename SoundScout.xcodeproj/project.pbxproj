@@ -44,6 +44,10 @@
 		DC4C54AA2A1E514700E8141C /* SearchSongScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4C54A92A1E514700E8141C /* SearchSongScreen.swift */; };
 		DC60EBE32A3F1E690082F2DC /* TeacherExerciseDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC60EBE22A3F1E690082F2DC /* TeacherExerciseDetailScreen.swift */; };
 		DC60EBE52A3F316C0082F2DC /* SSProjectDocumentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC60EBE42A3F316C0082F2DC /* SSProjectDocumentPicker.swift */; };
+		DC60EBE72A3F327E0082F2DC /* RecordExercisePractiseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC60EBE62A3F327E0082F2DC /* RecordExercisePractiseScreen.swift */; };
+		DC60EBE92A3F351F0082F2DC /* ExercisePractisesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC60EBE82A3F351F0082F2DC /* ExercisePractisesEndpoint.swift */; };
+		DC60EBEB2A3F385F0082F2DC /* ExercisePractise.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC60EBEA2A3F385F0082F2DC /* ExercisePractise.swift */; };
+		DC60EBED2A3F39480082F2DC /* ExercisePractisesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC60EBEC2A3F39480082F2DC /* ExercisePractisesService.swift */; };
 		DC7ACFAC2A36FDF7005B8466 /* AddSongScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7ACFAB2A36FDF7005B8466 /* AddSongScreenViewModel.swift */; };
 		DC7ACFAF2A370B85005B8466 /* ExercisesOverviewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7ACFAE2A370B85005B8466 /* ExercisesOverviewScreen.swift */; };
 		DC7ACFB12A370C74005B8466 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7ACFB02A370C74005B8466 /* Exercise.swift */; };
@@ -53,7 +57,6 @@
 		DC7ACFBA2A371574005B8466 /* CreateExerciseScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7ACFB92A371574005B8466 /* CreateExerciseScreenViewModel.swift */; };
 		DC7ACFBC2A3724B7005B8466 /* SelectSongScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7ACFBB2A3724B7005B8466 /* SelectSongScreen.swift */; };
 		DC7ACFBE2A377E71005B8466 /* ExerciseDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7ACFBD2A377E71005B8466 /* ExerciseDetailScreen.swift */; };
-		DC7ACFC32A38FADA005B8466 /* PSPDFKit in Frameworks */ = {isa = PBXBuildFile; productRef = DC7ACFC22A38FADA005B8466 /* PSPDFKit */; };
 		DC7ACFCB2A390A62005B8466 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7ACFCA2A390A62005B8466 /* MultipartFormData.swift */; };
 		DC7ACFCF2A39C83E005B8466 /* SSImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7ACFCE2A39C83E005B8466 /* SSImagePicker.swift */; };
 		DC7ACFD12A39C86A005B8466 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7ACFD02A39C86A005B8466 /* LocationManager.swift */; };
@@ -144,6 +147,10 @@
 		DC4C54A92A1E514700E8141C /* SearchSongScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSongScreen.swift; sourceTree = "<group>"; };
 		DC60EBE22A3F1E690082F2DC /* TeacherExerciseDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherExerciseDetailScreen.swift; sourceTree = "<group>"; };
 		DC60EBE42A3F316C0082F2DC /* SSProjectDocumentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSProjectDocumentPicker.swift; sourceTree = "<group>"; };
+		DC60EBE62A3F327E0082F2DC /* RecordExercisePractiseScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordExercisePractiseScreen.swift; sourceTree = "<group>"; };
+		DC60EBE82A3F351F0082F2DC /* ExercisePractisesEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePractisesEndpoint.swift; sourceTree = "<group>"; };
+		DC60EBEA2A3F385F0082F2DC /* ExercisePractise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePractise.swift; sourceTree = "<group>"; };
+		DC60EBEC2A3F39480082F2DC /* ExercisePractisesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePractisesService.swift; sourceTree = "<group>"; };
 		DC7ACFAB2A36FDF7005B8466 /* AddSongScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSongScreenViewModel.swift; sourceTree = "<group>"; };
 		DC7ACFAE2A370B85005B8466 /* ExercisesOverviewScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesOverviewScreen.swift; sourceTree = "<group>"; };
 		DC7ACFB02A370C74005B8466 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
@@ -213,7 +220,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC4C54A72A1E461B00E8141C /* KeychainAccess in Frameworks */,
-				DC7ACFC32A38FADA005B8466 /* PSPDFKit in Frameworks */,
 				DC4C54A12A1E436900E8141C /* SpotifyAPI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -398,6 +404,7 @@
 				4EC8DD412A2E0ADC0065F575 /* SongEndpoint.swift */,
 				DCEB3C8B2A33ACA5005FC601 /* LessonEndpoint.swift */,
 				DC7ACFB22A370DC3005B8466 /* ExercisesEndpoint.swift */,
+				DC60EBE82A3F351F0082F2DC /* ExercisePractisesEndpoint.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -412,6 +419,7 @@
 				4EC8DD432A2E0B890065F575 /* SongsService.swift */,
 				DCEB3C8D2A33AD6E005FC601 /* LessonService.swift */,
 				DC7ACFB42A370E05005B8466 /* ExercisesService.swift */,
+				DC60EBEC2A3F39480082F2DC /* ExercisePractisesService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -428,6 +436,7 @@
 				DCC84C8D2A27976D00A9F423 /* User.swift */,
 				4EC8DD452A2E0C0B0065F575 /* Song.swift */,
 				DC7ACFB02A370C74005B8466 /* Exercise.swift */,
+				DC60EBEA2A3F385F0082F2DC /* ExercisePractise.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -596,6 +605,7 @@
 				4EC8DD2F2A2291C90065F575 /* StudentSongDetailsScreen.swift */,
 				4EC8DD312A2375CF0065F575 /* StudentExercisesScreen.swift */,
 				DC7ACFBD2A377E71005B8466 /* ExerciseDetailScreen.swift */,
+				DC60EBE62A3F327E0082F2DC /* RecordExercisePractiseScreen.swift */,
 				DC104C652A2DFF320056FC2A /* NotUsed */,
 			);
 			path = Student;
@@ -639,7 +649,6 @@
 			packageProductDependencies = (
 				DC4C54A02A1E436900E8141C /* SpotifyAPI */,
 				DC4C54A62A1E461B00E8141C /* KeychainAccess */,
-				DC7ACFC22A38FADA005B8466 /* PSPDFKit */,
 			);
 			productName = SoundScout;
 			productReference = DCCD07532A1625C4002CB449 /* SoundScout.app */;
@@ -672,7 +681,6 @@
 			packageReferences = (
 				DC4C549F2A1E436900E8141C /* XCRemoteSwiftPackageReference "SpotifyAPI" */,
 				DC4C54A52A1E461B00E8141C /* XCRemoteSwiftPackageReference "KeychainAccess" */,
-				DC7ACFC12A38FADA005B8466 /* XCRemoteSwiftPackageReference "PSPDFKit-SP" */,
 			);
 			productRefGroup = DCCD07542A1625C4002CB449 /* Products */;
 			projectDirPath = "";
@@ -704,7 +712,9 @@
 				DCD409692A1A30CE008220F1 /* SSCheckbox.swift in Sources */,
 				DCC84C902A2797AF00A9F423 /* TeacherEndpoint.swift in Sources */,
 				DC7ACFBC2A3724B7005B8466 /* SelectSongScreen.swift in Sources */,
+				DC60EBEB2A3F385F0082F2DC /* ExercisePractise.swift in Sources */,
 				DCC84CAE2A28C30A00A9F423 /* LoginScreenViewModel.swift in Sources */,
+				DC60EBE72A3F327E0082F2DC /* RecordExercisePractiseScreen.swift in Sources */,
 				DCC84C922A2797EE00A9F423 /* TeachersService.swift in Sources */,
 				4EC8DD2E2A1FB6540065F575 /* StudentLessonDetailScreen.swift in Sources */,
 				4EC8DD222A1F8F850065F575 /* StudentContentView.swift in Sources */,
@@ -735,7 +745,9 @@
 				4EC8DD262A1F903C0065F575 /* TeacherContentView.swift in Sources */,
 				DCA07E8A2A1F85CB00C3BB3B /* StudentProfileScreen.swift in Sources */,
 				DCD409672A1A2016008220F1 /* MySongsScreen.swift in Sources */,
+				DC60EBED2A3F39480082F2DC /* ExercisePractisesService.swift in Sources */,
 				DCC84C952A27B36700A9F423 /* SignUpScreenViewModel.swift in Sources */,
+				DC60EBE92A3F351F0082F2DC /* ExercisePractisesEndpoint.swift in Sources */,
 				DC7ACFD12A39C86A005B8466 /* LocationManager.swift in Sources */,
 				DCEB3C8E2A33AD6E005FC601 /* LessonService.swift in Sources */,
 				DCC84C7D2A27931A00A9F423 /* Endpoint.swift in Sources */,
@@ -1021,14 +1033,6 @@
 				minimumVersion = 4.2.1;
 			};
 		};
-		DC7ACFC12A38FADA005B8466 /* XCRemoteSwiftPackageReference "PSPDFKit-SP" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/PSPDFKit/PSPDFKit-SP";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 12.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1041,11 +1045,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DC4C54A52A1E461B00E8141C /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
-		};
-		DC7ACFC22A38FADA005B8466 /* PSPDFKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DC7ACFC12A38FADA005B8466 /* XCRemoteSwiftPackageReference "PSPDFKit-SP" */;
-			productName = PSPDFKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

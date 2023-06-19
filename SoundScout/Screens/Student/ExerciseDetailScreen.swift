@@ -44,7 +44,7 @@ struct ExerciseDetailScreen: View {
                         
                         Spacer()
                         
-                        NavigationLink(destination: ExercisesOverviewScreen(song: song)) {
+                        NavigationLink(destination: RecordExercisePractiseScreen(song: song, exercise: exercise)) {
                             SSPrimaryNavigationButtonText(text: "Practise", fullWidth: false)
                         }
                     }
