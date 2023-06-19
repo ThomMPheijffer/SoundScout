@@ -105,13 +105,6 @@ struct TeacherLessonDetailsScreen: View {
         }
         .padding()
         .navigationTitle("Lesson - January")
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink(destination: Text("Teacher message screen")) {
-                    Image(systemName: "bell.badge").font(.title2).foregroundColor(Color.black)
-                }
-            }
-        }
     }
 }
 

@@ -92,7 +92,8 @@ struct LessonsScreen: View {
                 case .teacher(_, let studentId):
                     if studentId != nil {
                             NavigationLink(destination: CreateLessonScreen(studentId: studentId!)) {
-                                SSPrimaryNavigationButtonText(text: "Create lesson")
+//                                SSPrimaryNavigationButtonText(text: "Create lesson")
+                                Text("Create lesson")
                             }
                         
                     } else {

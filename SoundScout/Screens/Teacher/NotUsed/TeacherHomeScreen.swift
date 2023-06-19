@@ -212,13 +212,6 @@ struct TeacherHomeScreen: View {
         }
         .padding()
         .navigationTitle("Home")
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink(destination: TeacherMessagesScreen()) {
-                    Image(systemName: "bell.badge").font(.title2).foregroundColor(Color.black)
-                }
-            }
-        }
     }
 }
 

@@ -63,10 +63,12 @@ struct SelectInstrumentsScreen: View {
             .padding(.horizontal)
         }
         .padding()
-        .navigationTitle("Select instruments").navigationBarTitleDisplayMode(.large).toolbar {
+        .navigationTitle("Select instruments").navigationBarTitleDisplayMode(.large)
+        .toolbar {
             ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
                 Button { presentationMode.wrappedValue.dismiss() } label: {
-                    SSPrimaryNavigationButtonText(text: "Done")
+//                    SSPrimaryNavigationButtonText(text: "Done")
+                    Text("Done")
                 }
             }
         }

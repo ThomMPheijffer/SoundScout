@@ -90,7 +90,8 @@ struct AddSongScreen: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: { viewModel.showPopover = true }) {
-                    SSPrimaryNavigationButtonText(text: "Add song via Spotify")
+                    Text("Add song via Spotify")
+//                    SSPrimaryNavigationButtonText(text: "Add song via Spotify")
                 }
             }
         }

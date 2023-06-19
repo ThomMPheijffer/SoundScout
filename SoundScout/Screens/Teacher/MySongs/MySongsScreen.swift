@@ -53,12 +53,14 @@ struct MySongsScreen: View {
                     Button(action: {
                         spotify.isAuthorized ? spotify.api.authorizationManager.deauthorize() : spotify.authorize()
                     }) {
-                        SSPrimaryNavigationButtonText(text: spotify.isAuthorized ? "Logout" : "Authorize Spotify")
+                        Text(spotify.isAuthorized ? "Logout" : "Authorize Spotify")
+//                        SSPrimaryNavigationButtonText(text: spotify.isAuthorized ? "Logout" : "Authorize Spotify")
                     }
                     
                     
                     NavigationLink(destination: AddSongScreen()) {
-                        SSPrimaryNavigationButtonText(text: "Add song")
+                        Text("Add song")
+//                        SSPrimaryNavigationButtonText(text: "Add song")
                     }
                 }
             }
