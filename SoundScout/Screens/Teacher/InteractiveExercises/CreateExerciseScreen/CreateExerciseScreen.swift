@@ -17,6 +17,11 @@ struct CreateExerciseScreen: View {
     
     @State var presentReviewExercise = false
     
+    @State var bpm: Double = 80.0
+    @State var countDown = 4
+    @State var count = -1
+    @State var recordingState: RecordingState = .identity
+    
     var body: some View {
         HStack {
             
@@ -34,20 +39,9 @@ struct CreateExerciseScreen: View {
                 SSTextField(title: "Exercise name", text: $viewModel.name)
                     .padding(.bottom, 32)
                 
-                SSTextField(title: "Tempo", text: $viewModel.tempo)
-                    .padding(.bottom, 64)
-                
                 Spacer()
                 
-                VStack {
-                    Text(audioRecorder.timer)
-                        .font(.title)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                    
-                    Button(action: { audioRecorder.isRecording ? audioRecorder.stopRecording() : audioRecorder.startRecording() }) {
-                        SSSecondaryNavigationButtonText(text: audioRecorder.isRecording ? "􀛷 Stop" :  "􀊃 Play")
-                    }
-                }
+                RecordingView(recordingState: $recordingState, count: $count, countDown: $countDown, bpm: $bpm).environmentObject(audioRecorder)
                 
                 Spacer()
                 
@@ -92,8 +86,18 @@ struct CreateExerciseScreen: View {
                     Spacer()
                     
                     Button(action: {
+                        audioRecorder.newRecording()
+                        recordingState = .identity
+                        count = -1
+                        countDown = 4
+                        presentReviewExercise = false
+                    }) {
+                        SSSecondaryNavigationButtonText(text: "Practise again", fullWidth: true)
+                    }
+                    
+                    Button(action: {
                         Task {
-                            let result = await viewModel.postExercise(songId: song.id)
+                            let result = await viewModel.postExercise(songId: song.id, tempo: song.bpm)
                             switch result {
                             case .success(let exercise):
                                 print(exercise)

@@ -29,7 +29,7 @@ struct RecordingView: View {
                 Button(action: {
                     recordingState = .countdown
                 }) {
-                    SSPrimaryNavigationButtonText(text: "Start recording")
+                    SSSecondaryNavigationButtonText(text: "Start recording", fullWidth: true)
                 }
             }
             

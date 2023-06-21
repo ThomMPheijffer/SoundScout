@@ -10,15 +10,14 @@ import Foundation
 extension CreateExerciseScreen {
     class ViewModel: ObservableObject {
         @Published var name: String = ""
-        @Published var tempo: String = ""
         
-        func postExercise(songId: String) async -> Result<Exercise, RequestError> {
-            let result = await ExercisesService().postExercise(exercise: .init(songId: songId, title: name, tempo: Int(tempo)!))
+        func postExercise(songId: String, tempo: Int) async -> Result<Exercise, RequestError> {
+            let result = await ExercisesService().postExercise(exercise: .init(songId: songId, title: name, tempo: tempo))
             return result
         }
         
         func canContinue() -> Bool {
-            return !name.isEmpty && !tempo.isEmpty && (Int(tempo) != nil)
+            return !name.isEmpty
         }
     }
 }

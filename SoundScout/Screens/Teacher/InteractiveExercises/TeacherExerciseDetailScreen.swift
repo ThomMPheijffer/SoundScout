@@ -6,10 +6,10 @@
 //
 
 import SwiftUI
-import AVKit
+import AVFoundation
 
 struct TeacherExerciseDetailScreen: View {
-    @State var player = AVPlayer()
+    @State var player: AVPlayer? = nil
     @State var isPlaying: Bool = false
     
     let song: Song
@@ -44,6 +44,28 @@ struct TeacherExerciseDetailScreen: View {
                             .foregroundColor(.secondary)
                         
                         Spacer()
+                        
+                        Button(action: {
+                            if player?.timeControlStatus == .playing {
+                                player?.pause()
+                            } else if player?.timeControlStatus == .paused {
+                                player?.play()
+                            } else {
+                                let url = URL(string: exercise.soundUrl ?? "")!
+                                let playerItem = AVPlayerItem(url: url)
+                                self.player = AVPlayer(playerItem: playerItem)
+                                player!.volume = 1.0
+                                player!.play()
+                            }
+                        }) {
+                            Image(systemName: player?.timeControlStatus == .playing ? "pause.fill" : "play.fill")
+                                .foregroundStyle(.black)
+                                .font(.title)
+                                .imageScale(.large)
+                                .padding()
+                                .background(Circle().fill(Color.gray.opacity(0.2)))
+//                            Text(player?.timeControlStatus == .playing ? "Pause" : "Play")
+                        }
                     }
                     
                     Spacer()

@@ -93,7 +93,7 @@ struct RecordExercisePractiseScreen: View {
                         countDown = 4
                         presentReviewExercise = false
                     }) {
-                        SSSecondaryNavigationButtonText(text: "Practise again")
+                        SSSecondaryNavigationButtonText(text: "Practise again", fullWidth: true)
                     }
                     
                     Button(action: {
