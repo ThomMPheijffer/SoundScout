@@ -22,12 +22,30 @@ struct CreateExerciseScreen: View {
     @State var count = -1
     @State var recordingState: RecordingState = .identity
     
+    @State var selectedUrl: String = ""
+    
     var body: some View {
         HStack {
-            
             if song.documentUrls.count != 0 {
-                PDFKitRepresentedViewAsync(URL(string: song.documentUrls.first!)!)
-                    .padding()
+                VStack {
+                    Picker("Selected file", selection: $selectedUrl) {
+                        ForEach(song.documentUrls, id: \.self) {
+                            Text("\((URL(string: $0)!.lastPathComponent as NSString).deletingPathExtension)")
+                        }
+                    }
+                    .pickerStyle(.menu)
+                    .onAppear {
+                        selectedUrl = song.documentUrls.first!
+                    }
+                    .onChange(of: selectedUrl) { newValue in
+                        print(newValue)
+                    }
+                    
+                    if selectedUrl != "" {
+                        PDFKitRepresentedViewAsync(URL(string: selectedUrl)!)
+                            .padding()
+                    }
+                }
             } else {
                 Color.blue.padding()
             }
