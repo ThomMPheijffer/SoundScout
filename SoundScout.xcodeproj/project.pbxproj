@@ -34,6 +34,7 @@
 		4EC8DD422A2E0ADC0065F575 /* SongEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8DD412A2E0ADC0065F575 /* SongEndpoint.swift */; };
 		4EC8DD442A2E0B890065F575 /* SongsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8DD432A2E0B890065F575 /* SongsService.swift */; };
 		4EC8DD462A2E0C0B0065F575 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8DD452A2E0C0B0065F575 /* Song.swift */; };
+		DC23D2492A431EBB00780152 /* RecordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC23D2482A431EBB00780152 /* RecordingView.swift */; };
 		DC43EA0F2A1BCBCA00C08056 /* AddSongScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC43EA0E2A1BCBCA00C08056 /* AddSongScreen.swift */; };
 		DC43EA112A1BCD7000C08056 /* SongDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC43EA102A1BCD7000C08056 /* SongDetailScreen.swift */; };
 		DC4918172A3F0668008A26AF /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4918162A3F0668008A26AF /* AudioRecorder.swift */; };
@@ -139,6 +140,7 @@
 		4EC8DD412A2E0ADC0065F575 /* SongEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongEndpoint.swift; sourceTree = "<group>"; };
 		4EC8DD432A2E0B890065F575 /* SongsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsService.swift; sourceTree = "<group>"; };
 		4EC8DD452A2E0C0B0065F575 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		DC23D2482A431EBB00780152 /* RecordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingView.swift; sourceTree = "<group>"; };
 		DC43EA0E2A1BCBCA00C08056 /* AddSongScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSongScreen.swift; sourceTree = "<group>"; };
 		DC43EA102A1BCD7000C08056 /* SongDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailScreen.swift; sourceTree = "<group>"; };
 		DC4918162A3F0668008A26AF /* AudioRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
@@ -619,6 +621,7 @@
 			children = (
 				4EC8DD1F2A1F8E050065F575 /* ScheduleScreen.swift */,
 				4EC8DD2B2A1FAD3B0065F575 /* LessonsScreen.swift */,
+				DC23D2482A431EBB00780152 /* RecordingView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -806,6 +809,7 @@
 				DC7ACFD62A39CCFE005B8466 /* Encodable+Extensions.swift in Sources */,
 				DCC84CB02A28C53900A9F423 /* ReplaceKeyWindow.swift in Sources */,
 				DCEB3C872A3382DC005FC601 /* CreateLessonScreen.swift in Sources */,
+				DC23D2492A431EBB00780152 /* RecordingView.swift in Sources */,
 				4EC8DD1A2A1F8CF50065F575 /* SSContentHeader.swift in Sources */,
 				DCCD07722A16357E002CB449 /* SSSegmentedControlButton.swift in Sources */,
 				DCC84C9F2A27BCE700A9F423 /* StudentsService.swift in Sources */,

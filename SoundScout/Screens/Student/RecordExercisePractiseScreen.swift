@@ -18,6 +18,12 @@ struct RecordExercisePractiseScreen: View {
     
     @State var presentReviewExercise = false
     
+    
+    @State var bpm: Double = 80.0
+    @State var countDown = 4
+    @State var count = -1
+    @State var recordingState: RecordingState = .identity
+    
     var body: some View {
         HStack {
             
@@ -32,17 +38,11 @@ struct RecordExercisePractiseScreen: View {
             Divider()
             
             VStack(alignment: .leading, spacing: 0) {
+                Text("BPM: \(bpm)")
+                
                 Spacer()
                 
-                VStack {
-                    Text(audioRecorder.timer)
-                        .font(.title)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                    
-                    Button(action: { audioRecorder.isRecording ? audioRecorder.stopRecording() : audioRecorder.startRecording() }) {
-                        SSSecondaryNavigationButtonText(text: audioRecorder.isRecording ? "􀛷 Stop" :  "􀊃 Play")
-                    }
-                }
+                RecordingView(recordingState: $recordingState, count: $count, countDown: $countDown, bpm: $bpm).environmentObject(audioRecorder)
                 
                 Spacer()
                 
@@ -85,6 +85,16 @@ struct RecordExercisePractiseScreen: View {
                     }
                     
                     Spacer()
+                    
+                    Button(action: {
+                        audioRecorder.newRecording()
+                        recordingState = .identity
+                        count = -1
+                        countDown = 4
+                        presentReviewExercise = false
+                    }) {
+                        SSSecondaryNavigationButtonText(text: "Practise again")
+                    }
                     
                     Button(action: {
                         Task {

@@ -40,9 +40,11 @@ struct ExercisesOverviewScreen: View {
         .navigationTitle("Exercises")
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
-                NavigationLink(destination: CreateExerciseScreen(song: song)) {
-                    Text("Create exercise")
-//                    SSPrimaryNavigationButtonText(text: "Create exercise")
+                if let _ = UserDefaults.standard.string(forKey: "teacherID") {
+                    NavigationLink(destination: CreateExerciseScreen(song: song)) {
+                        Text("Create exercise")
+                        //                    SSPrimaryNavigationButtonText(text: "Create exercise")
+                    }
                 }
             }
         }

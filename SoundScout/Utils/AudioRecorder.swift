@@ -14,7 +14,11 @@ class AudioRecorder: NSObject, ObservableObject {
     
     @Published var countSec = 0
     @Published var timerCount : Timer?
-    @Published var timer : String = "0:00"
+    @Published var timer : String = "0:00" {
+        didSet {
+            objectWillChange.send(self)
+        }
+    }
     
     override init() {
         super.init()
@@ -60,8 +64,10 @@ class AudioRecorder: NSObject, ObservableObject {
             recordingURL = audioFilename
             
             timerCount = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (value) in
-                self.countSec += 1
-                self.timer = covertSecToMinAndHour(seconds: self.countSec)
+                DispatchQueue.main.async {
+                    self.countSec += 1
+                    self.timer = covertSecToMinAndHour(seconds: self.countSec)
+                }
             })
         } catch {
             print(error)
@@ -73,6 +79,14 @@ class AudioRecorder: NSObject, ObservableObject {
         audioRecorder.stop()
         isRecording = false
         timerCount?.invalidate()
+    }
+    
+    func newRecording() {
+        deleteRecording()
+        countSec = 0
+        timerCount?.invalidate()
+        timerCount = nil
+        timer = "0:00"
     }
     
     func deleteRecording() {
