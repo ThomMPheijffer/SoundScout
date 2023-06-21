@@ -86,8 +86,21 @@ struct TeacherHomeScreen: View {
                         
                         VStack {
                             HStack {
-                                Color.green
+                                if let coverUrl = URL(string: songs[i].coverUrl ?? "") {
+                                    AsyncImage(url: coverUrl) { image in
+                                        image
+                                            .resizable()
+                                            .scaledToFill()
+                                    } placeholder: {
+                                        Color.purple.opacity(0.1)
+                                    }
                                     .frame(width: 40, height: 40)
+                                    .cornerRadius(4)
+                                    .shadow(radius: 2)
+                                } else {
+                                    Color.green
+                                        .frame(width: 40, height: 40)
+                                }
                                 
                                 VStack(alignment: .leading) {
                                     Text(songs[i].title)
