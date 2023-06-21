@@ -16,6 +16,7 @@ struct Song: Codable, Identifiable {
     let teacherId: String
     let title: String
     let artist: String
+    let bpm: Int
     let teacherNotes: String
     let coverUrl: String?
     let documentUrls: [String]
@@ -25,6 +26,7 @@ struct PostSong: Codable {
     let teacherId: String
     let title: String
     let artist: String
+    let bpm: Int
     let teacherNotes: String
     let coverUrl: String?
 }

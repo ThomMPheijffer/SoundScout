@@ -10,7 +10,6 @@ import SpotifyWebAPI
 import Combine
 
 class SearchSongViewModel: ObservableObject {
-#warning("Temporary solution")
     let spotify = Spotify()
     
     @Published var searchText = ""

@@ -14,16 +14,17 @@ extension AddSongScreen {
         @Published var songName: String = ""
         @Published var artist: String = ""
         @Published var coverUrl: URL? = nil
+        @Published var bpm: String = ""
         @Published var teacherNotes: String = ""
         
         func postSong() async -> Result<Song, RequestError> {
             guard let teacherId = UserDefaults.standard.string(forKey: "teacherID") else { return .failure(.unknown) }
-            let result = await SongsService().postSong(song: .init(teacherId: teacherId, title: songName, artist: artist, teacherNotes: teacherNotes, coverUrl: coverUrl?.absoluteString))
+            let result = await SongsService().postSong(song: .init(teacherId: teacherId, title: songName, artist: artist, bpm: Int(bpm)!, teacherNotes: teacherNotes, coverUrl: coverUrl?.absoluteString))
             return result
         }
         
         func canContinue() -> Bool {
-            return !songName.isEmpty && !artist.isEmpty && !teacherNotes.isEmpty
+            return !songName.isEmpty && !artist.isEmpty && !teacherNotes.isEmpty && Int(bpm) != nil
         }
     }
 }

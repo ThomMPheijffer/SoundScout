@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct AddSongScreen: View {
     @ObservedObject var viewModel = ViewModel()
@@ -16,6 +17,8 @@ struct AddSongScreen: View {
     @State var selectedURLs = [URL]()
     @State var added = false
     
+    @State var bpmCancellable: AnyCancellable? = nil
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
@@ -23,6 +26,9 @@ struct AddSongScreen: View {
                     .padding(.bottom, 32)
                 
                 SSTextField(title: "Artist", text: $viewModel.artist)
+                    .padding(.bottom, 32)
+                
+                SSTextField(title: "BPM", text: $viewModel.bpm)
                     .padding(.bottom, 32)
                 
                 Text("Cover art")
@@ -49,24 +55,26 @@ struct AddSongScreen: View {
                 SSTextField(title: "Teacher notes", text: $viewModel.teacherNotes, axis: .horizontal)
                     .padding(.bottom, 32)
                 
-                Text("Add files")
-                    .font(.title3)
-                    .padding(.bottom)
-                
-                ForEach(selectedURLs, id: \.self) { url in
-                    Text((url.lastPathComponent as NSString).deletingPathExtension)
-                        .foregroundColor(.secondary)
-                        .font(.subheadline)
-                        .padding(.bottom, 8)
+                Group {
+                    Text("Add files")
+                        .font(.title3)
+                        .padding(.bottom)
+                    
+                    ForEach(selectedURLs, id: \.self) { url in
+                        Text((url.lastPathComponent as NSString).deletingPathExtension)
+                            .foregroundColor(.secondary)
+                            .font(.subheadline)
+                            .padding(.bottom, 8)
+                    }
+                    
+                    Button(action: { importFile = true }) {
+                        SSSecondaryNavigationButtonText(text: "Attach files to song")
+                    }
+                    .sheet(isPresented: $importFile) {
+                        SSProjectDocumentPicker(selectedUrl: $selectedURL, added: $added)
+                    }
+                    .padding(.bottom, 64)
                 }
-                
-                Button(action: { importFile = true }) {
-                    SSSecondaryNavigationButtonText(text: "Attach files to song")
-                }
-                .sheet(isPresented: $importFile) {
-                    SSProjectDocumentPicker(selectedUrl: $selectedURL, added: $added)
-                }
-                .padding(.bottom, 64)
                 
                 Button(action: {
                     Task {
@@ -100,6 +108,7 @@ struct AddSongScreen: View {
                 self.viewModel.songName = track.name
                 self.viewModel.artist = track.artists?.first?.name ?? self.viewModel.artist
                 self.viewModel.coverUrl = track.album?.images?.first?.url
+                self.getBPMForTrack(trackUri: track.uri ?? "")
             }
         }
         .onChange(of: added) { newValue in
@@ -111,6 +120,26 @@ struct AddSongScreen: View {
                 added = false
             }
         }
+    }
+    
+    func getBPMForTrack(trackUri: String?) {
+        guard let uri = trackUri else { return }
+        let spotify = Spotify()
+        bpmCancellable = spotify.api.trackAudioFeatures(uri)
+            .receive(on: RunLoop.main)
+            .sink(
+                receiveCompletion: { completion in
+                    print(completion)
+                    if case .failure(let error) = completion {
+                        print("error")
+                        print(error.localizedDescription)
+                    }
+                },
+                receiveValue: { audioFeatures in
+                    print(audioFeatures.tempo)
+                    viewModel.bpm = String("\(Int(audioFeatures.tempo))")
+                }
+            )
     }
     
     func createSong() async -> Song? {
