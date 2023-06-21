@@ -93,7 +93,7 @@ struct RecordExercisePractiseScreen: View {
                             
                             var multipart = MultipartRequest()
                             multipart.add(key: "payload", value: PostExercisePractise(exerciseId: exercise.id, studentId: studentId, tempo: exercise.tempo).stringified())
-                            multipart.add(key: "cover-song", fileName: "\(UUID().uuidString).m4a", fileMimeType: "audio/mp4", fileData: recordingData)
+                            multipart.add(key: "cover-song", fileName: "\(UUID().uuidString).mp4", fileMimeType: "audio/mp4", fileData: recordingData)
                             
                             let result = await ExercisePractisesService().postExercisePractise(practiseMultipartRequest: multipart)
                             switch result {

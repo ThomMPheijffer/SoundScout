@@ -102,10 +102,13 @@ struct CreateExerciseScreen: View {
                                 var multipart = MultipartRequest()
                                 multipart.add(
                                     key: "song",
-                                    fileName: "\(UUID().uuidString).m4a",
+                                    fileName: "\(UUID().uuidString).mp4",
                                     fileMimeType: "audio/mp4",
                                     fileData: recordingData
                                 )
+                                
+                                print(multipart)
+                                print(audioRecorder.recordingURL!)
                                 
                                 let addingSoundResult = await ExercisesService().postSong(exerciseId: exercise.id, songMultipartRequest: multipart)
                                 switch addingSoundResult {

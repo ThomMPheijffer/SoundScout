@@ -43,7 +43,7 @@ class AudioRecorder: NSObject, ObservableObject {
         }
         
         let documentPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let audioFilename = documentPath.appendingPathComponent("\(Date().toString(dateFormat: "dd-MM-YY 'at' HH:mm:ss")).m4a")
+        let audioFilename = documentPath.appendingPathComponent("\(Date().toString(dateFormat: "dd-MM-YY 'at' HH:mm:ss")).mp4")
         
         let settings = [
             AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
@@ -64,6 +64,7 @@ class AudioRecorder: NSObject, ObservableObject {
                 self.timer = covertSecToMinAndHour(seconds: self.countSec)
             })
         } catch {
+            print(error)
             print("Could not start recording")
         }
     }
