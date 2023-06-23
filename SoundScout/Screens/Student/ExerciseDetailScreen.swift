@@ -129,5 +129,16 @@ struct ExerciseDetailScreen: View {
         //        }
         .navigationTitle(exercise.title)
         .navigationBarTitleDisplayMode(.large)
+//        .task {
+//            guard let studentId = UserDefaults.standard.string(forKey: "studentID") else { return }
+//            let result = await ExercisePractisesService().getExercisePractises(exerciseId: exercise.id, studentId: studentId)
+//            
+//            switch result {
+//            case .success(let success):
+//                print(success)
+//            case .failure(let failure):
+//                print(failure)
+//            }
+//        }
     }
 }

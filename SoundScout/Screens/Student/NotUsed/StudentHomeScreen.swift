@@ -81,35 +81,37 @@ struct StudentHomeScreen: View {
                 
                 ForEach(0..<lessons.count, id: \.self) { i in
                     VStack {
-                        HStack {
-                            Text(lessons[i].lessonDate, style: .date)
-                            
-                            if let profilePicture = URL(string: lessons[i].profilePicture ?? "") {
-                                AsyncImage(url: profilePicture) { image in
-                                    image
-                                        .resizable()
-                                        .scaledToFill()
-                                } placeholder: {
-                                    Circle()
-                                        .fill(SSColors.blue)
-                                        .opacity(0.1)
+                        NavigationLink(destination: StudentLessonDetailsScreen(lesson: lessons[i])) {
+                            HStack {
+                                Text(lessons[i].lessonDate, style: .date)
+                                
+                                if let profilePicture = URL(string: lessons[i].profilePicture ?? "") {
+                                    AsyncImage(url: profilePicture) { image in
+                                        image
+                                            .resizable()
+                                            .scaledToFill()
+                                    } placeholder: {
+                                        Circle()
+                                            .fill(SSColors.blue)
+                                            .opacity(0.1)
+                                    }
+                                    
+                                    .frame(width: 30, height: 30)
+                                    .cornerRadius(15)
+                                    .clipped()
                                 }
                                 
-                                .frame(width: 30, height: 30)
-                                .cornerRadius(15)
-                                .clipped()
+                                Spacer()
+                                HStack {
+                                    Text("Show details")
+                                    Image(systemName: "chevron.right")
+                                }
+                                .foregroundColor(SSColors.blue)
+                                .bold()
                             }
+                            .font(.callout)
                             
-                            Spacer()
-                            HStack {
-                                Text("Show details")
-                                Image(systemName: "chevron.right")
-                            }
-                            .foregroundColor(SSColors.blue)
-                            .bold()
                         }
-                        .font(.callout)
-                        
                     }
                     .padding(i == (lessons.count - 1) ? .top : .vertical)
                     

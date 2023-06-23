@@ -19,7 +19,7 @@ struct RecordingView: View {
     @Binding var recordingState: RecordingState
     @Binding var count: Int
     @Binding var countDown: Int
-    @Binding var bpm: Double
+    @Binding var bpm: Int
     
     @State var timer = Timer.publish(every: ((60/80.0)), on: .main, in: .common).autoconnect()
     
@@ -38,7 +38,7 @@ struct RecordingView: View {
                     .font(.largeTitle)
                     .frame(maxWidth: .infinity, alignment: .center)
                     .onAppear {
-                        Timer.scheduledTimer(withTimeInterval: 60/bpm, repeats: true) { timer in
+                        Timer.scheduledTimer(withTimeInterval: 60/Double(bpm), repeats: true) { timer in
                             withAnimation {
                                 countDown -= 1
                             }
@@ -48,7 +48,7 @@ struct RecordingView: View {
                                 audioRecorder.startRecording()
                                 
                                 count = 0
-                                self.timer = Timer.publish(every: ((60/bpm)), on: .main, in: .common).autoconnect()
+                                self.timer = Timer.publish(every: ((60/Double(bpm))), on: .main, in: .common).autoconnect()
                             }
                         }
                     }
