@@ -23,34 +23,35 @@ struct RecordExercisePractiseScreen: View {
     @State var count = -1
     @State var recordingState: RecordingState = .identity
     
-    @State var selectedUrl: String = ""
+    @State var selectedDocumentWrapper: DocumentWrapper = DocumentWrapper(data: Data(), documentName: "")
+    @State var documentData = [DocumentWrapper]()
     
     @State private var selectedIndex = 3
     
     var body: some View {
         HStack {
-//            if song.documentUrls.count != 0 {
-//                VStack {
-//                    if song.documentUrls.count > 1 {
-//                        Picker("Selected file", selection: $selectedUrl) {
-//                            ForEach(song.documentUrls, id: \.self) {
-//                                Text("\((URL(string: $0)!.lastPathComponent as NSString).deletingPathExtension)")
-//                            }
-//                        }
-//                        .pickerStyle(.menu)
-//                    }
-//                    
-//                    if selectedUrl != "" {
-//                        PDFKitRepresentedViewAsync(URL(string: selectedUrl)!)
-//                            .padding()
-//                    }
-//                }
-//                .onAppear {
-//                    selectedUrl = song.documentUrls.first!
-//                }
-//            } else {
+            if documentData.count != 0 {
+                VStack {
+                    if documentData.count > 1 {
+                        Picker("Selected file", selection: $selectedDocumentWrapper) {
+                            ForEach(documentData, id: \.self) {
+                                Text($0.documentName)
+                            }
+                        }
+                        .pickerStyle(.menu)
+                    }
+                    
+                    if selectedDocumentWrapper.documentName != "" {
+                        PDFKitRepresentedView(selectedDocumentWrapper.data)
+                            .padding()
+                    }
+                }
+                .onAppear {
+                    selectedDocumentWrapper = documentData.first!
+                }
+            } else {
                 Color.blue.padding()
-//            }
+            }
                 
             
             Divider()
@@ -83,6 +84,13 @@ struct RecordExercisePractiseScreen: View {
             .padding()
         }
         .navigationTitle("Create exercise")
+        .task {
+            guard documentData.count == 0 else { return }
+            for url in song.documentUrls {
+                let (data, _) = try! await URLSession.shared.data(from: URL(string: url)!)
+                self.documentData.append(.init(data: data, documentName: (URL(string: url)!.lastPathComponent)))
+            }
+        }
         .sheet(isPresented: $presentReviewExercise) {
             NavigationStack {
                 VStack(alignment: .leading) {

@@ -8,13 +8,7 @@ import SwiftUI
 
 struct StudentSongDetailsScreen: View {
     let song: Song
-    
-    let additionalResources = [
-        "Thinking out loud - easy",
-        "Thinking out loud - hard",
-        "Thinking out loud - guitar only",
-        "Thinking out loud - youtube",
-    ]
+    @State var documentData = [DocumentWrapper]()
     
     var body: some View {
         ScrollView {
@@ -80,11 +74,11 @@ struct StudentSongDetailsScreen: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                     
                     if song.documentUrls.count != 0 {
-                        ForEach(song.documentUrls, id: \.self) { url in
-                            NavigationLink(destination: PDFKitRepresentedViewAsync(URL(string: url)!)) {
+                        ForEach(self.documentData, id: \.self) { wrapper in
+                            NavigationLink(destination: PDFKitRepresentedView(wrapper.data)) {
                                 HStack {
                                     Image(systemName: "doc")
-                                    Text((URL(string: url)!.lastPathComponent as NSString).deletingPathExtension)
+                                    Text(wrapper.documentName)
                                         .underline()
                                 }
                                 .foregroundColor(.secondary)
@@ -99,6 +93,13 @@ struct StudentSongDetailsScreen: View {
             }
             .padding(.horizontal)
             .navigationBarTitleDisplayMode(.inline)
+            .task {
+                guard documentData.count == 0 else { return }
+                for url in song.documentUrls {
+                    let (data, _) = try! await URLSession.shared.data(from: URL(string: url)!)
+                    self.documentData.append(.init(data: data, documentName: (URL(string: url)!.lastPathComponent)))
+                }
+            }
         }
     }
 }
