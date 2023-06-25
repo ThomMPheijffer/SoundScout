@@ -11,7 +11,7 @@ struct ExerciseDetailScreen: View {
     let song: Song
     let exercise: Exercise
     
-    @State var practises = [Exercise]()
+    @State var practises = [ExercisePractise]()
     
     var body: some View {
         //        HStack(spacing: 0) {
@@ -84,11 +84,11 @@ struct ExerciseDetailScreen: View {
                                     .frame(width: 40, height: 40)
                             }
                             
-                            //                                VStack(alignment: .leading) {
-                            //                                    Text(practises[i].title)
-                            //                                    Text(practises[i].artist)
-                            //                                        .foregroundColor(.secondary)
-                            //                                }
+                            VStack(alignment: .leading) {
+                                Text("\(practises[i].tempo) - A")
+                                Text(practises[i].date, style: .date)
+                                    .foregroundColor(.secondary)
+                            }
                             
                             Spacer()
                             
@@ -129,16 +129,17 @@ struct ExerciseDetailScreen: View {
         //        }
         .navigationTitle(exercise.title)
         .navigationBarTitleDisplayMode(.large)
-//        .task {
-//            guard let studentId = UserDefaults.standard.string(forKey: "studentID") else { return }
-//            let result = await ExercisePractisesService().getExercisePractises(exerciseId: exercise.id, studentId: studentId)
-//            
-//            switch result {
-//            case .success(let success):
-//                print(success)
-//            case .failure(let failure):
-//                print(failure)
-//            }
-//        }
+        .task {
+            guard let studentId = UserDefaults.standard.string(forKey: "studentID") else { return }
+            let result = await ExercisePractisesService().getExercisePractises(exerciseId: exercise.id, studentId: studentId)
+            
+            switch result {
+            case .success(let data):
+                print(data)
+                self.practises = data.exercisePractises
+            case .failure(let failure):
+                print(failure)
+            }
+        }
     }
 }
