@@ -60,59 +60,69 @@ struct PractiseDetailScreen: View {
                 Text(practise.tempoFeedback)
                     .padding(.bottom, 32)
                 
-                Text("Practise")
-                    .font(.title2)
-                    .bold()
-                    .padding(.bottom)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                
-                Button(action: {
-                    if player?.timeControlStatus == .playing && currentPlayerIndex == 0 {
-                        player?.pause()
-                    } else if player?.timeControlStatus == .paused && currentPlayerIndex == 0 {
-                        player?.play()
-                    } else {
-                        let url = URL(string: practise.sound ?? "")!
-                        let playerItem = AVPlayerItem(url: url)
-                        self.player = AVPlayer(playerItem: playerItem)
-                        player!.volume = 1.0
-                        player!.play()
+                Group {
+                    Text("Practise")
+                        .font(.title2)
+                        .bold()
+                        .padding(.bottom)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    Button(action: {
+                        if player?.timeControlStatus == .playing && currentPlayerIndex == 0 {
+                            player?.pause()
+                        } else if player?.timeControlStatus == .paused && currentPlayerIndex == 0 {
+                            player?.play()
+                        } else {
+                            let url = URL(string: practise.sound ?? "")!
+                            let playerItem = AVPlayerItem(url: url)
+                            self.player = AVPlayer(playerItem: playerItem)
+                            player!.volume = 1.0
+                            player!.play()
+                        }
+                        currentPlayerIndex = 0
+                    }) {
+                        Image(systemName: player?.timeControlStatus == .playing ? "pause.fill" : "play.fill")
+                            .foregroundStyle(.black)
+                            .padding()
+                            .background(Circle().fill(Color.gray.opacity(0.2)))
                     }
-                    currentPlayerIndex = 0
-                }) {
-                    Image(systemName: player?.timeControlStatus == .playing ? "pause.fill" : "play.fill")
-                        .foregroundStyle(.black)
-                        .padding()
-                        .background(Circle().fill(Color.gray.opacity(0.2)))
-                }
-                .padding(.bottom, 32)
-                
-                Text("Orignal")
-                    .font(.title2)
-                    .bold()
-                    .padding(.bottom)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                
-                Button(action: {
-                    if player?.timeControlStatus == .playing && currentPlayerIndex == 1 {
-                        player?.pause()
-                    } else if player?.timeControlStatus == .paused && currentPlayerIndex == 1 {
-                        player?.play()
-                    } else {
-                        let url = URL(string: exercise.soundUrl ?? "")!
-                        let playerItem = AVPlayerItem(url: url)
-                        self.player = AVPlayer(playerItem: playerItem)
-                        player!.volume = 1.0
-                        player!.play()
+                    .padding(.bottom, 32)
+                    
+                    Text("Orignal")
+                        .font(.title2)
+                        .bold()
+                        .padding(.bottom)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    Button(action: {
+                        if player?.timeControlStatus == .playing && currentPlayerIndex == 1 {
+                            player?.pause()
+                        } else if player?.timeControlStatus == .paused && currentPlayerIndex == 1 {
+                            player?.play()
+                        } else {
+                            let url = URL(string: exercise.soundUrl ?? "")!
+                            let playerItem = AVPlayerItem(url: url)
+                            self.player = AVPlayer(playerItem: playerItem)
+                            player!.volume = 1.0
+                            player!.play()
+                        }
+                        currentPlayerIndex = 1
+                    }) {
+                        Image(systemName: player?.timeControlStatus == .playing ? "pause.fill" : "play.fill")
+                            .foregroundStyle(.black)
+                            .padding()
+                            .background(Circle().fill(Color.gray.opacity(0.2)))
                     }
-                    currentPlayerIndex = 1
-                }) {
-                    Image(systemName: player?.timeControlStatus == .playing ? "pause.fill" : "play.fill")
-                        .foregroundStyle(.black)
-                        .padding()
-                        .background(Circle().fill(Color.gray.opacity(0.2)))
+                    .padding(.bottom, 32)
                 }
-                .padding(.bottom, 32)
+                
+                Group {
+                    Text("DEBUG")
+                    Text("\(practise.similarityGrade)")
+                    Text("\(practise.tempoGrade)")
+                    Text("\(practise.chordsGrade)")
+                    Text("\(practise.grade)")
+                }
                 
             }
             .padding()
