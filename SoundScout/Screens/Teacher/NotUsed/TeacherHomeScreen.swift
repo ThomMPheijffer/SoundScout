@@ -183,12 +183,14 @@ struct TeacherHomeScreen: View {
                                 }
                                 
                                 Spacer()
-                                HStack {
-                                    Text("Show details")
-                                    Image(systemName: "chevron.right")
+                                NavigationLink(destination: TeacherLessonDetailsScreen(lesson: lessons[i])) {
+                                    HStack {
+                                        Text("Show details")
+                                        Image(systemName: "chevron.right")
+                                    }
+                                    .foregroundColor(SSColors.blue)
+                                    .bold()
                                 }
-                                .foregroundColor(SSColors.blue)
-                                .bold()
                             }
                             .font(.callout)
                             
