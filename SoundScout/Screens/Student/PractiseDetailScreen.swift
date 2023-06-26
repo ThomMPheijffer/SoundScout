@@ -38,13 +38,22 @@ struct PractiseDetailScreen: View {
                         let text = practise.feedback!.chord[key] ?? ""
                         if text.contains("Wrong") {
                             Color.red
-                                .frame(height: 20)
+                                .frame(height: 30)
                         } else if text.contains("instead") {
-                            Color.yellow
-                                .frame(height: 20)
+                            ZStack {
+                                Color.yellow
+                                    .overlay(
+                                        Text(text)
+                                            .font(.system(size: 10))
+                                            .multilineTextAlignment(.center)
+                                            .lineLimit(nil)
+                                            .padding(.horizontal)
+                                    )
+                            }
+                            .frame(height: 30)
                         } else {
                             Color.green
-                                .frame(height: 20)
+                                .frame(height: 30)
                         }
                     }
                 }
@@ -88,7 +97,7 @@ struct PractiseDetailScreen: View {
                     }
                     .padding(.bottom, 32)
                     
-                    Text("Orignal")
+                    Text("Original")
                         .font(.title2)
                         .bold()
                         .padding(.bottom)

@@ -116,6 +116,8 @@ struct StudentProfileScreen: View {
                             UserDefaults.standard.set(nil, forKey: "teacherID")
                             UserDefaults.standard.set(nil, forKey: "teacherUserID")
                             
+//                            Spotify().de
+                            
                             let vc = UIHostingController(rootView: SignUpScreen().environmentObject(navigationManager).environmentObject(spotify))
                             replaceKeyWindow(with: vc)
                         }

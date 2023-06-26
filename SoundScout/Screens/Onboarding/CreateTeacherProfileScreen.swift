@@ -73,6 +73,24 @@ struct CreateTeacherProfileScreen: View {
                         }
                         .padding(.bottom, 16)
                         
+                        Group {
+                            Text("Connect with Spotify")
+                                .font(.title3)
+                                .padding(.bottom)
+                            
+                            if spotify.isAuthorized {
+                                Text("Connected with Spotify")
+                                    .foregroundColor(.secondary)
+                            } else {
+                                Button(action: {
+                                    spotify.authorize()
+                                }) {
+                                    Text("Authorize Spotify")
+                                }
+                            }
+                        }
+                        .padding(.bottom, 16)
+                        
                         Text("Location")
                             .font(.title3)
                             .padding(.bottom, 8)
