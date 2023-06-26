@@ -49,8 +49,6 @@ struct ExercisePractise: Codable {
             }
         }
         let totalWrong = wrong + (partialWrong / 2)
-        print(totalWrong)
-        print(chords.count)
         if totalWrong == 0 {
             return 10
         } else {
@@ -60,7 +58,6 @@ struct ExercisePractise: Codable {
     
     var grade: Int {
         Int((Double(similarityGrade) + Double(tempoGrade) + chordsGrade) / 3)
-//        Int((Double(similarityGrade) + Double(tempoGrade)) / 2)
     }
     
     var tempoFeedback: String {

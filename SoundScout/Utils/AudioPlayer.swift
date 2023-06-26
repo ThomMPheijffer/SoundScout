@@ -15,7 +15,9 @@ class AudioPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate {
     
     var isPlaying = false {
         didSet {
-            objectWillChange.send(self)
+            DispatchQueue.main.async {
+                self.objectWillChange.send(self)
+            }
         }
     }
     
@@ -24,16 +26,10 @@ class AudioPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate {
     func startPlayback(audio: URL) {
         let playbackSession = AVAudioSession.sharedInstance()
         
-//        do {
         try? playbackSession.overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
-//        } catch {
-//            print(error)
-//            print("Playing over the device's speakers failed")
-//        }
         
         do {
             print(audio)
-            print("?\(audio)?")
             audioPlayer = try AVAudioPlayer(contentsOf: audio)
             audioPlayer.delegate = self
             audioPlayer.play()

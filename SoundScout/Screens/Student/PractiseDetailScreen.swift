@@ -12,8 +12,7 @@ struct PractiseDetailScreen: View {
     let exercise: Exercise
     let practise: ExercisePractise
     
-    @State var player: AVPlayer? = nil
-    @State var currentPlayerIndex = 2
+    @ObservedObject var audioPlayer = AudioPlayer()
     
     var body: some View {
         ScrollView {
@@ -77,52 +76,20 @@ struct PractiseDetailScreen: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                     
                     Button(action: {
-                        if player?.timeControlStatus == .playing && currentPlayerIndex == 0 {
-                            player?.pause()
-                        } else if player?.timeControlStatus == .paused && currentPlayerIndex == 0 {
-                            player?.play()
+                        if audioPlayer.isPlaying {
+                            audioPlayer.stopPlayback()
                         } else {
-                            let url = URL(string: practise.sound ?? "")!
-                            let playerItem = AVPlayerItem(url: url)
-                            self.player = AVPlayer(playerItem: playerItem)
-                            player!.volume = 1.0
-                            player!.play()
+                            downloadFile(urlString: practise.sound!)
                         }
-                        currentPlayerIndex = 0
+                        
                     }) {
-                        Image(systemName: player?.timeControlStatus == .playing ? "pause.fill" : "play.fill")
+                        Image(systemName: audioPlayer.isPlaying ? "pause.fill" : "play.fill")
                             .foregroundStyle(.black)
                             .padding()
                             .background(Circle().fill(Color.gray.opacity(0.2)))
                     }
                     .padding(.bottom, 32)
                     
-                    Text("Original")
-                        .font(.title2)
-                        .bold()
-                        .padding(.bottom)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    
-                    Button(action: {
-                        if player?.timeControlStatus == .playing && currentPlayerIndex == 1 {
-                            player?.pause()
-                        } else if player?.timeControlStatus == .paused && currentPlayerIndex == 1 {
-                            player?.play()
-                        } else {
-                            let url = URL(string: exercise.soundUrl ?? "")!
-                            let playerItem = AVPlayerItem(url: url)
-                            self.player = AVPlayer(playerItem: playerItem)
-                            player!.volume = 1.0
-                            player!.play()
-                        }
-                        currentPlayerIndex = 1
-                    }) {
-                        Image(systemName: player?.timeControlStatus == .playing ? "pause.fill" : "play.fill")
-                            .foregroundStyle(.black)
-                            .padding()
-                            .background(Circle().fill(Color.gray.opacity(0.2)))
-                    }
-                    .padding(.bottom, 32)
                 }
                 
                 Group {
@@ -138,4 +105,30 @@ struct PractiseDetailScreen: View {
         }
         .navigationTitle(Text(practise.date, style: .date))
     }
+    
+    func downloadFile(urlString: String) {
+        if let audioUrl = URL(string: urlString) {
+            let documentsDirectoryURL =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+            let destinationUrl = documentsDirectoryURL.appendingPathComponent(audioUrl.lastPathComponent)
+            print(destinationUrl)
+            
+            if FileManager.default.fileExists(atPath: destinationUrl.path) {
+                print("File already exists on disk")
+                audioPlayer.startPlayback(audio: destinationUrl)
+            } else {
+                URLSession.shared.downloadTask(with: audioUrl, completionHandler: { (location, response, error) -> Void in
+                    guard let location = location, error == nil else { return }
+                    do {
+                        try FileManager.default.moveItem(at: location, to: destinationUrl)
+                        print("File created on disk")
+                        audioPlayer.startPlayback(audio: destinationUrl)
+                    } catch let error as NSError {
+                        print(error)
+                    }
+                }).resume()
+            }
+        }
+        
+    }
+    
 }
