@@ -66,6 +66,9 @@ struct RecordExercisePractiseScreen: View {
                     SSSegmentedControlButton(selectedIndex: $selectedIndex, index: 2, text: "\(Int(Double(exercise.tempo) * 0.9)) bpm (0.9x)")
                     SSSegmentedControlButton(selectedIndex: $selectedIndex, index: 3, text: "\(Int(Double(exercise.tempo) * 1.0)) bpm (1.0x)")
                 }
+                .onChange(of: selectedIndex) { _ in
+                    bpm = getBpmForIndex()
+                }
                 
                 Spacer()
                 
@@ -84,10 +87,13 @@ struct RecordExercisePractiseScreen: View {
             .padding()
         }
         .navigationTitle("Create exercise")
+        .onAppear {
+            bpm = song.bpm
+        }
         .task {
             guard documentData.count == 0 else { return }
             for url in song.documentUrls {
-                let (data, _) = try! await URLSession.shared.data(from: URL(string: url)!)
+                guard let (data, _) = try? await URLSession.shared.data(from: URL(string: url)!) else { return }
                 self.documentData.append(.init(data: data, documentName: (URL(string: url)!.lastPathComponent)))
             }
         }
@@ -132,6 +138,8 @@ struct RecordExercisePractiseScreen: View {
                     
                     Button(action: {
                         Task {
+                            print("-------")
+                            print(UserDefaults.standard.string(forKey: "studentID"))
                             guard let studentId = UserDefaults.standard.string(forKey: "studentID") else { return  }
                             let recordingData = try! Data(contentsOf: audioRecorder.recordingURL!)
                             

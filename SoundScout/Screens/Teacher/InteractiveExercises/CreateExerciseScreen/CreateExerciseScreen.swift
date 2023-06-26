@@ -17,7 +17,7 @@ struct CreateExerciseScreen: View {
     
     @State var presentReviewExercise = false
     
-    @State var bpm = 80
+//    @State var bpm = song.bpm
     @State var countDown = 4
     @State var count = -1
     @State var recordingState: RecordingState = .identity
@@ -59,7 +59,7 @@ struct CreateExerciseScreen: View {
                 
                 Spacer()
                 
-                RecordingView(recordingState: $recordingState, count: $count, countDown: $countDown, bpm: $bpm).environmentObject(audioRecorder)
+                RecordingView(recordingState: $recordingState, count: $count, countDown: $countDown, bpm: .constant(song.bpm)).environmentObject(audioRecorder)
                 
                 Spacer()
                 
@@ -77,7 +77,7 @@ struct CreateExerciseScreen: View {
         .task {
             guard documentData.count == 0 else { return }
             for url in song.documentUrls {
-                let (data, _) = try! await URLSession.shared.data(from: URL(string: url)!)
+                guard let (data, _) = try? await URLSession.shared.data(from: URL(string: url)!) else { return }
                 self.documentData.append(.init(data: data, documentName: (URL(string: url)!.lastPathComponent)))
             }
         }

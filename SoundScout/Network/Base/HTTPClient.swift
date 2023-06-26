@@ -59,8 +59,8 @@ extension HTTPClient {
                 print(String(decoding: data, as: UTF8.self))
                 let decoder = JSONDecoder()
                 decoder.dateDecodingStrategy = .iso8601
-                let decodedResponse = try! decoder.decode(responseModel, from: data)
-//                guard let decodedResponse = try? decoder.decode(responseModel, from: data) else { return .failure(.decode) }
+//                let decodedResponse = try! decoder.decode(responseModel, from: data)
+                guard let decodedResponse = try? decoder.decode(responseModel, from: data) else { return .failure(.decode) }
                 return .success(decodedResponse)
             case 401:
                 return .failure(.unauthorized)

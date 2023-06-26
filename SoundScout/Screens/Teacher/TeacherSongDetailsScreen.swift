@@ -103,7 +103,7 @@ struct TeacherSongDetailsScreen: View {
             .task {
                 guard documentData.count == 0 else { return }
                 for url in song.documentUrls {
-                    let (data, _) = try! await URLSession.shared.data(from: URL(string: url)!)
+                    guard let (data, _) = try? await URLSession.shared.data(from: URL(string: url)!) else { return }
                     self.documentData.append(.init(data: data, documentName: (URL(string: url)!.lastPathComponent)))
                 }
             }

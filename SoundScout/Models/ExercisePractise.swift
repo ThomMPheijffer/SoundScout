@@ -16,11 +16,25 @@ struct ExercisePractise: Codable {
     let exerciseId: String
     let studentId: String
     let tempo: Int
-    let feedback: PractiseFeedback
-    let sound: String
+    let feedback: PractiseFeedback?
+    let sound: String?
     
     var date: Date {
         return Date(timeIntervalSince1970: Double(createdAt) * 0.001)
+    }
+    
+    var grade: Int {
+        min(10, Int(((feedback?.similarity ?? 0.0) * 10) + 1))
+    }
+    
+    var tempoFeedback: String {
+        if (feedback?.originalTempo ?? 0 + 5) < feedback?.coverTempo ?? 0 {
+            return "You played the song too fast.\nTarget tempo: \(Int(feedback?.originalTempo ?? 0)).\nYour tempo: \(Int(feedback?.coverTempo ?? 0))"
+        } else if(feedback?.coverTempo ?? 0 + 5) < feedback?.originalTempo ?? 0 {
+            return "You played the song too slow.\nTarget tempo: \(Int(feedback?.originalTempo ?? 0)).\nYour tempo: \(Int(feedback?.coverTempo ?? 0))"
+        } else {
+            return "Perfect tempo!"
+        }
     }
 }
 
@@ -35,4 +49,38 @@ struct PostExercisePractise: Codable {
     let exerciseId: String
     let studentId: String
     let tempo: Int
+}
+
+func convertExercisesToChartData(exercises: [ExercisePractise]) -> [ChartExerciseModel] {
+    var chartModel = [ChartExerciseModel]()
+    for i in -6..<1 {
+        let date = Calendar.current.date(byAdding: .day, value: i, to: Date())!
+        let exercises = exercises.filter { Calendar.current.isDate($0.date, inSameDayAs: date) }
+        let sortedExercises = exercises.sorted { $0.tempo > $1.tempo }
+        chartModel.append(.init(date: date, grade: sortedExercises.first?.grade ?? 0, bpm: sortedExercises.first?.tempo ?? 0))
+    }
+    return chartModel
+}
+
+func convertExercisesToChartDataForPractises(exercises: [ExercisePractise]) -> [ChartModel] {
+    var chartModel = [ChartModel]()
+    for i in -6..<1 {
+        let date = Calendar.current.date(byAdding: .day, value: i, to: Date())!
+        let exercises = exercises.filter { Calendar.current.isDate($0.date, inSameDayAs: date) }
+        chartModel.append(.init(date: date, practiseCount: exercises.count))
+    }
+    return chartModel
+}
+
+struct ChartExerciseModel: Identifiable, Hashable {
+    let id = UUID()
+    let date: Date
+    let grade: Int
+    let bpm: Int
+}
+
+struct ChartModel: Identifiable, Hashable {
+    let id = UUID()
+    let date: Date
+    let practiseCount: Int
 }

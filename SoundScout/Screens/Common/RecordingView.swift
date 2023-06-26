@@ -49,6 +49,7 @@ struct RecordingView: View {
                                 
                                 count = 0
                                 self.timer = Timer.publish(every: ((60/Double(bpm))), on: .main, in: .common).autoconnect()
+                                print(bpm)
                             }
                         }
                     }
