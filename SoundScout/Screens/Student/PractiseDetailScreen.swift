@@ -13,6 +13,8 @@ struct PractiseDetailScreen: View {
     let practise: ExercisePractise
     
     @ObservedObject var audioPlayer = AudioPlayer()
+    @State var showPopover = false
+    @State var popoverText = ""
     
     var body: some View {
         ScrollView {
@@ -33,23 +35,28 @@ struct PractiseDetailScreen: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
                 HStack(spacing: 0) {
-                    ForEach(Array(practise.feedback!.chord.keys), id: \.self) { key in
+                    ForEach(Array(practise.feedback!.chord.keys).sorted(by: { first, second in
+                        Int(first)! < Int(second)!
+                    }), id: \.self) { key in
                         let text = practise.feedback!.chord[key] ?? ""
                         if text.contains("Wrong") {
                             Color.red
                                 .frame(height: 30)
                         } else if text.contains("instead") {
-                            ZStack {
-                                Color.yellow
-                                    .overlay(
-                                        Text(text)
-                                            .font(.system(size: 10))
-                                            .multilineTextAlignment(.center)
-                                            .lineLimit(nil)
-                                            .padding(.horizontal)
-                                    )
+                            Button(action: { popoverText = "On seconds: \(Int(Double(key)! / 1000)).\n\(text)"; showPopover = true }) {
+                                ZStack {
+                                    Color.red
+                                        .overlay(
+                                            Text(text)
+                                                .font(.system(size: 10))
+                                                .multilineTextAlignment(.center)
+                                                .foregroundStyle(.primary)
+                                                .lineLimit(nil)
+                                                .padding(.horizontal)
+                                        )
+                                }
+                                .frame(height: 30)
                             }
-                            .frame(height: 30)
                         } else {
                             Color.green
                                 .frame(height: 30)
@@ -57,6 +64,14 @@ struct PractiseDetailScreen: View {
                     }
                 }
                 .clipShape(Capsule())
+                .popover(isPresented: $showPopover) { [popoverText] in
+                    Text(popoverText)
+                        .font(.headline)
+                        .padding()
+                        .onAppear {
+                            print(popoverText)
+                        }
+                }
                 .padding(.bottom, 32)
                 
                 Text("Tempo")
@@ -92,13 +107,13 @@ struct PractiseDetailScreen: View {
                     
                 }
                 
-                Group {
-                    Text("DEBUG")
-                    Text("\(practise.similarityGrade)")
-                    Text("\(practise.tempoGrade)")
-                    Text("\(practise.chordsGrade)")
-                    Text("\(practise.grade)")
-                }
+//                Group {
+//                    Text("DEBUG")
+//                    Text("\(practise.similarityGrade)")
+//                    Text("\(practise.tempoGrade)")
+//                    Text("\(practise.chordsGrade)")
+//                    Text("\(practise.grade)")
+//                }
                 
             }
             .padding()

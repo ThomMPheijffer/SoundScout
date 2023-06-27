@@ -10,6 +10,7 @@ import Foundation
 enum ExercisePractisesEndpoint {
     case getExercisePractises(exerciseId: String, studentId: String)
     case postExercisePractise(practiseMultipartRequest: MultipartRequest)
+    case postExercisePractiseBala(practiseMultipartRequest: MultipartRequest)
 }
 
 extension ExercisePractisesEndpoint: Endpoint {
@@ -19,6 +20,8 @@ extension ExercisePractisesEndpoint: Endpoint {
             return "/exercisePractises/\(exerciseId)/student/\(studentId)"
         case .postExercisePractise:
             return "/exercisePractises"
+        case .postExercisePractiseBala:
+            return "/exercisePractises/bala"
         }
     }
 
@@ -26,7 +29,7 @@ extension ExercisePractisesEndpoint: Endpoint {
         switch self {
         case .getExercisePractises:
             return .get
-        case .postExercisePractise:
+        case .postExercisePractise, .postExercisePractiseBala:
             return .post
         }
     }
@@ -39,7 +42,7 @@ extension ExercisePractisesEndpoint: Endpoint {
         switch self {
         case .getExercisePractises:
             return nil
-        case .postExercisePractise(let practise):
+        case .postExercisePractise(let practise), .postExercisePractiseBala(let practise):
             return practise
         }
     }

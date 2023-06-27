@@ -69,49 +69,49 @@ struct CreateStudentProfileScreen: View {
                     NavigationLink(destination: SelectInstrumentsScreen(selectedIds: $viewModel.selectedInstrumentIds)) {
                         SSSecondaryNavigationButtonText(text: "Select instruments \(viewModel.selectedInstrumentIds.count > 0 ? "(\(viewModel.selectedInstrumentIds.count) selected)": "")", fullWidth: true)
                     }
-                    .padding(.bottom, 16)
-                    
-                    Group {
-                        Text("Connect with Spotify")
-                            .font(.title3)
-                            .padding(.bottom)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        
-                        if spotify.isAuthorized {
-                            Text("Connected with Spotify")
-                                .foregroundColor(.secondary)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                        } else {
-                            Button(action: {
-                                spotify.authorize()
-                            }) {
-                                Text("Authorize Spotify")
-                            }
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        }
-                    }
-                    .padding(.bottom, 16)
-                    
-                    Group {
-                        Text("Location")
-                            .font(.title3)
-                            .padding(.bottom)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        
-                        if locationManager.location != nil {
-                            Text("\(viewModel.city), \(viewModel.state)")
-                                .foregroundColor(.secondary)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                        } else {
-                            Button(action: {
-                                locationManager.requestLocation()
-                            }) {
-                                SSPrimaryNavigationButtonText(text: "Give access to current location", fullWidth: false)
-                            }
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        }
-                    }
                     .padding(.bottom, 64)
+                    
+//                    Group {
+//                        Text("Connect with Spotify")
+//                            .font(.title3)
+//                            .padding(.bottom)
+//                            .frame(maxWidth: .infinity, alignment: .leading)
+//                        
+//                        if spotify.isAuthorized {
+//                            Text("Connected with Spotify")
+//                                .foregroundColor(.secondary)
+//                                .frame(maxWidth: .infinity, alignment: .leading)
+//                        } else {
+//                            Button(action: {
+//                                spotify.authorize()
+//                            }) {
+//                                Text("Authorize Spotify")
+//                            }
+//                            .frame(maxWidth: .infinity, alignment: .leading)
+//                        }
+//                    }
+//                    .padding(.bottom, 16)
+                    
+//                    Group {
+//                        Text("Location")
+//                            .font(.title3)
+//                            .padding(.bottom)
+//                            .frame(maxWidth: .infinity, alignment: .leading)
+//                        
+//                        if locationManager.location != nil {
+//                            Text("\(viewModel.city), \(viewModel.state)")
+//                                .foregroundColor(.secondary)
+//                                .frame(maxWidth: .infinity, alignment: .leading)
+//                        } else {
+//                            Button(action: {
+//                                locationManager.requestLocation()
+//                            }) {
+//                                SSPrimaryNavigationButtonText(text: "Give access to current location", fullWidth: false)
+//                            }
+//                            .frame(maxWidth: .infinity, alignment: .leading)
+//                        }
+//                    }
+//                    .padding(.bottom, 64)
                     
                     Button(action: {
                         Task {
@@ -141,9 +141,9 @@ struct CreateStudentProfileScreen: View {
         }
         .padding()
         .padding(.leading)
-        .onChange(of: locationManager.location) { newValue in
-            viewModel.getCityName(for: locationManager.location)
-        }
+//        .onChange(of: locationManager.location) { newValue in
+//            viewModel.getCityName(for: locationManager.location)
+//        }
     }
     
 }

@@ -96,8 +96,9 @@ struct SongDetailScreen: View {
         .task {
             guard documentData.count == 0 else { return }
             for url in song.documentUrls {
-                guard let (data, _) = try? await URLSession.shared.data(from: URL(string: url)!) else { return }
-                self.documentData.append(.init(data: data, documentName: (URL(string: url)!.lastPathComponent)))
+                guard let unwrappedUrl = URL(string: url) else { return }
+                guard let (data, _) = try? await URLSession.shared.data(from: unwrappedUrl) else { return }
+                self.documentData.append(.init(data: data, documentName: (unwrappedUrl.lastPathComponent)))
             }
         }
     }

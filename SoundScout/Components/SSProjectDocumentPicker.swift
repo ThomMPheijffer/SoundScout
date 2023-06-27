@@ -6,13 +6,21 @@
 //
 
 import SwiftUI
+import UniformTypeIdentifiers
 
 struct SSProjectDocumentPicker: UIViewControllerRepresentable {
     @Binding var selectedUrl: URL?
     @Binding var added: Bool
+    let fileTypes: [UTType]
+    
+    init(selectedUrl: Binding<URL?>, added: Binding<Bool>, fileTypes: [UTType] = [.pdf]) {
+        self._selectedUrl = selectedUrl
+        self._added = added
+        self.fileTypes = fileTypes
+    }
     
     func makeUIViewController(context: Context) -> some UIViewController {
-        let controller = UIDocumentPickerViewController(forOpeningContentTypes: [.pdf])
+        let controller = UIDocumentPickerViewController(forOpeningContentTypes: fileTypes)
         controller.allowsMultipleSelection = false
         controller.shouldShowFileExtensions = true
         controller.delegate = context.coordinator

@@ -16,14 +16,14 @@ extension CreateStudentProfileScreen {
         @Published var priorExperience: String = ""
         @Published var selectedInstrumentIds: [String] = []
         
-        @Published var city: String = ""
-        @Published var state: String = ""
+//        @Published var city: String = ""
+//        @Published var state: String = ""
         @Published var showingImagePicker = false
         @Published var imageUrl: URL? = nil
-        @Published var location: CLLocationCoordinate2D? = nil
+//        @Published var location: CLLocationCoordinate2D? = nil
         
         func canContinue() -> Bool {
-            return !about.isEmpty && !priorExperience.isEmpty && location != nil && imageUrl != nil
+            return !about.isEmpty && !priorExperience.isEmpty && imageUrl != nil
         }
         
         func signUp(basicInfo: BasicSignUpInformation) async -> Result<StudentResponse, RequestError> {
@@ -34,7 +34,7 @@ extension CreateStudentProfileScreen {
                                         about: about,
                                         priorExperience: priorExperience,
                                         instrumentIds: selectedInstrumentIds,
-                                        location: .init(latitude: location!.latitude, longitude: location!.longitude, city: city, state: state))
+                                        location: .init(latitude: 52.64131117879661, longitude: 4.823570426302013, city: "Heerhugowaard", state: "Noord-Holland"))
             
             let imageData = try! Data(contentsOf: imageUrl!)
             let compressedImage = UIImage(data: imageData)!.jpegData(compressionQuality: 0.2)!
@@ -49,25 +49,25 @@ extension CreateStudentProfileScreen {
             return result
         }
         
-        func getCityName(for optionalLocation: CLLocationCoordinate2D?) {
-            guard let lastLocation = optionalLocation else { return }
-            self.location = lastLocation
-            
-            let geocoder = CLGeocoder()
-            let location = CLLocation(latitude: lastLocation.latitude, longitude: lastLocation.longitude)
-            
-            geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
-                if let error = error {
-                    print(error)
-                }
-                
-                guard let placemark = placemarks?.first else { return }
-                guard let city = placemark.locality else { return }
-                guard let state = placemark.administrativeArea else { return }
-                
-                self.city = city
-                self.state = state
-            }
-        }
+//        func getCityName(for optionalLocation: CLLocationCoordinate2D?) {
+//            guard let lastLocation = optionalLocation else { return }
+//            self.location = lastLocation
+//            
+//            let geocoder = CLGeocoder()
+//            let location = CLLocation(latitude: lastLocation.latitude, longitude: lastLocation.longitude)
+//            
+//            geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
+//                if let error = error {
+//                    print(error)
+//                }
+//                
+//                guard let placemark = placemarks?.first else { return }
+//                guard let city = placemark.locality else { return }
+//                guard let state = placemark.administrativeArea else { return }
+//                
+//                self.city = city
+//                self.state = state
+//            }
+//        }
     }
 }

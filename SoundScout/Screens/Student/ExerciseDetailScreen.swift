@@ -52,11 +52,11 @@ struct ExerciseDetailScreen: View {
                         
                         Spacer()
                     }
-                    .padding(.bottom, 64)
+                    .padding(.bottom, 32)
                     
                     Divider()
                         .padding(.trailing, -16)
-                        .padding(.bottom, 64)
+                        .padding(.bottom, 32)
                     
                     SSContentBackground(padding: 32, horizontalPaddingOnly: true) {
                         Text("History")

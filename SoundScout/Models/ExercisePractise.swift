@@ -24,14 +24,14 @@ struct ExercisePractise: Codable {
     }
     
     var similarityGrade: Int {
-        min(10, Int(((feedback?.similarity ?? 0.0) * 10) + 1))
+        min(10, Int(((feedback?.similarity ?? 0.0) * 10)) + 3)
     }
     
     var tempoGrade: Int {
         if (feedback?.originalTempo ?? 0 + 5) < feedback?.coverTempo ?? 0 {
-            return 5
+            return 4
         } else if(feedback?.coverTempo ?? 0 + 5) < feedback?.originalTempo ?? 0 {
-            return 5
+            return 4
         } else {
             return 10
         }
@@ -39,25 +39,22 @@ struct ExercisePractise: Codable {
     
     var chordsGrade: Double {
         guard let chords = feedback?.chord else { return 1.0 }
-        var partialWrong: Double = 0.0
         var wrong: Double = 0.0
         for (_, feedback) in chords {
-            if feedback.contains("Wrong") {
+            if feedback.contains("Wrong") || feedback.contains("instead") {
                 wrong += 1
-            } else if feedback.contains("instead") {
-                partialWrong += 1
             }
         }
-        let totalWrong = wrong + (partialWrong / 2)
-        if totalWrong == 0 {
+        if wrong == 0 {
             return 10
         } else {
-            return (1 - (totalWrong / Double(chords.count))) * 10
+            return (1 - (wrong / Double(chords.count))) * 10
         }
     }
     
     var grade: Int {
-        Int((Double(similarityGrade) + Double(tempoGrade) + chordsGrade) / 3)
+//        Int((Double(similarityGrade) + Double(tempoGrade) + chordsGrade) / 3)
+        Int(chordsGrade)
     }
     
     var tempoFeedback: String {

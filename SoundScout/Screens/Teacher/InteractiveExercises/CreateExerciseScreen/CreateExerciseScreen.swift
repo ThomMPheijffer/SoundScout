@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct CreateExerciseScreen: View {
     let song: Song
@@ -74,6 +75,11 @@ struct CreateExerciseScreen: View {
             .padding()
         }
         .navigationTitle("Create exercise")
+        .onAppear {
+            AVAudioSession.sharedInstance().requestRecordPermission { granted in
+                print(granted)
+            }
+        }
         .task {
             guard documentData.count == 0 else { return }
             for url in song.documentUrls {
