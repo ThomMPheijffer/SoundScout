@@ -69,7 +69,8 @@ struct CreateExerciseScreen: View {
                 }) {
                     SSPrimaryNavigationButtonText(text: "Create exercise", isActive: viewModel.canContinue())
                 }
-                .disabled(!viewModel.canContinue() || audioRecorder.recordingURL == nil)
+//                .disabled(!viewModel.canContinue() || audioRecorder.recordingURL == nil)
+                .disabled(!viewModel.canContinue())
             }
             .frame(maxWidth: 300)
             .padding()
@@ -132,6 +133,9 @@ struct CreateExerciseScreen: View {
                             switch result {
                             case .success(let exercise):
                                 print(exercise)
+                                
+                                _ = audioRecorder.recordingURL!.startAccessingSecurityScopedResource()
+                                defer { audioRecorder.recordingURL?.stopAccessingSecurityScopedResource() }
                                 
                                 let recordingData = try! Data(contentsOf: audioRecorder.recordingURL!)
                                 var multipart = MultipartRequest()

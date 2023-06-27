@@ -111,9 +111,9 @@ struct RecordExercisePractiseScreen: View {
                 Button(action: {
                     presentReviewExercise = true
                 }) {
-                    SSPrimaryNavigationButtonText(text: "Create exercise", isActive: audioRecorder.recordingURL != nil)
+                    SSPrimaryNavigationButtonText(text: "Create exercise")
                 }
-                .disabled(audioRecorder.recordingURL == nil)
+//                .disabled(audioRecorder.recordingURL == nil)
             }
             .frame(maxWidth: 300)
             .padding()
@@ -176,6 +176,9 @@ struct RecordExercisePractiseScreen: View {
                             print("-------")
                             print(UserDefaults.standard.string(forKey: "studentID"))
                             guard let studentId = UserDefaults.standard.string(forKey: "studentID") else { return  }
+                            _ = audioRecorder.recordingURL!.startAccessingSecurityScopedResource()
+                            defer { audioRecorder.recordingURL?.stopAccessingSecurityScopedResource() }
+                            
                             let recordingData = try! Data(contentsOf: audioRecorder.recordingURL!)
                             
                             var multipart = MultipartRequest()
@@ -262,6 +265,12 @@ struct RecordExercisePractiseScreen: View {
         }
         .sheet(isPresented: $importFile) {
             SSProjectDocumentPicker(selectedUrl: $selectedURL, added: $added, fileTypes: [.mpeg4Audio, .mpeg4Movie])
+        }
+        .onChange(of: selectedURL) { newValue in
+            print("onChange selectedURL: \(newValue)")
+            DispatchQueue.main.async {
+                audioRecorder.recordingURL = selectedURL
+            }
         }
     }
     
