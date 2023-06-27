@@ -80,29 +80,29 @@ struct RecordExercisePractiseScreen: View {
                 
                 Spacer()
                 
-                Group {
-                    Text("Orignal recording")
-                        .font(.title2)
-                        .bold()
-                        .padding(.bottom)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    
-                    Button(action: {
-                        if audioPlayer.isPlaying {
-                            audioPlayer.stopPlayback()
-                        } else {
-                            downloadFile(urlString: exercise.soundUrl!)
-                        }
-                        
-                    }) {
-                        Image(systemName: audioPlayer.isPlaying ? "pause.fill" : "play.fill")
-                            .foregroundStyle(.black)
-                            .padding()
-                            .background(Circle().fill(Color.gray.opacity(0.2)))
-                    }
-                    .padding(.bottom, 32)
-                    
-                }
+//                Group {
+//                    Text("Orignal recording")
+//                        .font(.title2)
+//                        .bold()
+//                        .padding(.bottom)
+//                        .frame(maxWidth: .infinity, alignment: .leading)
+//                    
+//                    Button(action: {
+//                        if audioPlayer.isPlaying {
+//                            audioPlayer.stopPlayback()
+//                        } else {
+//                            downloadFile(urlString: exercise.soundUrl!)
+//                        }
+//                        
+//                    }) {
+//                        Image(systemName: audioPlayer.isPlaying ? "pause.fill" : "play.fill")
+//                            .foregroundStyle(.black)
+//                            .padding()
+//                            .background(Circle().fill(Color.gray.opacity(0.2)))
+//                    }
+//                    .padding(.bottom, 32)
+//                    
+//                }
                 
                 RecordingView(recordingState: $recordingState, count: $count, countDown: $countDown, bpm: $bpm).environmentObject(audioRecorder)
                 
@@ -211,44 +211,44 @@ struct RecordExercisePractiseScreen: View {
                 }
                 .padding()
                 .navigationTitle("Practise")
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        Task {
-                            print("-------")
-                            print(UserDefaults.standard.string(forKey: "studentID"))
-                            guard let studentId = UserDefaults.standard.string(forKey: "studentID") else { return  }
-                            let recordingData = try! Data(contentsOf: audioRecorder.recordingURL!)
-                            
-                            var multipart = MultipartRequest()
-                            multipart.add(key: "payload", value: PostExercisePractise(exerciseId: exercise.id, studentId: studentId, tempo: getBpmForIndex()).stringified())
-                            multipart.add(key: "cover-song", fileName: "\(UUID().uuidString).mp4", fileMimeType: "audio/mp4", fileData: recordingData)
-                            
-                            let result = await ExercisePractisesService().postExercisePractiseBala(practiseMultipartRequest: multipart)
-                            switch result {
-                            case .success(let success):
-                                print(success)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: {
+                            Task {
+                                print("-------")
+                                print(UserDefaults.standard.string(forKey: "studentID"))
+                                guard let studentId = UserDefaults.standard.string(forKey: "studentID") else { return  }
+                                let recordingData = try! Data(contentsOf: audioRecorder.recordingURL!)
                                 
-                                audioRecorder.newRecording()
-                                recordingState = .identity
-                                count = -1
-                                countDown = 4
-                                presentReviewExercise = false
-                            case .failure(let failure):
-                                print(failure)
+                                var multipart = MultipartRequest()
+                                multipart.add(key: "payload", value: PostExercisePractise(exerciseId: exercise.id, studentId: studentId, tempo: getBpmForIndex()).stringified())
+                                multipart.add(key: "cover-song", fileName: "\(UUID().uuidString).mp4", fileMimeType: "audio/mp4", fileData: recordingData)
                                 
-                                audioRecorder.newRecording()
-                                recordingState = .identity
-                                count = -1
-                                countDown = 4
-                                presentReviewExercise = false
-                                
-                                dismiss()
+                                let result = await ExercisePractisesService().postExercisePractiseBala(practiseMultipartRequest: multipart)
+                                switch result {
+                                case .success(let success):
+                                    print(success)
+                                    
+                                    audioRecorder.newRecording()
+                                    recordingState = .identity
+                                    count = -1
+                                    countDown = 4
+                                    presentReviewExercise = false
+                                case .failure(let failure):
+                                    print(failure)
+                                    
+                                    audioRecorder.newRecording()
+                                    recordingState = .identity
+                                    count = -1
+                                    countDown = 4
+                                    presentReviewExercise = false
+                                    
+                                    dismiss()
+                                }
                             }
+                        }) {
+                            Text("Bala mode")
                         }
-                    }) {
-                        Text("Bala mode")
                     }
                 }
             }
